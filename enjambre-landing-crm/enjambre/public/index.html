@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Enjambre — La innovación toma forma. El cambio, también.</title>
+<meta name="theme-color" content="#0a2230">
+<link rel="preload" href="assets/fonts/enjambre.ttf" as="font" type="font/ttf" crossorigin>
+<meta name="description" content="Enjambre es un sistema físico en desarrollo para recolectar residuos flotantes. Conoce el proceso y explora alianzas.">
+<style>
+/* REVISAR antes de publicar: licencia de uso web de la tipografía (assets/fonts/enjambre.ttf) */
+@font-face{font-family:Enjambre;src:url(assets/fonts/enjambre.ttf) format("truetype");font-display:swap}
+/* REVISAR antes de publicar: paleta definitiva */
+:root{--agua:#0a2230;--acero:#22333c;--niebla:#eef2f1;--tinta:#13232b;--boya:#f2b705;--tenue:#9db2ba;
+--f:"Avenir Next","Segoe UI","Helvetica Neue",system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--niebla:#eef2f1}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font:400 1.0625rem/1.6 var(--f);color:var(--tinta);background:var(--agua);-webkit-text-size-adjust:100%}
+img,video{display:block;max-width:100%}
+a{color:inherit}a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.skip{position:absolute;left:-999px;z-index:99;background:#fff;color:#000;padding:.7rem 1rem}.skip:focus{left:.5rem;top:.5rem}
+:focus-visible{outline:3px solid var(--boya);outline-offset:3px}
+h1,h2{font:400 1em/1.15 Enjambre,var(--f);letter-spacing:0;text-wrap:balance}
+h1{font-size:clamp(1.9rem,3.5vw,3.2rem)}h2{font-size:clamp(1.6rem,3.2vw,2.7rem)}
+p{max-width:58ch}
+.sec{position:relative;min-height:100svh;display:flex;overflow:hidden}
+.dark{color:#fff;background:var(--agua)}.light{background:var(--niebla)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.6rem;border-radius:3px;font-weight:600;text-decoration:none;border:2px solid var(--boya);cursor:pointer;font:inherit;font-weight:600}
+.btn.p{background:var(--boya);color:#1a1400}.btn.s{background:transparent;color:inherit;border-color:currentColor}
+.btn:hover{filter:brightness(1.08)}.btn.s:hover{background:rgba(255,255,255,.12)}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;padding:env(safe-area-inset-top) 0 0;transition:background .4s}
+header.sc{background:rgba(10,34,48,.92);backdrop-filter:blur(8px)}
+header nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);color:#fff}
+header:before{content:"";position:absolute;inset:0 0 -24px;z-index:-1;background:linear-gradient(rgba(10,34,48,.75),transparent);pointer-events:none}
+header img{height:46px;width:auto}
+.menu{display:flex;gap:1.6rem;list-style:none;padding:0}
+.menu a{text-decoration:none;font-size:.95rem;padding:.5rem 0}.menu a:hover{text-decoration:underline;text-underline-offset:6px}
+#bm{display:none;background:none;border:0;color:#fff;width:48px;height:48px;font-size:1.6rem;cursor:pointer}
+/* hero */
+#inicio{align-items:center}
+#inicio>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%;animation:pan 40s ease-out both}
+@keyframes pan{from{transform:scale(1)}to{transform:scale(1.07)}}
+#inicio:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,34,48,.78),rgba(10,34,48,.25) 55%,transparent)}
+#inicio .in{position:relative;z-index:2;padding:6rem clamp(1.2rem,6vw,5rem) 5rem;max-width:min(40%,40rem);min-width:min(100%,30rem);animation:up 1.4s ease-out both}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+#inicio p{margin-top:1.4rem;color:#dbe7eb}
+.sc-ind{position:absolute;z-index:2;left:50%;bottom:1.4rem;width:1px;height:42px;background:linear-gradient(#fff,transparent)}
+/* conocer */
+.dos{display:grid;grid-template-columns:2fr 3fr;gap:clamp(1.5rem,5vw,5rem);align-items:center;padding:clamp(5rem,9vw,8rem) clamp(1.2rem,6vw,5rem);width:100%}
+.dos p{margin:1.2rem 0 0}
+.dos img,.dos video{width:100%;height:100%;max-height:78vh;object-fit:cover;border-radius:3px}
+/* reto + entrada */
+.fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lat{position:relative;z-index:2;align-self:flex-end;padding:4rem clamp(1.2rem,6vw,5rem);max-width:min(36%,34rem);min-width:min(100%,28rem)}
+.lat p{margin-top:1rem;color:#e3edf0}
+#reto:before,#proceso:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,34,48,.82),transparent 62%)}
+#proceso{align-items:center;justify-content:center;text-align:center}
+#proceso:before{background:rgba(10,34,48,.62)}
+#proceso .fondo{will-change:transform;transform:scale(var(--z,1))}
+#proceso .in{position:relative;z-index:2;padding:6rem 1.2rem}#proceso p{margin:1.2rem auto 0}
+/* etapas */
+.etapa{display:grid;grid-template-columns:7fr 3fr;align-items:stretch}
+.etapa.r{grid-template-columns:3fr 7fr}.etapa.r .txt{order:-1}
+.media{position:relative;min-height:100svh;overflow:hidden;margin:0;background:#06151d}
+.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.media.v:before{content:"";position:absolute;inset:-10%;background:var(--bg) center/cover;filter:blur(28px) brightness(.6)}
+.media.v video{left:50%;width:auto;aspect-ratio:9/16;transform:translateX(-50%);object-fit:cover}
+.txt{display:flex;flex-direction:column;justify-content:center;padding:4rem clamp(1.2rem,3vw,3rem);background:var(--acero);color:#fff}
+.etapa:not(.r) .txt{padding-right:9rem}
+.txt small{color:var(--tenue);font-size:.9rem;margin-bottom:1rem}
+.txt h2{font-size:clamp(1.4rem,2.3vw,2.1rem)}.txt p{margin-top:1rem;color:#d3e0e5}
+/* hilo conductor */
+#flujo{position:fixed;z-index:40;right:clamp(.6rem,2vw,1.6rem);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2.4rem;opacity:0;pointer-events:none;transition:opacity .5s}
+#flujo.on{opacity:1}
+#flujo:before,#flujo:after{content:"";position:absolute;right:6px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.28)}
+#flujo:after{background:var(--boya);transform-origin:top;transform:scaleY(var(--p,0))}
+#flujo a{position:relative;z-index:1;display:flex;align-items:center;gap:.7rem;justify-content:flex-end;color:#cfdde2;text-decoration:none;font-size:.82rem;text-shadow:0 1px 4px #000}
+#flujo a:after{content:"";width:14px;height:14px;border-radius:50%;background:var(--agua);border:2px solid #cfdde2}
+#flujo a.on{color:#fff}#flujo a.on:after{background:var(--boya);border-color:var(--boya)}
+/* tecnologia */
+#tecnologia{display:block;padding:clamp(5rem,9vw,8rem) clamp(1.2rem,6vw,5rem)}
+#tecnologia>h2,#tecnologia>p{max-width:46rem}#tecnologia>p{margin-top:1rem}
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:3rem 0 2rem;padding:0;list-style:none}
+.mods img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.mods b{display:block;margin-top:.6rem}.mods span{font-size:.95rem;color:#43565e}
+.est{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid #b9c7cc;padding-top:1.6rem}
+.est h3{font-size:1rem;margin-bottom:.4rem}.est p{font-size:.95rem;color:#43565e}
+.val{margin-top:2rem;padding:1rem 1.2rem;border:1px dashed #8aa0a8;color:#43565e;font-size:.95rem}
+/* impacto */
+#impacto .dos{grid-template-columns:9fr 11fr}
+#impacto figure{display:grid;justify-items:center}#impacto video{width:auto;height:min(78vh,720px);max-width:100%;aspect-ratio:9/16;object-fit:cover}
+/* alianzas */
+#alianzas{align-items:center}#alianzas .fondo{filter:blur(6px) brightness(.45);transform:scale(1.05)}
+#alianzas .dos{position:relative;z-index:2;grid-template-columns:1fr 1fr}
+#alianzas ul{list-style:none;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+#alianzas li{padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,.3);font-size:1.35rem;font-weight:500}
+/* contacto */
+#contacto .dos{grid-template-columns:2fr 3fr;align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+label{display:grid;gap:.35rem;font-weight:500;font-size:.95rem}.w{grid-column:1/-1}
+input,select,textarea{font:inherit;padding:.75rem .8rem;min-height:48px;border:1.5px solid #8aa0a8;border-radius:3px;background:#fff;color:var(--tinta)}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--agua);outline:3px solid rgba(242,183,5,.6)}
+#st{grid-column:1/-1;min-height:1.6em}
+/* Mapa público y selector de ubicación */
+#mapa{display:block;padding:clamp(5rem,9vw,8rem) clamp(1.2rem,6vw,5rem)}#mapa .mp{max-width:1200px;margin:0 auto}#mapa p{margin-top:1rem}
+.bus{display:flex;gap:.6rem;margin:1.4rem 0 1rem;max-width:34rem}.bus input{flex:1;min-width:0}.sr{position:absolute;left:-999px}
+#mapa-pub{height:min(62vh,560px);min-height:340px;border-radius:3px;background:#0d2b3b}#pmap{height:300px;border-radius:3px;margin:.6rem 0}
+.ley i{display:inline-block;width:14px;height:14px;background:#27b8dc;border:1px solid #0f8fb0;vertical-align:-2px;margin-right:.4rem}
+details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;background:#fff}#pinbox summary{cursor:pointer;font-weight:500;min-height:32px}.nt{font-size:.92rem;color:#43565e;margin:.5rem 0}
+#pinbox .bus{margin:.4rem 0;max-width:none}#pst{min-height:1.4em;font-size:.92rem}label.chk{display:flex;gap:.6rem;align-items:flex-start;font-weight:400}label.chk input{min-height:0;width:22px;height:22px;margin-top:2px}
+.leaflet-container{font:inherit}
+#cons[hidden],#pquit[hidden],#pinbox [hidden]{display:none!important}
+
+/* Interacción decorativa de éxito (avispa → símbolo). Lógica y tiempos: const VUELO en el script */
+.envio{position:relative;display:flex}.envio .btn{flex:1}
+#vuelo{position:absolute;right:.6rem;top:50%;width:52px;height:52px;margin-top:-26px;border-radius:50%;background:var(--agua);opacity:0;pointer-events:none;z-index:2}
+#vuelo img,#vuelo .glow{position:absolute;inset:0;margin:auto}
+#vuelo .hex{width:30px;height:auto}#vuelo .avi{width:34px;height:auto;z-index:2}
+#vuelo .glow{inset:-12px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.75),rgba(255,0,200,.45) 45%,transparent 70%);opacity:0}
+#vuelo [hidden]{display:none}#vuelo.est{opacity:1}#vuelo.est .hex{display:none}
+/* cierre */
+#cierre{align-items:center;justify-content:center;text-align:center}
+#cierre .fondo{filter:brightness(.3)}
+#cierre .in{position:relative;z-index:2;padding:6rem 1.2rem 5rem;display:grid;justify-items:center;gap:1.4rem}
+#cierre p{margin:0 auto}#cierre .logo{width:min(520px,88vw);height:auto}
+#cierre .cta{justify-content:center;margin:.6rem 0 0}
+#cierre footer{margin-top:2rem;font-size:.9rem;color:var(--tenue)}
+#pz{position:fixed;z-index:60;right:.8rem;bottom:calc(.8rem + env(safe-area-inset-bottom));min-height:44px;padding:.4rem .9rem;font:inherit;font-size:.85rem;background:rgba(10,34,48,.85);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:3px;cursor:pointer}
+.pz *{animation:none!important}.pz html{scroll-behavior:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* móvil */
+@media(max-width:860px){
+#bm{display:block}.menu{display:none;position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:0;background:rgba(10,34,48,.97);padding:.5rem 1.2rem 1rem}
+.menu.o{display:flex}.menu a{display:block;padding:.9rem 0;font-size:1.05rem}
+#inicio{align-items:flex-end}#inicio>img{object-position:30% 50%}
+#inicio:before{background:linear-gradient(0deg,rgba(10,34,48,.92),rgba(10,34,48,.1) 70%)}
+#inicio .in,.lat{max-width:none;min-width:0;padding:5rem 1.2rem 5.5rem}
+#inicio .cta,#cierre .cta{flex-direction:column;width:100%}.btn{width:100%}
+.dos,#impacto .dos,#alianzas .dos,#contacto .dos{grid-template-columns:1fr;padding-top:5rem}
+#conocer .dos>:first-child{order:2}#conocer .dos img{max-height:none;aspect-ratio:4/3}
+#reto:before{background:linear-gradient(0deg,rgba(10,34,48,.92),transparent 75%)}
+.etapa,.etapa.r{grid-template-columns:1fr}.etapa.r .txt{order:0}
+.media{min-height:0;height:68svh}.txt{padding:2rem 1.2rem 3rem}
+#flujo{top:calc(3.9rem + env(safe-area-inset-top));right:50%;transform:translateX(50%);flex-direction:row;gap:1.1rem;background:rgba(10,34,48,.88);padding:.7rem 1rem;border-radius:3px}
+#flujo:before,#flujo:after{display:none}#flujo a{font-size:0;gap:0}#flujo a:after{width:16px;height:16px}
+.etapa:not(.r) .txt{padding-right:1.2rem}#pz{right:.6rem;bottom:calc(.6rem + env(safe-area-inset-bottom));font-size:.78rem;min-height:40px;opacity:.92}
+.mods{grid-template-columns:1fr 1fr}.est{grid-template-columns:1fr}
+form{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header id="top"><nav aria-label="Principal">
+<a href="#inicio" aria-label="Enjambre, inicio"><img src="assets/logo-simbolo.png" alt="" width="900" height="879"></a>
+<button id="bm" aria-expanded="false" aria-controls="mn" aria-label="Abrir menú">☰</button>
+<ul class="menu" id="mn">
+<li><a href="#conocer">Conocer Enjambre</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="#contacto">Contacto</a></li>
+</ul></nav></header>
+
+<nav id="flujo" aria-label="Etapas del proceso">
+<a href="#direccion" data-e="direccion">Dirección</a><a href="#captura" data-e="captura">Captura</a><a href="#guia" data-e="guia">Guía</a><a href="#procesamiento" data-e="procesamiento">Procesamiento</a><a href="#contencion" data-e="contencion">Contención</a>
+</nav>
+<button id="pz" aria-pressed="false">Pausar movimiento</button>
+
+<main id="main">
+<section class="sec dark" id="inicio" aria-label="Enjambre">
+<img src="assets/01-hero.webp" alt="Sistema Enjambre desplegado a la orilla de un cuerpo de agua, con la banda extractora y la embarcación." fetchpriority="high">
+<div class="in"><h1>La innovación toma forma. El cambio, también.</h1>
+<p>Un sistema físico en desarrollo para recolectar residuos flotantes y transformar una acción ambiental en tecnología visible.</p>
+<div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div></div>
+<span class="sc-ind" aria-hidden="true"></span>
+</section>
+
+<section class="sec light" id="conocer"><div class="dos">
+<div><h2>Una respuesta física para residuos flotantes.</h2>
+<p>Enjambre desarrolla un sistema que dirige, captura, procesa y contiene material flotante mediante una secuencia visible de recolección. Busca convertir un problema disperso en un proceso físico y observable.</p>
+<div class="cta"><a class="btn p" href="#proceso">Conocer Enjambre</a></div></div>
+<img src="assets/02-sistema-general.webp" alt="Vista general del sistema Enjambre montado sobre un camión, con el equipo trabajando alrededor." loading="lazy">
+</div></section>
+
+<section class="sec dark" id="reto" aria-label="El reto">
+<picture><source media="(max-width:860px)" srcset="assets/03-reto-movil.webp"><img class="fondo" src="assets/03-reto.webp" alt="Botellas y otros residuos acumulados sobre la superficie del agua." loading="lazy"></picture>
+<div class="lat"><h2>El residuo se mueve con el agua.</h2>
+<p>Se dispersa, se acumula y cambia con el entorno. Por eso enfrentar este problema exige más que recolección: exige entender el flujo, dirigir el material y convertirlo en una oportunidad de acción.</p></div>
+</section>
+
+<section class="sec dark" id="proceso" aria-label="Del agua al sistema">
+<img class="fondo" data-zoom src="assets/04-entrada.webp" alt="Agua tranquila y vegetación a la orilla donde opera el sistema." loading="lazy">
+<div class="in"><h2>Del agua al sistema.</h2><p>Enjambre convierte la recolección en una historia visual de cinco etapas.</p></div>
+</section>
+
+<section class="sec dark etapa" id="direccion">
+<figure class="media"><video muted loop playsinline preload="none" poster="assets/05-direccion-poster.webp" data-src="assets/05-direccion.mp4" aria-label="Embarcación del sistema conduciendo residuos flotantes sobre el agua"></video></figure>
+<div class="txt"><small>Etapa 1 · Dirección</small><h2>Primero, el flujo se dirige.</h2><p>El barco, controlado a distancia y sin necesidad de una persona a bordo, conduce los residuos flotantes hacia el sistema de captura.</p></div>
+</section>
+
+<section class="sec dark etapa r" id="captura">
+<figure class="media v" style="--bg:url(assets/06-captura-poster.webp)"><video muted loop playsinline preload="none" poster="assets/06-captura-poster.webp" data-src="assets/06-captura.mp4" aria-label="Banda extractora elevando residuos fuera del agua"></video></figure>
+<div class="txt"><small>Etapa 2 · Captura</small><h2>El residuo sale del agua.</h2><p>Una banda extractora inclinada eleva el material flotante y lo lleva al siguiente punto del proceso.</p></div>
+</section>
+
+<section class="sec dark etapa" id="guia">
+<figure class="media"><video muted loop playsinline preload="none" poster="assets/07-guia-poster.webp" data-src="assets/07-guia.mp4" aria-label="Banda transportadora y equipo retirando manualmente elementos antes de la trituradora"></video></figure>
+<div class="txt"><small>Etapa 3 · Guía</small><h2>El material avanza hacia el procesamiento.</h2><p>Una banda transportadora lo lleva hacia la trituradora. Antes, el equipo retira manualmente metales y piedras que podrían dañarla.</p></div>
+</section>
+
+<section class="sec dark etapa r" id="procesamiento">
+<figure class="media v" style="--bg:url(assets/08-trituradora-poster.webp)"><video muted loop playsinline preload="none" poster="assets/08-trituradora-poster.webp" data-src="assets/08-trituradora.mp4" aria-label="Residuos entrando a la trituradora"></video></figure>
+<div class="txt"><small>Etapa 4 · Procesamiento</small><h2>El residuo se transforma.</h2><p>El material pasa a una trituradora diseñada y fabricada por el equipo de ingeniería de Enjambre, que lo reduce antes de avanzar.</p></div>
+</section>
+
+<section class="sec dark etapa" id="contencion">
+<figure class="media v" style="--bg:url(assets/09-contencion-poster.webp)"><video muted loop playsinline preload="none" poster="assets/09-contencion-poster.webp" data-src="assets/09-contencion.mp4" aria-label="Material triturado avanzando hacia el almacenamiento"></video></figure>
+<div class="txt"><small>Etapa 5 · Contención</small><h2>El resultado queda contenido.</h2><p>Después de la trituración, el material se deposita en una zona de almacenamiento. Su gestión posterior depende de los acuerdos con cada entidad.</p></div>
+</section>
+
+<!-- REVISAR antes de publicar: validación técnica final de estos textos con ingeniería -->
+<section class="sec light" id="tecnologia"><h2>Tecnología ambiental en evolución.</h2>
+<p>Enjambre integra siete subsistemas diseñados desde cero por su equipo de ingeniería. Cada etapa abre espacio para validar desempeño, mejorar la operación y preparar futuras versiones.</p>
+<ul class="mods">
+<li><img src="assets/05-direccion-poster.webp" alt="Detalle del barco" loading="lazy"><b>Dirección</b><span>Barco controlado a distancia.</span></li>
+<li><img src="assets/06-captura-foto.webp" alt="Detalle de la banda extractora" loading="lazy"><b>Captura</b><span>Banda extractora sobre el agua.</span></li>
+<li><img src="assets/08-trituradora-poster.webp" alt="Detalle de la trituradora" loading="lazy"><b>Procesamiento</b><span>Trituradora de diseño propio.</span></li>
+<li><img src="assets/09-contencion-poster.webp" alt="Detalle del material triturado" loading="lazy"><b>Contención</b><span>Zona de almacenamiento.</span></li></ul>
+<div class="est"><div><h3>Hoy</h3><p>Barco, banda extractora, banda transportadora, trituradora, almacenamiento, estructura de integración y transporte, y estructura de supervisión visual.</p></div>
+<div><h3>En desarrollo</h3><p>Mejoras en movilidad y maniobrabilidad del barco, y en su despliegue y plegado para facilitar el transporte.</p></div>
+<div><h3>Posible a futuro</h3><p>Automatizar parcialmente la banda transportadora para reducir la intervención manual. No forma parte de la versión actual.</p></div></div>
+<p class="val">Datos técnicos en validación.</p>
+</section>
+
+<section class="sec light" id="impacto"><div class="dos">
+<div><h2>Hacer visible el cambio.</h2>
+<p>El potencial de Enjambre está en transformar un problema disperso en un proceso observable, medible y escalable conforme avance su desarrollo. El cambio comienza cuando el residuo deja de estar perdido en el agua y entra en un sistema que puede ser visto, medido y mejorado.</p></div>
+<figure style="margin:0"><video muted loop playsinline preload="none" poster="assets/11-impacto-poster.webp" data-src="assets/11-impacto.mp4" aria-label="El sistema Enjambre en operación junto al agua"></video></figure>
+</div></section>
+
+<section class="sec dark" id="alianzas"><img class="fondo" src="assets/02-sistema-general.webp" alt="" loading="lazy"><div class="dos">
+<div><h2>El cambio también necesita aliados.</h2>
+<p>Enjambre busca colaboración para fortalecer su desarrollo técnico, ampliar pruebas, validar impacto y construir nuevas oportunidades de implementación.</p>
+<div class="cta"><a class="btn p" href="#contacto">Explorar alianzas</a></div></div>
+<ul><li>Inversores</li><li>Gobierno local</li><li>Empresas con enfoque sostenible</li><li>Aliados técnicos</li></ul>
+</div></section>
+
+<section class="sec dark" id="mapa" aria-labelledby="mapa-t"><div class="mp">
+<h2 id="mapa-t">Cuerpos de agua de referencia en México</h2>
+<p><strong>Donde puede comenzar el cambio.</strong> Explora cuerpos de agua de referencia en México. La presencia en el mapa no garantiza una intervención: cada lugar se revisa por condiciones técnicas, acceso, seguridad, permisos y necesidades locales.</p>
+<div><label class="sr" for="mapa-q">Buscar un lugar, municipio o estado</label><form id="mapa-bus" class="bus"><input id="mapa-q" type="search" placeholder="Lugar, municipio o estado" autocomplete="off" maxlength="100"><button class="btn s" type="submit">Buscar</button></form></div>
+<div id="mapa-pub" role="region" aria-label="Mapa de cuerpos de agua de referencia en México"></div>
+<p id="mapa-aviso" role="status" aria-live="polite"></p>
+<p class="ley"><i></i> Referencia oficial (CONAGUA). Cada sitio requiere evaluación técnica, operativa y de permisos antes de una intervención.</p>
+</div></section>
+
+<section class="sec light" id="contacto"><div class="dos">
+<div><h2>Hablemos del siguiente avance.</h2>
+<p>Si quieres conocer el proceso, explorar una alianza o apoyar el desarrollo de Enjambre, deja tus datos y el equipo podrá contactarte.</p></div>
+<form id="fm" novalidate>
+<label>Nombre completo<input name="nombre" autocomplete="name" required></label>
+<label>Organización o empresa<input name="organizacion" autocomplete="organization" required></label>
+<label>Correo electrónico<input name="correo" type="email" inputmode="email" spellcheck="false" autocomplete="email" required></label>
+<label>Teléfono (opcional)<input name="telefono" type="tel" autocomplete="tel"></label>
+<label class="w">Tipo de interés<select name="interes" required><option value="">Selecciona una opción</option><option>Inversión</option><option>Alianza estratégica</option><option>Gobierno o institución pública</option><option>Empresa con enfoque sostenible</option><option>Apoyo técnico</option><option>Investigación o universidad</option><option>Medios / prensa</option><option>Otro</option></select></label>
+<label>Cuerpo de agua o sitio de interés (opcional)<input name="cuerpo_agua" maxlength="120"></label>
+<label>Municipio o alcaldía (opcional)<input name="municipio" maxlength="80"></label>
+<label>Estado (opcional)<select name="estado"><option value="">Selecciona un estado</option><option>Aguascalientes</option><option>Baja California</option><option>Baja California Sur</option><option>Campeche</option><option>Chiapas</option><option>Chihuahua</option><option>Ciudad de México</option><option>Coahuila</option><option>Colima</option><option>Durango</option><option>Estado de México</option><option>Guanajuato</option><option>Guerrero</option><option>Hidalgo</option><option>Jalisco</option><option>Michoacán</option><option>Morelos</option><option>Nayarit</option><option>Nuevo León</option><option>Oaxaca</option><option>Puebla</option><option>Querétaro</option><option>Quintana Roo</option><option>San Luis Potosí</option><option>Sinaloa</option><option>Sonora</option><option>Tabasco</option><option>Tamaulipas</option><option>Tlaxcala</option><option>Veracruz</option><option>Yucatán</option><option>Zacatecas</option></select></label>
+<label>País<input name="pais" value="México" readonly aria-readonly="true"></label>
+<label class="w">Mensaje breve<textarea name="mensaje" required></textarea></label>
+<details class="w" id="pinbox"><summary>Marcar ubicación aproximada en el mapa (opcional)</summary>
+<p class="nt">Busca un lugar o toca el mapa para colocar un pin. Se guarda solo una ubicación aproximada, nunca exacta.</p>
+<div class="bus"><label class="sr" for="pbq">Buscar un lugar</label><input id="pbq" type="search" placeholder="Lugar, municipio o estado" autocomplete="off" maxlength="100"><button class="btn s" type="button" id="pbb">Buscar</button></div>
+<div id="pmap" role="region" aria-label="Mapa para colocar un pin aproximado"></div>
+<p id="pst" role="status" aria-live="polite"></p><button class="btn s" type="button" id="pquit" hidden>Quitar pin</button>
+<input type="hidden" name="lat"><input type="hidden" name="lng"></details>
+<label class="w chk" id="cons" hidden><input type="checkbox" name="consentimiento_ubicacion"><span>Autorizo a Enjambre a usar esta ubicación para evaluar mi solicitud y dar seguimiento.</span></label>
+<!-- PENDIENTE antes de publicar: aviso de privacidad (indicar datos de contacto y ubicación aproximada opcional, y el uso de OpenStreetMap/Nominatim para buscar lugares) -->
+<input name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="envio w"><button class="btn p" type="submit">Enviar mensaje</button>
+<div id="vuelo" aria-hidden="true"><span class="glow"></span><img class="hex" src="assets/logo-simbolo.png" alt="" width="900" height="879"><img class="avi" src="assets/avispa.png" alt="" width="200" height="188" onerror="this.hidden=true"></div></div>
+<p id="st" class="w" role="status" aria-live="polite"></p>
+</form></div></section>
+
+<section class="sec dark" id="cierre"><img class="fondo" src="assets/01-hero.webp" alt="" loading="lazy">
+<div class="in"><h2>Del agua al sistema.<br>Del sistema al cambio.</h2>
+<img class="logo" src="assets/logo-enjambre.png" alt="Enjambre — Diseñamos soluciones tecnológicas que transforman entornos" width="1692" height="930" loading="lazy">
+<div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div>
+<footer>Enjambre · <a href="#contacto">Contacto</a></footer></div>
+</section>
+</main>
+
+<script src="js/mapa.js" defer></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const rm=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
+let pausado=rm;
+/* menú */
+const bm=$("#bm"),mn=$("#mn");
+bm.onclick=()=>{const o=mn.classList.toggle("o");bm.setAttribute("aria-expanded",o);bm.setAttribute("aria-label",o?"Cerrar menú":"Abrir menú")};
+mn.onclick=e=>{if(e.target.tagName=="A"){mn.classList.remove("o");bm.setAttribute("aria-expanded",false)}};
+/* video: carga diferida, reproduce solo en pantalla */
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;
+ if(e.isIntersecting){if(!v.src&&!rm)v.src=v.dataset.src;if(!pausado&&v.src)v.play().catch(()=>{})}else v.pause()}),{rootMargin:"200px"});
+$$("video").forEach(v=>vio.observe(v));
+/* pausa global */
+const pz=$("#pz");if(rm){pz.textContent="Reanudar movimiento";pz.setAttribute("aria-pressed","true");document.documentElement.classList.add("pz")}
+pz.onclick=()=>{pausado=!pausado;pz.setAttribute("aria-pressed",pausado);pz.textContent=pausado?"Reanudar movimiento":"Pausar movimiento";
+ document.documentElement.classList.toggle("pz",pausado);
+ $$("video").forEach(v=>{if(pausado)v.pause();else{if(!v.src)v.src=v.dataset.src;const r=v.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)v.play().catch(()=>{})}})};
+/* hilo conductor */
+const fl=$("#flujo"),dots=$$("#flujo a"),etapas=dots.map(a=>$("#"+a.dataset.e)),pr=$("#proceso"),ct=$("#contencion"),zm=$("[data-zoom]");
+const eio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=etapas.indexOf(e.target);dots.forEach((d,k)=>d.classList.toggle("on",k<=i))}}),{rootMargin:"-45% 0px -45% 0px"});
+etapas.forEach(s=>eio.observe(s));
+let tk=0;function sc(){tk=0;const y=scrollY,h=innerHeight;
+ $("header").classList.toggle("sc",y>40);
+ const a=pr.offsetTop,b=ct.offsetTop+ct.offsetHeight;
+ fl.classList.toggle("on",y+h*.5>a+pr.offsetHeight*.6&&y+h*.5<b);
+ if(y+h*.5<a+pr.offsetHeight)dots.forEach(d=>d.classList.remove("on"));
+ const p=Math.min(1,Math.max(0,(y+h*.5-etapas[0].offsetTop)/(b-etapas[0].offsetTop)));fl.style.setProperty("--p",p);
+ if(!pausado){const t=Math.min(1,Math.max(0,(y+h-a)/(pr.offsetHeight+h)));zm.style.setProperty("--z",1+t*.12)}}
+addEventListener("scroll",()=>{if(!tk)tk=requestAnimationFrame(sc)},{passive:true});sc();
+/* Interacción de éxito: CONFIGURACIÓN. total = duración en ms (1200–1800); dist_arco = elevación del vuelo en px */
+const VUELO={total:1500,dist_arco:24};
+function vuelo(on){const v=$("#vuelo");if(!v)return;
+ v.getAnimations({subtree:true}).forEach(a=>a.cancel());v.classList.remove("est");if(!on)return;
+ try{const av=v.querySelector(".avi"),hx=v.querySelector(".hex"),gl=v.querySelector(".glow");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||pausado){if(!av.hidden)v.classList.add("est");return}
+  const b=$("#fm .envio .btn").getBoundingClientRect(),c=v.getBoundingClientRect(),
+   dx=b.left+b.width/2-(c.left+c.width/2),dy=b.top+b.height/2-(c.top+c.height/2),
+   r=Math.atan2(-dx,dy)*180/Math.PI,T=VUELO.total,o={duration:T,easing:"ease-in-out"},A=VUELO.dist_arco;
+  v.animate([{opacity:0},{opacity:1,offset:.13},{opacity:1,offset:.87},{opacity:0}],{duration:T});
+  if(!av.hidden)av.animate([{transform:`translate(${dx}px,${dy}px) rotate(${r}deg) scale(.8)`,opacity:0},{opacity:1,offset:.1},
+   {transform:`translate(${dx*.45}px,${dy*.45-A}px) rotate(${r*.5}deg) scale(.9)`,offset:.45},
+   {transform:"translate(0,0) rotate(0deg) scale(.8)",opacity:1,offset:.66},{transform:"translate(0,0) rotate(0deg) scale(.5)",opacity:0,offset:.82},{opacity:0}],o);
+  hx.animate([{transform:"scale(1)"},{transform:"scale(1)",offset:.64},{transform:"scale(1.2)",offset:.76},{transform:"scale(1)"}],{duration:T});
+  gl.animate([{transform:"scale(.6)",opacity:0},{transform:"scale(.6)",opacity:0,offset:.62},{transform:"scale(1)",opacity:.9,offset:.74},{transform:"scale(1.5)",opacity:0}],{duration:T})
+ }catch(e){}}
+/* Formulario: guarda primero en la base de datos mediante /api/contact (función segura); solo entonces muestra el éxito y la avispa */
+$("#fm").onsubmit=async e=>{e.preventDefault();const f=e.target,st=$("#st");
+ if(!f.checkValidity()){f.reportValidity();st.textContent="Revisa los campos marcados e inténtalo de nuevo.";return}
+ const d=Object.fromEntries(new FormData(f));d.consentimiento_ubicacion=!!f.consentimiento_ubicacion.checked;if(!d.lat||!d.lng){delete d.lat;delete d.lng}
+ const bt=f.querySelector(".envio .btn");vuelo(false);bt.disabled=true;st.textContent="Enviando…";
+ try{const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
+  if(r.status==429){st.textContent="Recibimos varios envíos desde tu conexión. Inténtalo de nuevo más tarde.";return}
+  if(r.status==400){st.textContent="Revisa los campos marcados e inténtalo de nuevo.";return}
+  const j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw 0;
+  st.textContent="Gracias por contactar a Enjambre. Recibimos tu mensaje y revisaremos tu solicitud para responderte lo antes posible.";vuelo(true);f.reset();if(window.Enjambre&&Enjambre.resetPin)Enjambre.resetPin()}
+ catch{st.textContent="No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a proyectoenjambre.contacto@gmail.com."}finally{bt.disabled=false}};
+</script>
+</body>
+</html>
