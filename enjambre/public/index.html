@@ -99,7 +99,7 @@ header img{height:46px;width:auto}
 #alianzas li{padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,.3);font-size:1.35rem;font-weight:500}
 /* contacto */
 #contacto .dos{grid-template-columns:2fr 3fr;align-items:start}
-form{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.1rem}label>*,details>*{min-width:0}details#pinbox{min-width:0;max-width:100%}
 label{display:grid;gap:.35rem;font-weight:500;font-size:.95rem}.w{grid-column:1/-1}
 input,select,textarea{font:inherit;padding:.75rem .8rem;min-height:48px;border:1.5px solid #8aa0a8;border-radius:3px;background:#fff;color:var(--tinta)}
 textarea{min-height:120px;resize:vertical}
@@ -107,13 +107,36 @@ input:focus,select:focus,textarea:focus{border-color:var(--agua);outline:3px sol
 #st{grid-column:1/-1;min-height:1.6em}
 /* Mapa público y selector de ubicación */
 #mapa{display:block;padding:clamp(5rem,9vw,8rem) clamp(1.2rem,6vw,5rem)}#mapa .mp{max-width:1200px;margin:0 auto}#mapa p{margin-top:1rem}
-.bus{display:flex;gap:.6rem;margin:1.4rem 0 1rem;max-width:34rem}.bus input{flex:1;min-width:0}.sr{position:absolute;left:-999px}
-#mapa-pub{height:min(62vh,560px);min-height:340px;border-radius:3px;background:#0d2b3b}#pmap{height:300px;border-radius:3px;margin:.6rem 0}
+.bus{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 1rem;max-width:34rem}.bus input{flex:1 1 13rem;min-width:0;width:auto}.bus .btn{flex:0 0 auto;width:auto}.sr{position:absolute;left:-999px}
+#mapa-pub{height:min(62vh,560px);min-height:340px;border-radius:3px;background:#0d2b3b}#pmap{width:100%;height:clamp(260px,62vw,340px);border-radius:3px;margin:.6rem 0;touch-action:pan-x pan-y}
 .ley i{display:inline-block;width:14px;height:14px;background:#27b8dc;border:1px solid #0f8fb0;vertical-align:-2px;margin-right:.4rem}
 details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;background:#fff}#pinbox summary{cursor:pointer;font-weight:500;min-height:32px}.nt{font-size:.92rem;color:#43565e;margin:.5rem 0}
 #pinbox .bus{margin:.4rem 0;max-width:none}#pst{min-height:1.4em;font-size:.92rem}label.chk{display:flex;gap:.6rem;align-items:flex-start;font-weight:400}label.chk input{min-height:0;width:22px;height:22px;margin-top:2px}
+
+/* Impacto ambiental (datos: data/impacto.json, render: js/impacto.js) */
+#impacto-ambiental{display:block;min-height:0;padding:clamp(4.5rem,8vw,7rem) clamp(1.2rem,6vw,5rem);background:linear-gradient(180deg,#0a2230,#0d2b3b)}
+.ia{max-width:1200px;margin:0 auto}.ia-h p{margin-top:1rem;color:#cfe1e7;max-width:52rem}
+.ia-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:1rem;margin-top:1rem}
+.ia-c{display:flex;flex-direction:column;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);border-radius:4px;overflow:hidden;min-width:0}
+.ia-ph{aspect-ratio:16/9;background:linear-gradient(135deg,#0f3a4d,#12566e 55%,#27b8dc);display:grid;place-items:center;color:#d8f3fa;position:relative}
+.ia-ph svg{width:44px;height:44px;opacity:.85}.ia-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ia-b{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.55rem;flex:1}.ia-b h3{font:600 1.08rem/1.3 var(--f)}.ia-b p{font-size:.95rem;color:#cfe1e7;margin:0}
+.ia-m{display:flex;flex-wrap:wrap;gap:.4rem}.ia-tag{font-size:.75rem;padding:.1rem .55rem;border-radius:10px;border:1px solid #27b8dc;color:#8fe3f7}.ia-tag.n{border-color:#f2b705;color:#ffd96a}
+.ia-f{margin-top:auto;font-size:.85rem;color:#9db2ba}.ia-b a.ia-l{color:#8fe3f7;font-weight:600;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
+.ia-dest{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);margin-top:2.4rem}.ia-dest .ia-ph{aspect-ratio:auto;min-height:260px}.ia-dest .ia-b{padding:1.6rem}.ia-dest h3{font-size:clamp(1.3rem,2.4vw,1.9rem)}
+.ia-cifra{font:400 clamp(2.4rem,5vw,3.6rem)/1 Enjambre,var(--f);color:#8fe3f7}.ia-cifra small{display:block;font:400 .9rem/1.4 var(--f);color:#cfe1e7;margin-top:.4rem}
+.ia-nota{margin-top:1.6rem;font-size:.88rem;color:#9db2ba;max-width:60rem}
+.ia-cta{margin-top:3rem;padding:2rem clamp(1.2rem,4vw,2.4rem);border:1px solid rgba(39,184,220,.45);border-radius:4px;background:rgba(39,184,220,.07)}.ia-cta h3{font:400 clamp(1.4rem,3vw,2.2rem)/1.2 Enjambre,var(--f)}.ia-cta p{margin:.8rem 0 1.4rem;color:#cfe1e7}
+.js .ia-c{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.js .ia-c.vis{opacity:1;transform:none}
+@media(hover:hover){.ia-c:hover{border-color:rgba(39,184,220,.7);transform:translateY(-3px)}.js .ia-c.vis:hover{transform:translateY(-3px)}}
+@media(max-width:860px){.ia-dest{grid-template-columns:minmax(0,1fr)}.ia-dest .ia-ph{min-height:0;aspect-ratio:16/9}}
+@media(prefers-reduced-motion:reduce){.js .ia-c{opacity:1;transform:none}}
 .leaflet-container{font:inherit}
-#cons[hidden],#pquit[hidden],#pinbox [hidden]{display:none!important}
+.btn.load{position:relative;pointer-events:none;opacity:.85}.btn.load::after{content:"";width:16px;height:16px;margin-left:.6rem;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .8s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+form[data-estado=error] #st{color:#9b1c1c;font-weight:500}form[data-estado=success] #st{color:#14532d;font-weight:500}#st:focus{outline:none}
+@media(pointer:coarse){.leaflet-bar a{width:40px!important;height:40px!important;line-height:40px!important}}
+#ley-of[hidden],#cons[hidden],#pquit[hidden],#pinbox [hidden]{display:none!important}
 
 /* Interacción decorativa de éxito (avispa → símbolo). Lógica y tiempos: const VUELO en el script */
 .envio{position:relative;display:flex}.envio .btn{flex:1}
@@ -139,8 +162,8 @@ details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;b
 #inicio{align-items:flex-end}#inicio>img{object-position:30% 50%}
 #inicio:before{background:linear-gradient(0deg,rgba(10,34,48,.92),rgba(10,34,48,.1) 70%)}
 #inicio .in,.lat{max-width:none;min-width:0;padding:5rem 1.2rem 5.5rem}
-#inicio .cta,#cierre .cta{flex-direction:column;width:100%}.btn{width:100%}
-.dos,#impacto .dos,#alianzas .dos,#contacto .dos{grid-template-columns:1fr;padding-top:5rem}
+#inicio .cta,#cierre .cta{flex-direction:column;width:100%}.cta .btn{width:100%}
+.dos,#impacto .dos,#alianzas .dos,#contacto .dos{grid-template-columns:minmax(0,1fr);padding-top:5rem}
 #conocer .dos>:first-child{order:2}#conocer .dos img{max-height:none;aspect-ratio:4/3}
 #reto:before{background:linear-gradient(0deg,rgba(10,34,48,.92),transparent 75%)}
 .etapa,.etapa.r{grid-template-columns:1fr}.etapa.r .txt{order:0}
@@ -149,11 +172,12 @@ details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;b
 #flujo:before,#flujo:after{display:none}#flujo a{font-size:0;gap:0}#flujo a:after{width:16px;height:16px}
 .etapa:not(.r) .txt{padding-right:1.2rem}#pz{right:.6rem;bottom:calc(.6rem + env(safe-area-inset-bottom));font-size:.78rem;min-height:40px;opacity:.92}
 .mods{grid-template-columns:1fr 1fr}.est{grid-template-columns:1fr}
-form{grid-template-columns:1fr}
+form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 }
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header id="top"><nav aria-label="Principal">
 <a href="#inicio" aria-label="Enjambre, inicio"><img src="assets/logo-simbolo.png" alt="" width="900" height="879"></a>
@@ -175,6 +199,17 @@ form{grid-template-columns:1fr}
 <div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div></div>
 <span class="sc-ind" aria-hidden="true"></span>
 </section>
+
+<section class="sec dark" id="impacto-ambiental" aria-labelledby="ia-t"><div class="ia">
+<header class="ia-h"><h2 id="ia-t">El impacto que no podemos ignorar</h2>
+<p>Detrás de cada residuo flotante existe un riesgo para nuestros cuerpos de agua, nuestras comunidades y nuestros ecosistemas. Conoce las consecuencias de la contaminación y por qué es necesario actuar.</p></header>
+<div id="ia-dest"></div><div id="ia-grid" class="ia-grid" role="list"></div>
+<p id="ia-estado" role="status" aria-live="polite" class="ia-nota"></p>
+<p class="ia-nota">Cada dato se atribuye a la fuente indicada; no son mediciones de Enjambre. Que una autoridad o un medio atribuya un efecto a la basura no equivale a demostrar una causa única: en las inundaciones intervienen también la lluvia y la infraestructura.</p>
+<div class="ia-cta"><h3>El problema es visible. La solución también puede serlo.</h3>
+<p>ENJAMBRE busca transformar la manera en que identificamos y recolectamos residuos flotantes, acercando tecnología e innovación a la recuperación de nuestros cuerpos de agua.</p>
+<a class="btn p" href="#proceso">Conocer cómo funciona</a></div>
+</div></section>
 
 <section class="sec light" id="conocer"><div class="dos">
 <div><h2>Una respuesta física para residuos flotantes.</h2>
@@ -252,7 +287,7 @@ form{grid-template-columns:1fr}
 <div><label class="sr" for="mapa-q">Buscar un lugar, municipio o estado</label><form id="mapa-bus" class="bus"><input id="mapa-q" type="search" placeholder="Lugar, municipio o estado" autocomplete="off" maxlength="100"><button class="btn s" type="submit">Buscar</button></form></div>
 <div id="mapa-pub" role="region" aria-label="Mapa de cuerpos de agua de referencia en México"></div>
 <p id="mapa-aviso" role="status" aria-live="polite"></p>
-<p class="ley"><i></i> Referencia oficial (CONAGUA). Cada sitio requiere evaluación técnica, operativa y de permisos antes de una intervención.</p>
+<p class="ley"><span id="ley-of" hidden><i></i> Referencia oficial: capa «Cuerpos de agua» de CONAGUA. </span>Cada sitio requiere evaluación técnica, operativa y de permisos antes de una intervención.</p>
 </div></section>
 
 <section class="sec light" id="contacto"><div class="dos">
@@ -292,6 +327,7 @@ form{grid-template-columns:1fr}
 </main>
 
 <script src="js/mapa.js" defer></script>
+<script src="js/impacto.js" defer></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const rm=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
@@ -337,17 +373,32 @@ function vuelo(on){const v=$("#vuelo");if(!v)return;
   hx.animate([{transform:"scale(1)"},{transform:"scale(1)",offset:.64},{transform:"scale(1.2)",offset:.76},{transform:"scale(1)"}],{duration:T});
   gl.animate([{transform:"scale(.6)",opacity:0},{transform:"scale(.6)",opacity:0,offset:.62},{transform:"scale(1)",opacity:.9,offset:.74},{transform:"scale(1.5)",opacity:0}],{duration:T})
  }catch(e){}}
-/* Formulario: guarda primero en la base de datos mediante /api/contact (función segura); solo entonces muestra el éxito y la avispa */
-$("#fm").onsubmit=async e=>{e.preventDefault();const f=e.target,st=$("#st");
- if(!f.checkValidity()){f.reportValidity();st.textContent="Revisa los campos marcados e inténtalo de nuevo.";return}
+/* Formulario. Estados (data-estado en <form>): idle → validating → submitting → success | error.
+   Nunca se muestra éxito sin respuesta {ok:true} del servidor; ante un error recuperable se conservan los datos. */
+const CONTACTO="proyectoenjambre.contacto@gmail.com",ETQ="Enviar mensaje";
+function est(f,s){f.dataset.estado=s;f.setAttribute("aria-busy",s==="submitting")}
+function msgFallo(c,e){
+ if(c===0)return"No hay conexión con el servidor. Revisa tu internet e inténtalo de nuevo; tus datos siguen aquí.";
+ if(c===400)return"Revisa los campos marcados e inténtalo de nuevo.";
+ if(c===429)return"Recibimos varios envíos desde tu conexión. Inténtalo de nuevo más tarde.";
+ if(c===404||c===405||c===403)return"El servicio de envío no está disponible en este sitio todavía (código "+c+"). Escríbenos a "+CONTACTO+".";
+ if(e==="config")return"El envío aún no está configurado en el servidor. Escríbenos a "+CONTACTO+".";
+ return"No pudimos guardar tu mensaje en este momento. Inténtalo de nuevo; tus datos siguen aquí. Si persiste, escríbenos a "+CONTACTO+"."}
+$("#fm").onsubmit=async e=>{e.preventDefault();const f=e.target,st=$("#st"),bt=f.querySelector(".envio .btn");
+ if(f.dataset.estado==="submitting")return;
+ est(f,"validating");
+ if(!f.checkValidity()){f.reportValidity();st.textContent="Revisa los campos marcados e inténtalo de nuevo.";est(f,"idle");return}
  const d=Object.fromEntries(new FormData(f));d.consentimiento_ubicacion=!!f.consentimiento_ubicacion.checked;if(!d.lat||!d.lng){delete d.lat;delete d.lng}
- const bt=f.querySelector(".envio .btn");vuelo(false);bt.disabled=true;st.textContent="Enviando…";
- try{const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
-  if(r.status==429){st.textContent="Recibimos varios envíos desde tu conexión. Inténtalo de nuevo más tarde.";return}
-  if(r.status==400){st.textContent="Revisa los campos marcados e inténtalo de nuevo.";return}
-  const j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw 0;
+ est(f,"submitting");vuelo(false);bt.disabled=true;bt.classList.add("load");st.textContent="Enviando…";
+ const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),20000);let ok=false,code=0,err="";
+ try{const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),signal:ctl.signal});
+  code=r.status;const j=await r.json().catch(()=>null);ok=r.ok&&!!j&&j.ok===true;err=j&&j.error||""}
+ catch(x){code=0}
+ clearTimeout(to);bt.disabled=false;bt.classList.remove("load");st.tabIndex=-1;
+ if(ok){est(f,"success");bt.textContent=ETQ;
   st.textContent="Gracias por contactar a Enjambre. Recibimos tu mensaje y revisaremos tu solicitud para responderte lo antes posible.";vuelo(true);f.reset();if(window.Enjambre&&Enjambre.resetPin)Enjambre.resetPin()}
- catch{st.textContent="No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a proyectoenjambre.contacto@gmail.com."}finally{bt.disabled=false}};
+ else{console.error("[contacto] fallo",code,err);est(f,"error");bt.textContent="Reintentar envío";st.textContent=msgFallo(code,err)}
+ st.focus({preventScroll:false})};
 </script>
 </body>
 </html>

@@ -3,6 +3,17 @@
 Arquitectura: sitio estático en Netlify (`public/`) + 2 Netlify Functions (`/api/contact`, `/api/conagua`) + Supabase (Postgres, Auth, RLS).
 El visitante **nunca** habla con Supabase: el formulario va a `/api/contact`, que guarda con la Secret key (solo servidor).
 
+
+## 0. Diagnóstico rápido (si algo no funciona)
+Abre `https://TU-SITIO/api/health`:
+- **Página 404/HTML en vez de JSON** → el sitio se publicó **sin funciones** (p. ej. arrastrando la carpeta a Netlify Drop). El formulario y la capa de CONAGUA dependen de `/api/contact` y `/api/conagua`, por eso fallan juntos. Solución: despliega con Git o con la CLI (abajo).
+- `variables_definidas` con `false` → falta esa variable en Netlify (y un nuevo deploy).
+- `supabase.ok = false` → `clave rechazada` (revisa `SUPABASE_SECRET_KEY`/URL) o `funcion_alta:false` (ejecuta `supabase/schema.sql`).
+- `conagua.ok = false` → el servidor de CONAGUA no responde desde Netlify (`error`/`cause` lo indica, p. ej. `UNABLE_TO_VERIFY_LEAF_SIGNATURE` = certificado incompleto del servidor). No se desactiva la verificación TLS; hay que pedir a CONAGUA que lo corrija o usar una copia de los datos (INEGI/CONAGUA descargables). Si `ok:true`, verás `campos` de la capa: avísame cuáles para ajustar el nombre que se muestra en el popup.
+Puedes borrar `netlify/functions/health.mjs` cuando todo funcione.
+
+**Desplegar con la CLI (sin Git):** `npm i -g netlify-cli` → `netlify login` → dentro de esta carpeta `netlify link` (elige tu sitio) → define las variables (`netlify env:set NOMBRE valor`) → `netlify deploy --build --prod`. Cada publicación nueva: repetir el último comando.
+
 ## 1. Supabase
 1. **SQL Editor** → pega y ejecuta `supabase/schema.sql` completo (se puede ejecutar de nuevo sin romper nada).
 2. **Authentication → Sign In / Providers → Email**: desactiva **"Allow new users to sign up"** (los usuarios solo se crean desde el panel de Supabase). Aunque alguien se registrara, no vería datos: el acceso lo da la tabla `staff_members`.
