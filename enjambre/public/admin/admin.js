@@ -101,7 +101,7 @@
     const cont = h('div', { id: 'mapa-ad' }), av = h('p', { className: 'mu', role: 'status' }); v.append(h('p', { className: 'mu' }, 'Pines aproximados que las personas indicaron (con su consentimiento), coloreados por estado comercial. La capa azul es la referencia oficial de CONAGUA.'), cont, av);
     await Enjambre.cargar('../');
     await new Promise((ok, ko) => { if (L.markerClusterGroup) return ok(); const s = h('script', { src: '../vendor/leaflet.markercluster.js' }); s.onload = ok; s.onerror = ko; document.head.append(s); });
-    const m = Enjambre.mapa(cont); Enjambre.capaAgua(m, (t) => { av.textContent = t; });
+    const m = Enjambre.mapa(cont); Enjambre.capaAgua(m, Enjambre.aviso(av));
     const { data } = await sb.from('waterbody_locations').select('id,contact_id,waterbody_name,municipality,state,latitude,longitude,contacts(status)').not('latitude', 'is', null);
     const g = L.markerClusterGroup().addTo(m);
     (data || []).forEach((l) => {

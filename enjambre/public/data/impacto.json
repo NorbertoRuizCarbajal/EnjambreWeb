@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "destacado": "sacmex-seis-de-diez",
+  "items": [
+    {
+      "id": "sacmex-seis-de-diez",
+      "tipo": "noticia",
+      "categoria": "Inundaciones urbanas",
+      "nivel": "atribucion",
+      "titulo": "El Sacmex atribuye 6 de cada 10 anegaciones en la CDMX a basura que obstruye el drenaje",
+      "resumen": "Tras las fuertes lluvias de un viernes 19 de julio, el Sistema de Aguas de la Ciudad de México informó 24 inundaciones atendidas y señaló que 6 de cada 10 eventos de anegación surgen por basura arrojada a las calles que obstruye coladeras y rejillas. Es una atribución de la autoridad reportada por el medio, no un análisis independiente.",
+      "fuente": "El Universal",
+      "url": "https://www.eluniversal.com.mx/metropoli/24-inundaciones-el-saldo-de-las-intensas-lluvias-del-viernes-19-de-julio-en-la-cdmx-la-zona-oriente-fue-la-mas-afectada-sacmex/",
+      "fecha": null,
+      "consultado": "2026-10-22",
+      "cifra": "6 de cada 10",
+      "cifra_texto": "anegaciones que el Sacmex atribuye a basura en coladeras y rejillas"
+    },
+    {
+      "id": "expansion-tiraderos",
+      "tipo": "noticia",
+      "categoria": "Residuos y drenaje",
+      "nivel": "atribucion",
+      "titulo": "Tiraderos clandestinos se concentran en tres alcaldías de la CDMX",
+      "resumen": "La nota ubica la mayor concentración de tiraderos clandestinos en Cuauhtémoc, Iztapalapa y Miguel Hidalgo, y recoge que el Gobierno capitalino atribuye 50 % de las inundaciones y encharcamientos a taponamientos en la red de drenaje.",
+      "fuente": "Expansión Política",
+      "url": "https://politica.expansion.mx/cdmx/2025/07/01/cuauhtemoc-iztapalapa-y-mh-concentran-tiraderos-clandestinos-en-la-cdmx",
+      "fecha": "2025-07-01",
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "conagua-41-mil",
+      "tipo": "noticia",
+      "categoria": "Limpieza de infraestructura",
+      "nivel": "dato",
+      "titulo": "Conagua retiró más de 41 mil toneladas de basura de canales y plantas de bombeo en 2025",
+      "resumen": "Según la nota, solo en 2025 la Conagua retiró más de 41 mil toneladas de basura y 408 mil metros cúbicos de azolve en canales y plantas de bombeo del área metropolitana del Valle de México.",
+      "fuente": "Posta",
+      "url": "https://www.posta.com.mx/cdmx/basura-fuera-de-control-los-tiraderos-clandestinos-que-la-cdmx-no-logra-erradicar/vl2121368",
+      "fecha": null,
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "bj-108-mil",
+      "tipo": "noticia",
+      "categoria": "Limpieza urbana",
+      "nivel": "dato",
+      "titulo": "Benito Juárez recolectó más de 108 mil toneladas de residuos en el primer semestre de 2026",
+      "resumen": "La alcaldía reportó 108 mil 289 toneladas de residuos sólidos recolectadas entre enero y junio de 2026 como parte de labores de limpia que buscan, además, disminuir el riesgo de inundaciones.",
+      "fuente": "Crónica",
+      "url": "https://www.cronica.com.mx/metropoli/2026/07/08/bj-retiro-mas-de-108-mil-toneladas-de-basura-en-seis-meses-para-reducir-riesgos-de-inundacion/",
+      "fecha": "2026-07-08",
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "unotv-operativo-lluvias-2026",
+      "tipo": "noticia",
+      "categoria": "Riesgo en temporada de lluvias",
+      "nivel": "riesgo",
+      "titulo": "Valle de México enfrentará más lluvias este año; la basura agrava el riesgo de inundaciones",
+      "resumen": "Autoridades federales y municipales iniciaron el operativo de lluvias 2026 en la Zona Metropolitana del Valle de México y advirtieron precipitaciones más intensas y un riesgo elevado de inundaciones.",
+      "fuente": "Uno TV",
+      "url": "https://www.unotv.com/estados/ciudad-de-mexico/temporada-de-lluvias-2026-alertan-mas-precipitaciones-e-inundaciones-en-valle-de-mexico/",
+      "fecha": null,
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "interceptor-referencia",
+      "tipo": "informe",
+      "categoria": "Referencia internacional",
+      "nivel": "referencia",
+      "titulo": "Un «camión de basura» flotante para capturar plástico en ríos",
+      "resumen": "The Ocean Cleanup presentó el Interceptor, un sistema flotante que aprovecha la corriente del río para atrapar plástico y que está diseñado para operar de forma continua. Es otro proyecto y otra tecnología; se incluye como referencia de que intervenir sobre el agua es una vía que ya se está explorando.",
+      "fuente": "Recycling International",
+      "url": "https://recyclinginternational.com/?p=28491",
+      "fecha": null,
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "registro-equipo-residuos",
+      "tipo": "fotografia",
+      "categoria": "Registro del equipo",
+      "nivel": "propio",
+      "titulo": "Residuos flotantes acumulados en la superficie del agua",
+      "resumen": "Fotografía del archivo del equipo de Enjambre. La ubicación y la fecha de captura deben confirmarse antes de publicarla como caso documentado.",
+      "fuente": "Archivo del proyecto Enjambre",
+      "url": null,
+      "imagen": "assets/03-reto.webp",
+      "alt": "Botellas y otros residuos acumulados sobre la superficie del agua.",
+      "credito": "Equipo Enjambre",
+      "fecha": null,
+      "consultado": null
+    }
+  ]
+}

@@ -13,6 +13,7 @@
   }
   function mapa(el) {
     const m = L.map(el, { center: CENTRO, zoom: 5, minZoom: 4, maxBounds: [[8, -125], [38, -80]], worldCopyJump: false });
+    if ('ResizeObserver' in window) new ResizeObserver(() => m.invalidateSize()).observe(el);   // acordeones, giro de pantalla, teclado virtual
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(m);
     return m;
   }
@@ -21,7 +22,10 @@
     return '';
   }
   // Capa oficial CONAGUA: se consulta por área visible (bbox) y zoom ≥ 8 a través de /api/conagua.
-  function capaAgua(m, aviso) {
+  function mkAviso(el) {
+    return (t, fn) => { el.replaceChildren(t || ''); if (fn) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn s'; b.textContent = 'Reintentar'; b.style.cssText = 'margin-left:.6rem;min-height:44px;padding:.3rem 1rem'; b.onclick = fn; el.append(b); } };
+  }
+  function capaAgua(m, aviso, alCargar) {
     const g = L.geoJSON(null, {
       style: { color: '#0f8fb0', weight: 1, fillColor: '#27b8dc', fillOpacity: .45 },
       onEachFeature(f, l) {
@@ -41,8 +45,9 @@
         const r = await fetch('/api/conagua?bbox=' + [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()].map((n) => n.toFixed(4)) + '&z=' + z, { signal: ctl.signal });
         if (!r.ok) throw 0;
         const d = await r.json(); g.clearLayers(); g.addData(d);
+        if (alCargar && d.features && d.features.length) alCargar();
         aviso(d.exceededTransferLimit ? 'Hay más cuerpos de agua en esta zona: acerca el mapa para verlos.' : (d.features && d.features.length ? '' : 'No hay cuerpos de agua de referencia en esta vista.'));
-      } catch (e) { if (e.name !== 'AbortError') aviso('No se pudo cargar la capa de referencia. Inténtalo de nuevo.'); }
+      } catch (e) { if (e.name !== 'AbortError') { console.error('[capa CONAGUA]', e); aviso('No se pudo cargar la capa de referencia; el mapa base sigue disponible.', pedir); } }
     }
     m.on('moveend', () => { clearTimeout(t); t = setTimeout(pedir, 350); });
     pedir(); return g;
@@ -61,7 +66,7 @@
     const cont = document.getElementById('mapa-pub'); if (!cont || cont.dataset.ok) return; cont.dataset.ok = 1;
     const av = document.getElementById('mapa-aviso'), f = document.getElementById('mapa-bus'), q = document.getElementById('mapa-q');
     cargar('').then(() => {
-      const m = mapa(cont); capaAgua(m, (t) => { av.textContent = t; });
+      const m = mapa(cont); capaAgua(m, mkAviso(av), () => { const l = document.getElementById('ley-of'); if (l) l.hidden = false; });
       f.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!q.value.trim()) return; av.textContent = 'Buscando…';
         try { av.textContent = (await buscar(m, q.value.trim())) ? '' : 'No encontramos ese lugar en México.'; } catch { av.textContent = 'No se pudo realizar la búsqueda.'; }
@@ -102,7 +107,7 @@
     });
   }
 
-  window.Enjambre = Object.assign(window.Enjambre || {}, { cargar, mapa, capaAgua, iniciarPublico, iniciarPin });
+  window.Enjambre = Object.assign(window.Enjambre || {}, { cargar, mapa, capaAgua, aviso: mkAviso, iniciarPublico, iniciarPin });
   document.addEventListener('DOMContentLoaded', () => {
     iniciarPin();
     const s = document.getElementById('mapa');
