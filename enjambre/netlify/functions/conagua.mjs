@@ -78,7 +78,7 @@ export default async (req) => {
   });
   try {
     const r = await fetchCon(`${LAYER}/query?${q}`, { signal: AbortSignal.timeout(15000), headers: { accept: 'application/json' } });
-    if (!r.ok) return J(502, { error: 'upstream', status: r.status });
+    if (!r.ok) {   const detail = await r.text();   return J(502, {     error: 'upstream',     status: r.status,     detail: detail.slice(0, 300),     url: r.url   }); }
     const d = await r.json();
     if (d.error) return J(502, { error: 'upstream', detail: String(d.error.message || d.error.code || '').slice(0, 160) });
     return J(200, esriToGeoJSON(d), { 'cache-control': 'public, max-age=600, s-maxage=3600' });
