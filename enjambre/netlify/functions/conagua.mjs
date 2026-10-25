@@ -1,7 +1,7 @@
 // Proxy de solo lectura hacia la capa "Cuerpos de agua" de CONAGUA (ArcGIS REST MapServer/3).
 // - Pide f=json (lo soportan TODOS los ArcGIS Server; f=geojson solo desde 10.4) y lo convierte aquí a GeoJSON.
 // - Carga por área visible (bbox) y zoom; host fijo (sin SSRF); respuesta cacheable.
-export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrolOgico/MapServer/3';
+ export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://geomaticasig1.semarnat.gob.mx/arcgis/rest/services/esdig/Agua/MapServer'; = process.env.CONAGUA_LAYER_URL || 'https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrolOgico/MapServer/3';
 
 // Muchos servidores gubernamentales no envían su certificado intermedio y Node (a diferencia de los navegadores) no lo completa:
 // el fallo es UNABLE_TO_VERIFY_LEAF_SIGNATURE. NO se desactiva la verificación TLS. Si ocurre, se pega el certificado
@@ -77,11 +77,46 @@ export default async (req) => {
     maxAllowableOffset: String((360 / (256 * 2 ** z)) * 2), geometryPrecision: '5', resultRecordCount: '400',
   });
   try {
-    const r = await fetchCon(`${LAYER}/query?${q}`, { signal: AbortSignal.timeout(15000), headers: { accept: 'application/json' } });
-    if (!r.ok) {   const detail = await r.text();   return J(502, {     error: 'upstream',     status: r.status,     detail: detail.slice(0, 300),     url: r.url   }); }
-    const d = await r.json();
-    if (d.error) return J(502, { error: 'upstream', detail: String(d.error.message || d.error.code || '').slice(0, 160) });
-    return J(200, esriToGeoJSON(d), { 'cache-control': 'public, max-age=600, s-maxage=3600' });
+    
+const consultar = async (id) => {
+  const r = await fetchCon(`${LAYER}/${id}/query?${q}`, {
+    signal: AbortSignal.timeout(15000),
+    headers: { accept: 'application/json' },
+  });
+
+  if (!r.ok) {
+    throw new Error(`SEMARNAT capa ${id}: HTTP ${r.status}`);
+  }
+
+  const d = await r.json();
+
+  if (d.error) {
+    throw new Error(
+      `SEMARNAT capa ${id}: ${String(d.error.message || d.error.code || 'error').slice(0, 120)}`
+    );
+  }
+
+  return d;
+};
+
+const [lagos, lagunas] = await Promise.all([
+  consultar(6),
+  consultar(7),
+]);
+
+const combinado = {
+  features: [
+    ...(lagos.features || []),
+    ...(lagunas.features || []),
+  ],
+  exceededTransferLimit:
+    !!lagos.exceededTransferLimit || !!lagunas.exceededTransferLimit,
+};
+
+return J(200, esriToGeoJSON(combinado), {
+  'cache-control': 'public, max-age=600, s-maxage=3600',
+});
+
   
 } catch (err) {
   console.error('conagua', {
