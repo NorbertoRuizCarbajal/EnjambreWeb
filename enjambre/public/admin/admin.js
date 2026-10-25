@@ -110,6 +110,7 @@
         h('button', { className: 'b', on: { click: () => detalle(l.contact_id) } }, 'Abrir contacto'));   // sin correo ni teléfono en el mapa
       mk.bindPopup(d); g.addLayer(mk);
     });
+    if (data && data.length) m.fitBounds(g.getBounds().pad(0.3), { maxZoom: 9 });   // mapa global: encuadra los pines (en pantallas angostas el mundo no incluía México)
     const leyenda = h('p', { className: 'mu' }, ...Object.entries(ESTADOS).map(([k, l]) => h('span', { style: 'margin-right:.8rem;white-space:nowrap' }, h('i', { style: `display:inline-block;width:11px;height:11px;border-radius:50%;background:${COLOR[k]};margin-right:.3rem` }), l))); v.append(leyenda);
   }
   sb.auth.onAuthStateChange((ev) => { if (ev === 'SIGNED_OUT') entrar(); }); entrar();
