@@ -1,7 +1,7 @@
 // Proxy de solo lectura hacia la capa "Cuerpos de agua" de CONAGUA (ArcGIS REST MapServer/3).
 // - Pide f=json (lo soportan TODOS los ArcGIS Server; f=geojson solo desde 10.4) y lo convierte aquí a GeoJSON.
 // - Carga por área visible (bbox) y zoom; host fijo (sin SSRF); respuesta cacheable.
-export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrol%C3%B3gico/MapServer/3';
+export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrolOgico/MapServer/3';
 
 // Muchos servidores gubernamentales no envían su certificado intermedio y Node (a diferencia de los navegadores) no lo completa:
 // el fallo es UNABLE_TO_VERIFY_LEAF_SIGNATURE. NO se desactiva la verificación TLS. Si ocurre, se pega el certificado
