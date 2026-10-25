@@ -52,9 +52,21 @@ export default async (req) => {
     const d = await r.json();
     if (d.error) return J(502, { error: 'upstream', detail: String(d.error.message || d.error.code || '').slice(0, 160) });
     return J(200, esriToGeoJSON(d), { 'cache-control': 'public, max-age=600, s-maxage=3600' });
-  } catch (err) {
-    console.error('conagua', err.message, err.cause && (err.cause.code || err.cause.message));
-    return J(502, { error: 'upstream', cause: String((err.cause && err.cause.code) || err.name || 'fetch').slice(0, 60) });
-  }
+  
+} catch (err) {
+  console.error('conagua', {
+    message: err.message,
+    cause: err.cause?.message,
+    code: err.cause?.code,
+    name: err.cause?.name,
+  });
+
+  return J(502, {
+    error: 'upstream',
+    cause: String(err.cause?.code || err.cause?.name || err.name || 'unknown'),
+    detail: String(err.cause?.message || err.message || '').slice(0, 180),
+  });
+}
+
 };
 export const config = { path: '/api/conagua' };
