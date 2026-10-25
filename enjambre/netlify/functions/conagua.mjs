@@ -6,13 +6,43 @@ export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://sigagis.conagua.g
 // Muchos servidores gubernamentales no envían su certificado intermedio y Node (a diferencia de los navegadores) no lo completa:
 // el fallo es UNABLE_TO_VERIFY_LEAF_SIGNATURE. NO se desactiva la verificación TLS. Si ocurre, se pega el certificado
 // intermedio/raíz PÚBLICO (PEM) en la variable CONAGUA_CA_PEM y solo este proxy lo añade a las autoridades de confianza.
+
 export async function fetchCon(url, opts = {}) {
   const pem = process.env.CONAGUA_CA_PEM;
-  if (!pem) return fetch(url, opts);
   const { fetch: f, Agent } = await import('undici');
-  const { rootCertificates } = await import('node:tls');
-  return f(url, { ...opts, dispatcher: new Agent({ connect: { ca: [...rootCertificates, pem] } }) });
+
+  const dispatcher = pem
+    ? new Agent({
+        connect: {
+          ca: [
+            ...(await import('node:tls')).rootCertificates,
+            pem,
+          ],
+        },
+      })
+    : undefined;
+
+  const response = await f(url, {
+    ...opts,
+    redirect: 'manual',
+    ...(dispatcher ? { dispatcher } : {}),
+  });
+
+  if (dispatcher) {
+    // Mantener el agente mientras se consume la respuesta.
+    // No se cierra aquí porque el cuerpo lo procesa quien llama.
+  }
+
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get('location');
+    throw new Error(
+      `CONAGUA redirect ${response.status}: ${location || 'sin Location'}`
+    );
+  }
+
+  return response;
 }
+
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
 const area = (r) => { let s = 0; for (let i = 0, j = r.length - 1; i < r.length; j = i++) s += r[j][0] * r[i][1] - r[i][0] * r[j][1]; return s / 2; };
 const dentro = (p, r) => { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, yi] = r[i], [xj, yj] = r[j]; if ((yi > p[1]) !== (yj > p[1]) && p[0] < ((xj - xi) * (p[1] - yi)) / (yj - yi) + xi) c = !c; } return c; };
