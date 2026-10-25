@@ -1,0 +1,6 @@
+{
+  "name": "enjambre",
+  "private": true,
+  "description": "Landing y CRM de Enjambre. undici solo se usa si se define CONAGUA_CA_PEM.",
+  "dependencies": { "undici": "^6.19.0" }
+}

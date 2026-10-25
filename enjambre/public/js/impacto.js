@@ -13,10 +13,16 @@
   const seguro = (u) => { try { const x = new URL(u, location.href); return /^https?:$/.test(x.protocol) ? x.href : null; } catch { return null; } };
   const fechaTxt = (f) => new Date(f + 'T12:00:00').toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
 
+  function icono(ph, tipo) {                                       // estado alternativo: SOLO cuando la foto falta o no carga
+    ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICON[tipo] || ICON.noticia) + '</svg>';  // SVG fijo, sin datos externos
+  }
   function media(it) {
-    const ph = el('div', 'ia-ph'); ph.setAttribute('aria-hidden', it.imagen ? 'false' : 'true');
-    if (it.imagen) { const i = el('img'); i.src = it.imagen; i.alt = it.alt || ''; i.loading = 'lazy'; i.onerror = () => i.remove(); ph.append(i); }
-    else { ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + (ICON[it.tipo] || ICON.noticia) + '</svg>'; }  // icono fijo, sin datos externos
+    const ph = el('div', 'ia-ph');
+    if (it.imagen) {
+      const i = el('img'); i.alt = it.alt || ''; i.loading = 'lazy'; i.decoding = 'async'; i.src = it.imagen;
+      i.onerror = () => { i.remove(); const cr = ph.querySelector('.cr'); if (cr) cr.remove(); icono(ph, it.tipo); };
+      ph.append(i); if (it.credito) ph.append(el('span', 'cr', it.credito));
+    } else icono(ph, it.tipo);
     return ph;
   }
   function tarjeta(it, destacada) {
@@ -26,7 +32,7 @@
     b.append(tags);
     if (destacada && it.cifra) { const k = el('div', 'ia-cifra', it.cifra); k.append(el('small', '', it.cifra_texto || '')); b.append(k); }
     b.append(el('h3', '', it.titulo), el('p', '', it.resumen));
-    const pie = [it.fuente, it.fecha ? fechaTxt(it.fecha) : (it.consultado ? 'consultado el ' + fechaTxt(it.consultado) : ''), it.credito ? 'Foto: ' + it.credito : ''].filter(Boolean).join(' · ');
+    const pie = [it.fuente, it.fecha ? fechaTxt(it.fecha) : (it.consultado ? 'consultado el ' + fechaTxt(it.consultado) : ''), ].filter(Boolean).join(' · ');
     b.append(el('div', 'ia-f', pie));
     const u = it.url && seguro(it.url);
     if (u) { const a = el('a', 'ia-l', 'Leer la fuente original'); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.setAttribute('aria-label', 'Leer la fuente original de «' + it.titulo + '» en ' + it.fuente + ' (se abre en una pestaña nueva)'); b.append(a); }
@@ -46,7 +52,7 @@
     if (!grid) return;
     try {
       const r = await fetch('data/impacto.json', { cache: 'no-cache' }); if (!r.ok) throw 0;
-      const d = await r.json(), items = (d.items || []).filter((i) => i && i.titulo && i.resumen);
+      const d = await r.json(), items = (d.items || []).filter((i) => i && i.titulo && i.resumen && i.visible !== false).slice(0, 3);   // la sección muestra EXACTAMENTE tres noticias como máximo
       const f = items.find((i) => i.id === d.destacado) || null;
       if (f) dest.append(tarjeta(f, true));
       items.filter((i) => i !== f).forEach((i) => grid.append(tarjeta(i, false)));

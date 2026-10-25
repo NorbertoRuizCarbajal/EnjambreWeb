@@ -2,7 +2,7 @@
 // DESPUÉS intenta la notificación por correo (si falla el correo, el registro ya existe y se responde ok).
 import { createHash } from 'node:crypto';
 
-const ESTADOS = ['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila','Colima','Durango','Estado de México','Guanajuato','Guerrero','Hidalgo','Jalisco','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'];
+const PAISES = new Set('AD AE AF AG AI AL AM AO AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GT GU GW GY HK HN HR HT HU ID IE IL IM IN IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW'.split(' '));   // ISO 3166-1; misma lista que el selector del formulario
 const INTERESES = ['Inversión','Alianza estratégica','Gobierno o institución pública','Empresa con enfoque sostenible','Apoyo técnico','Investigación o universidad','Medios / prensa','Otro'];
 const J = (s, o) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
 const clean = (v, n, multi = false) => typeof v === 'string'
@@ -22,7 +22,6 @@ export default async (req) => {
   const d = {
     nombre: clean(b.nombre, 120), organizacion: clean(b.organizacion, 160), correo: clean(b.correo, 160).toLowerCase(),
     telefono: clean(b.telefono, 40), interes: clean(b.interes, 60), mensaje: clean(b.mensaje, 3000, true),
-    cuerpo_agua: clean(b.cuerpo_agua, 120), municipio: clean(b.municipio, 80), estado: clean(b.estado, 40),
   };
   const bad = [];
   if (!d.nombre) bad.push('nombre');
@@ -30,13 +29,16 @@ export default async (req) => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)) bad.push('correo');
   if (!INTERESES.includes(d.interes)) bad.push('interes');
   if (!d.mensaje) bad.push('mensaje');
-  if (d.estado && !ESTADOS.includes(d.estado)) bad.push('estado');
+  // País: código ISO (selector del formulario). El nombre en español se obtiene aquí, no se confía en el cliente.
+  d.pais_codigo = clean(b.pais, 2).toUpperCase() || 'MX';
+  try { d.pais = PAISES.has(d.pais_codigo) ? new Intl.DisplayNames(['es'], { type: 'region' }).of(d.pais_codigo) : ''; } catch { d.pais = ''; }
+  if (!d.pais || d.pais === d.pais_codigo) bad.push('pais');
 
-  // Ubicación opcional y SIEMPRE aproximada: se redondea a 2 decimales (~1 km) en el servidor.
+  // Ubicación opcional (cualquier país) y SIEMPRE aproximada: se redondea a 2 decimales (~1 km) en el servidor.
   const hasPin = b.lat !== undefined && b.lat !== null && b.lat !== '' || b.lng !== undefined && b.lng !== null && b.lng !== '';
   if (hasPin) {
     const lat = Number(b.lat), lng = Number(b.lng);
-    if (!Number.isFinite(lat) || !Number.isFinite(lng) || lat < 14 || lat > 33 || lng < -119 || lng > -86) bad.push('ubicacion');
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) bad.push('ubicacion');
     else if (b.consentimiento_ubicacion !== true) bad.push('consentimiento_ubicacion');
     else { d.lat = Math.round(lat * 100) / 100; d.lng = Math.round(lng * 100) / 100; d.consentimiento_ubicacion = true; }
   }
@@ -68,7 +70,7 @@ export default async (req) => {
       const to = process.env.NOTIFY_EMAIL_TO || 'proyectoenjambre.contacto@gmail.com';
       const text = [`Nuevo contacto desde la landing de Enjambre`, '', `Nombre: ${d.nombre}`, `Organización: ${d.organizacion}`,
         `Correo: ${d.correo}`, `Teléfono: ${d.telefono || '—'}`, `Interés: ${d.interes}`,
-        `Sitio: ${[d.cuerpo_agua, d.municipio, d.estado].filter(Boolean).join(', ') || '—'}`, '', d.mensaje,
+        `País: ${d.pais}`, `Ubicación aproximada en el mapa: ${d.lat !== undefined ? 'sí (ver panel)' : 'no'}`, '', d.mensaje,
         '', 'Gestiona este contacto en el panel privado (/admin).'].join('\n');
       const e = await fetch('https://api.resend.com/emails', {
         method: 'POST', headers: { authorization: 'Bearer ' + process.env.RESEND_API_KEY, 'content-type': 'application/json' },

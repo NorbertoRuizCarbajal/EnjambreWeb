@@ -4,6 +4,33 @@ Arquitectura: sitio estático en Netlify (`public/`) + 2 Netlify Functions (`/ap
 El visitante **nunca** habla con Supabase: el formulario va a `/api/contact`, que guarda con la Secret key (solo servidor).
 
 
+
+## 0b. Esta versión: ORDEN OBLIGATORIO al actualizar
+1. **Primero Supabase:** SQL Editor → ejecuta `supabase/migrations/2026-10-23_pais_y_pin_global.sql` (agrega país a los contactos y permite pines fuera de México; no borra datos; se puede repetir). Si publicas el código antes, un pin fuera de México sería rechazado.
+2. **Después GitHub/Netlify:** commit + push (ver pasos de actualización) y revisa Deploys.
+3. Abre `/api/health` y revisa lo que sigue.
+
+## 0c. Si el formulario dice "El envío aún no está configurado en el servidor"
+Ese mensaje significa que `/api/contact` **sí existe** pero respondió `error: config`: a la función le faltan `SUPABASE_URL` o `SUPABASE_SECRET_KEY` **en tiempo de ejecución**. Pasos exactos:
+1. `https://TU-SITIO/api/health` → mira `variables_definidas`. Si `SUPABASE_URL` o `SUPABASE_SECRET_KEY` salen `false`, continúa.
+2. Netlify → **Site configuration → Environment variables → Add a variable**. Los nombres deben ser exactamente `SUPABASE_URL` y `SUPABASE_SECRET_KEY` (también `RATE_LIMIT_SALT`).
+3. En **Scopes** deja **All scopes**, o como mínimo marca **Functions** (y **Builds** para `SUPABASE_URL`). Una variable sin el alcance *Functions* no llega a la función aunque aparezca en la lista.
+4. Para la clave secreta activa **Contains secret values**. No pegues la clave en ningún archivo.
+5. **Deploys → Trigger deploy → Clear cache and deploy site.** Las variables nuevas solo se leen en un deploy posterior.
+6. Vuelve a abrir `/api/health`: `variables_definidas` en `true` y `supabase.ok: true`. Si `funcion_alta` es `false`, ejecuta la migración del paso 0b.1 (o `schema.sql` si tu base es nueva). Si dice `clave rechazada`, copia de nuevo la Secret key desde Supabase → Project Settings → API Keys.
+7. Prueba un envío real. Debe aparecer una fila nueva en Supabase → Table Editor → `contacts` con su país.
+
+## 0d. Si la capa de CONAGUA no carga (`/api/health` → `conagua.ok: false`)
+El mensaje del mapa ahora indica el motivo; `/api/health` da el detalle. Según el motivo:
+- **"certificado… no pudo verificarse" (`UNABLE_TO_VERIFY_LEAF_SIGNATURE`)**: el servidor de CONAGUA no envía su certificado intermedio (los navegadores lo completan solos; Node no). No se desactiva la seguridad TLS. Solución:
+  1. En tu computadora: `openssl s_client -connect sigagis.conagua.gob.mx:443 -servername sigagis.conagua.gob.mx -showcerts </dev/null 2>/dev/null | openssl x509 -noout -text | grep "CA Issuers"` → muestra la URL del certificado del emisor.
+  2. Descárgalo (`curl -O URL`). Si el archivo no es texto, conviértelo: `openssl x509 -inform DER -in archivo.crt -out intermedio.pem`. Verifica que el emisor sea una autoridad reconocida (`openssl x509 -in intermedio.pem -noout -subject -issuer`).
+  3. Netlify → Environment variables → agrega `CONAGUA_CA_PEM` con **todo el texto** del PEM (con las líneas BEGIN/END), alcance **Functions**. Este certificado es público, no secreto.
+  4. Trigger deploy → `/api/health` debe mostrar `conagua.ok: true` y la lista de `campos`. (Mecanismo probado localmente con una autoridad de prueba: falla sin la variable y funciona con ella.)
+- **"no se encontró el servidor"**: la dirección cambió. Abre en el navegador `https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrol%C3%B3gico/MapServer/3`; si ya no existe, localiza la capa vigente en el portal geográfico de CONAGUA y pon su URL en la variable `CONAGUA_LAYER_URL` (o en `LAYER`, `netlify/functions/conagua.mjs`, línea 3). Debe ser un `MapServer/<n>` o `FeatureServer/<n>` de ArcGIS REST.
+- **"no respondió a tiempo" / código 403–5xx**: el servicio está caído o bloquea IPs de nube. Vuelve a intentar más tarde; si es permanente, la alternativa es alojar una copia de los datos descargables oficiales (CONAGUA/INEGI) como archivo propio; avísame y la integro.
+- **Cómo comprobar que cargó:** en el mapa, a zoom 8 o más, deben dibujarse polígonos azules y aparecer la leyenda "Referencia oficial". En el navegador (F12 → Network) la petición `conagua?bbox=…` debe responder 200 con `features`.
+
 ## 0. Diagnóstico rápido (si algo no funciona)
 Abre `https://TU-SITIO/api/health`:
 - **Página 404/HTML en vez de JSON** → el sitio se publicó **sin funciones** (p. ej. arrastrando la carpeta a Netlify Drop). El formulario y la capa de CONAGUA dependen de `/api/contact` y `/api/conagua`, por eso fallan juntos. Solución: despliega con Git o con la CLI (abajo).

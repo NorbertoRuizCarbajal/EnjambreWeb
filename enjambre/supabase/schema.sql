@@ -27,6 +27,8 @@ create table if not exists public.contacts (
   email text not null,
   phone text,
   interest_type text,
+  country text,
+  country_code text,
   message text,
   status text not null default 'nuevo' check (status in
     ('nuevo','contactado','en_seguimiento','reunion_programada','propuesta_enviada',
@@ -62,8 +64,8 @@ create table if not exists public.waterbody_locations (
   precision text not null default 'aproximada' check (precision in ('aproximada','exacta')),
   consent_to_use_location boolean not null default false,
   created_at timestamptz not null default now(),
-  check ((latitude is null and longitude is null) or (latitude between 14 and 33 and longitude between -119 and -86)),
-  check (latitude is null or consent_to_use_location)   -- sin consentimiento no se guardan coordenadas
+  constraint loc_coords_valid check ((latitude is null and longitude is null) or (latitude between -90 and 90 and longitude between -180 and 180)),
+  constraint loc_consent check (latitude is null or consent_to_use_location)   -- sin consentimiento no se guardan coordenadas
 );
 create index if not exists locations_contact_idx on public.waterbody_locations(contact_id);
 
@@ -97,20 +99,17 @@ begin
   end if;
   insert into submission_attempts(ip_hash) values (p_ip_hash);
 
-  insert into contacts(full_name, organization, email, phone, interest_type, message)
+  insert into contacts(full_name, organization, email, phone, interest_type, country, country_code, message)
   values (p->>'nombre', nullif(p->>'organizacion',''), p->>'correo', nullif(p->>'telefono',''),
-          nullif(p->>'interes',''), nullif(p->>'mensaje',''))
+          nullif(p->>'interes',''), nullif(p->>'pais',''), nullif(p->>'pais_codigo',''), nullif(p->>'mensaje',''))
   returning id into cid;
 
   insert into contact_interactions(contact_id, type, note) values (cid, 'formulario', nullif(p->>'mensaje',''));
 
-  if has_pin or coalesce(p->>'cuerpo_agua','') <> '' or coalesce(p->>'municipio','') <> '' or coalesce(p->>'estado','') <> '' then
-    insert into waterbody_locations(contact_id, waterbody_name, municipality, state, country, latitude, longitude,
-                                    precision, consent_to_use_location)
-    values (cid, nullif(p->>'cuerpo_agua',''), nullif(p->>'municipio',''), nullif(p->>'estado',''), 'México',
-            case when has_pin then (p->>'lat')::double precision end,
-            case when has_pin then (p->>'lng')::double precision end,
-            'aproximada', has_pin and coalesce((p->>'consentimiento_ubicacion')::boolean, false))
+  if has_pin then   -- la ubicación existe solo si la persona colocó un pin (y dio su consentimiento)
+    insert into waterbody_locations(contact_id, country, latitude, longitude, precision, consent_to_use_location)
+    values (cid, coalesce(nullif(p->>'pais',''), 'México'), (p->>'lat')::double precision, (p->>'lng')::double precision,
+            'aproximada', coalesce((p->>'consentimiento_ubicacion')::boolean, false))
     returning id into lid;
     insert into waterbody_assessments(location_id) values (lid);
   end if;
