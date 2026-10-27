@@ -31,11 +31,11 @@ p{max-width:58ch}
 .btn:hover{filter:brightness(1.08)}.btn.s:hover{background:rgba(255,255,255,.12)}
 .cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
 /* nav */
-header{position:fixed;inset:0 0 auto;z-index:50;padding:env(safe-area-inset-top) 0 0;transition:background .4s}
-header.sc{background:rgba(10,34,48,.92);backdrop-filter:blur(8px)}
-header nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);color:#fff}
-header:before{content:"";position:absolute;inset:0 0 -24px;z-index:-1;background:linear-gradient(rgba(10,34,48,.75),transparent);pointer-events:none}
-header img{height:46px;width:auto}
+#top{position:fixed;inset:0 0 auto;z-index:50;padding:env(safe-area-inset-top) 0 0;transition:background .4s}
+#top.sc{background:rgba(10,34,48,.92);backdrop-filter:blur(8px)}
+#top nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,3rem);color:#fff}
+#top:before{content:"";position:absolute;inset:0 0 -24px;z-index:-1;background:linear-gradient(rgba(10,34,48,.75),transparent);pointer-events:none}
+#top img{height:46px;width:auto}
 .menu{display:flex;gap:1.6rem;list-style:none;padding:0}
 .menu a{text-decoration:none;font-size:.95rem;padding:.5rem 0}.menu a:hover{text-decoration:underline;text-underline-offset:6px}
 #bm{display:none;background:none;border:0;color:#fff;width:48px;height:48px;font-size:1.6rem;cursor:pointer}
@@ -116,27 +116,27 @@ details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;b
 /* Impacto ambiental (datos: data/impacto.json, render: js/impacto.js) */
 #impacto-ambiental{display:block;min-height:0;padding:clamp(4.5rem,8vw,7rem) clamp(1.2rem,6vw,5rem);background:linear-gradient(180deg,#0a2230,#0d2b3b)}
 .ia{max-width:1200px;margin:0 auto}.ia-h p{margin-top:1rem;color:#cfe1e7;max-width:52rem}
-.ia-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:1rem;margin-top:1rem}
+.ia-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
 .ia-c{display:flex;flex-direction:column;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);border-radius:4px;overflow:hidden;min-width:0}
-.ia-ph{aspect-ratio:16/9;background:linear-gradient(135deg,#0f3a4d,#12566e 55%,#27b8dc);display:grid;place-items:center;color:#d8f3fa;position:relative}
-.ia-ph svg{width:44px;height:44px;opacity:.85}.ia-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ia-ph{aspect-ratio:16/10;background:linear-gradient(135deg,#0f3a4d,#12566e 55%,#27b8dc);display:grid;place-items:center;color:#d8f3fa;position:relative}
+.ia-ph figcaption,.ia-ph .cr{position:absolute;right:.5rem;bottom:.4rem;font-size:.72rem;background:rgba(10,34,48,.78);color:#dbe9ee;padding:.1rem .5rem;border-radius:3px}.ia-ph svg{width:44px;height:44px;opacity:.85}.ia-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ia-b{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.55rem;flex:1}.ia-b h3{font:600 1.08rem/1.3 var(--f)}.ia-b p{font-size:.95rem;color:#cfe1e7;margin:0}
 .ia-m{display:flex;flex-wrap:wrap;gap:.4rem}.ia-tag{font-size:.75rem;padding:.1rem .55rem;border-radius:10px;border:1px solid #27b8dc;color:#8fe3f7}.ia-tag.n{border-color:#f2b705;color:#ffd96a}
 .ia-f{margin-top:auto;font-size:.85rem;color:#9db2ba}.ia-b a.ia-l{color:#8fe3f7;font-weight:600;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
-.ia-dest{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);margin-top:2.4rem}.ia-dest .ia-ph{aspect-ratio:auto;min-height:260px}.ia-dest .ia-b{padding:1.6rem}.ia-dest h3{font-size:clamp(1.3rem,2.4vw,1.9rem)}
+.ia-dest{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);margin-top:2.4rem}.ia-dest .ia-ph{aspect-ratio:auto;min-height:340px}.ia-dest .ia-b{padding:1.6rem}.ia-dest h3{font-size:clamp(1.3rem,2.4vw,1.9rem)}
 .ia-cifra{font:400 clamp(2.4rem,5vw,3.6rem)/1 Enjambre,var(--f);color:#8fe3f7}.ia-cifra small{display:block;font:400 .9rem/1.4 var(--f);color:#cfe1e7;margin-top:.4rem}
 .ia-nota{margin-top:1.6rem;font-size:.88rem;color:#9db2ba;max-width:60rem}
 .ia-cta{margin-top:3rem;padding:2rem clamp(1.2rem,4vw,2.4rem);border:1px solid rgba(39,184,220,.45);border-radius:4px;background:rgba(39,184,220,.07)}.ia-cta h3{font:400 clamp(1.4rem,3vw,2.2rem)/1.2 Enjambre,var(--f)}.ia-cta p{margin:.8rem 0 1.4rem;color:#cfe1e7}
 .js .ia-c{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.js .ia-c.vis{opacity:1;transform:none}
 @media(hover:hover){.ia-c:hover{border-color:rgba(39,184,220,.7);transform:translateY(-3px)}.js .ia-c.vis:hover{transform:translateY(-3px)}}
-@media(max-width:860px){.ia-dest{grid-template-columns:minmax(0,1fr)}.ia-dest .ia-ph{min-height:0;aspect-ratio:16/9}}
+@media(max-width:860px){.ia-dest{grid-template-columns:minmax(0,1fr)}.ia-dest .ia-ph{min-height:0;aspect-ratio:16/10}.ia-grid{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.js .ia-c{opacity:1;transform:none}}
 .leaflet-container{font:inherit}
 .btn.load{position:relative;pointer-events:none;opacity:.85}.btn.load::after{content:"";width:16px;height:16px;margin-left:.6rem;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .8s linear infinite}
 @keyframes giro{to{transform:rotate(360deg)}}
 form[data-estado=error] #st{color:#9b1c1c;font-weight:500}form[data-estado=success] #st{color:#14532d;font-weight:500}#st:focus{outline:none}
 @media(pointer:coarse){.leaflet-bar a{width:40px!important;height:40px!important;line-height:40px!important}}
-#ley-of[hidden],#cons[hidden],#pquit[hidden],#pinbox [hidden]{display:none!important}
+#ley-of[hidden],#cons[hidden],#pres[hidden],#pquit[hidden],#pok[hidden],#pinbox [hidden]{display:none!important}.pacc{margin:.4rem 0 0}
 
 /* Interacción decorativa de éxito (avispa → símbolo). Lógica y tiempos: const VUELO en el script */
 .envio{position:relative;display:flex}.envio .btn{flex:1}
@@ -201,8 +201,8 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 </section>
 
 <section class="sec dark" id="impacto-ambiental" aria-labelledby="ia-t"><div class="ia">
-<header class="ia-h"><h2 id="ia-t">El impacto que no podemos ignorar</h2>
-<p>Detrás de cada residuo flotante existe un riesgo para nuestros cuerpos de agua, nuestras comunidades y nuestros ecosistemas. Conoce las consecuencias de la contaminación y por qué es necesario actuar.</p></header>
+<div class="ia-h"><h2 id="ia-t">El impacto que no podemos ignorar</h2>
+<p>Detrás de cada residuo flotante existe un riesgo para nuestros cuerpos de agua, nuestras comunidades y nuestros ecosistemas. Conoce las consecuencias de la contaminación y por qué es necesario actuar.</p></div>
 <div id="ia-dest"></div><div id="ia-grid" class="ia-grid" role="list"></div>
 <p id="ia-estado" role="status" aria-live="polite" class="ia-nota"></p>
 <p class="ia-nota">Cada dato se atribuye a la fuente indicada; no son mediciones de Enjambre. Que una autoridad o un medio atribuya un efecto a la basura no equivale a demostrar una causa única: en las inundaciones intervienen también la lluvia y la infraestructura.</p>
@@ -299,17 +299,16 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <label>Correo electrónico<input name="correo" type="email" inputmode="email" spellcheck="false" autocomplete="email" required></label>
 <label>Teléfono (opcional)<input name="telefono" type="tel" autocomplete="tel"></label>
 <label class="w">Tipo de interés<select name="interes" required><option value="">Selecciona una opción</option><option>Inversión</option><option>Alianza estratégica</option><option>Gobierno o institución pública</option><option>Empresa con enfoque sostenible</option><option>Apoyo técnico</option><option>Investigación o universidad</option><option>Medios / prensa</option><option>Otro</option></select></label>
-<label>Cuerpo de agua o sitio de interés (opcional)<input name="cuerpo_agua" maxlength="120"></label>
-<label>Municipio o alcaldía (opcional)<input name="municipio" maxlength="80"></label>
-<label>Estado (opcional)<select name="estado"><option value="">Selecciona un estado</option><option>Aguascalientes</option><option>Baja California</option><option>Baja California Sur</option><option>Campeche</option><option>Chiapas</option><option>Chihuahua</option><option>Ciudad de México</option><option>Coahuila</option><option>Colima</option><option>Durango</option><option>Estado de México</option><option>Guanajuato</option><option>Guerrero</option><option>Hidalgo</option><option>Jalisco</option><option>Michoacán</option><option>Morelos</option><option>Nayarit</option><option>Nuevo León</option><option>Oaxaca</option><option>Puebla</option><option>Querétaro</option><option>Quintana Roo</option><option>San Luis Potosí</option><option>Sinaloa</option><option>Sonora</option><option>Tabasco</option><option>Tamaulipas</option><option>Tlaxcala</option><option>Veracruz</option><option>Yucatán</option><option>Zacatecas</option></select></label>
-<label>País<input name="pais" value="México" readonly aria-readonly="true"></label>
+<label class="w">País<select name="pais" id="pais" autocomplete="country"><option value="MX" selected>México</option></select></label>
 <label class="w">Mensaje breve<textarea name="mensaje" required></textarea></label>
 <details class="w" id="pinbox"><summary>Marcar ubicación aproximada en el mapa (opcional)</summary>
-<p class="nt">Busca un lugar o toca el mapa para colocar un pin. Se guarda solo una ubicación aproximada, nunca exacta.</p>
-<div class="bus"><label class="sr" for="pbq">Buscar un lugar</label><input id="pbq" type="search" placeholder="Lugar, municipio o estado" autocomplete="off" maxlength="100"><button class="btn s" type="button" id="pbb">Buscar</button></div>
+<p class="nt">Busca un lugar o toca el mapa para colocar un pin; puedes arrastrarlo. Se guarda solo una ubicación aproximada, nunca exacta. El mapa se centra en el país elegido, pero puedes moverte a cualquier lugar.</p>
+<div class="bus"><label class="sr" for="pbq">Buscar un lugar en el mapa</label><input id="pbq" type="search" placeholder="Buscar un lugar" autocomplete="off" maxlength="100"><button class="btn s" type="button" id="pbb">Buscar</button></div>
 <div id="pmap" role="region" aria-label="Mapa para colocar un pin aproximado"></div>
-<p id="pst" role="status" aria-live="polite"></p><button class="btn s" type="button" id="pquit" hidden>Quitar pin</button>
+<p id="pst" role="status" aria-live="polite"></p>
+<div class="bus pacc"><button class="btn p" type="button" id="pok" hidden>Confirmar ubicación</button><button class="btn s" type="button" id="pquit" hidden>Quitar pin</button></div>
 <input type="hidden" name="lat"><input type="hidden" name="lng"></details>
+<p id="pres" class="nt w" role="status" aria-live="polite" hidden></p>
 <label class="w chk" id="cons" hidden><input type="checkbox" name="consentimiento_ubicacion"><span>Autorizo a Enjambre a usar esta ubicación para evaluar mi solicitud y dar seguimiento.</span></label>
 <!-- PENDIENTE antes de publicar: aviso de privacidad (indicar datos de contacto y ubicación aproximada opcional, y el uso de OpenStreetMap/Nominatim para buscar lugares) -->
 <input name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -350,7 +349,7 @@ const fl=$("#flujo"),dots=$$("#flujo a"),etapas=dots.map(a=>$("#"+a.dataset.e)),
 const eio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=etapas.indexOf(e.target);dots.forEach((d,k)=>d.classList.toggle("on",k<=i))}}),{rootMargin:"-45% 0px -45% 0px"});
 etapas.forEach(s=>eio.observe(s));
 let tk=0;function sc(){tk=0;const y=scrollY,h=innerHeight;
- $("header").classList.toggle("sc",y>40);
+ $("#top").classList.toggle("sc",y>40);
  const a=pr.offsetTop,b=ct.offsetTop+ct.offsetHeight;
  fl.classList.toggle("on",y+h*.5>a+pr.offsetHeight*.6&&y+h*.5<b);
  if(y+h*.5<a+pr.offsetHeight)dots.forEach(d=>d.classList.remove("on"));

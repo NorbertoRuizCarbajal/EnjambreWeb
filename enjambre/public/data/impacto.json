@@ -14,19 +14,11 @@
       "fecha": null,
       "consultado": "2026-10-22",
       "cifra": "6 de cada 10",
-      "cifra_texto": "anegaciones que el Sacmex atribuye a basura en coladeras y rejillas"
-    },
-    {
-      "id": "expansion-tiraderos",
-      "tipo": "noticia",
-      "categoria": "Residuos y drenaje",
-      "nivel": "atribucion",
-      "titulo": "Tiraderos clandestinos se concentran en tres alcaldías de la CDMX",
-      "resumen": "La nota ubica la mayor concentración de tiraderos clandestinos en Cuauhtémoc, Iztapalapa y Miguel Hidalgo, y recoge que el Gobierno capitalino atribuye 50 % de las inundaciones y encharcamientos a taponamientos en la red de drenaje.",
-      "fuente": "Expansión Política",
-      "url": "https://politica.expansion.mx/cdmx/2025/07/01/cuauhtemoc-iztapalapa-y-mh-concentran-tiraderos-clandestinos-en-la-cdmx",
-      "fecha": "2025-07-01",
-      "consultado": "2026-10-22"
+      "cifra_texto": "anegaciones que el Sacmex atribuye a basura en coladeras y rejillas",
+      "imagen": "assets/impacto-1.webp",
+      "alt": "Presa urbana con residuos acumulados en las orillas junto a una compuerta y viviendas en la ladera.",
+      "credito": "Archivo Enjambre (ilustrativa)",
+      "visible": true
     },
     {
       "id": "conagua-41-mil",
@@ -38,31 +30,11 @@
       "fuente": "Posta",
       "url": "https://www.posta.com.mx/cdmx/basura-fuera-de-control-los-tiraderos-clandestinos-que-la-cdmx-no-logra-erradicar/vl2121368",
       "fecha": null,
-      "consultado": "2026-10-22"
-    },
-    {
-      "id": "bj-108-mil",
-      "tipo": "noticia",
-      "categoria": "Limpieza urbana",
-      "nivel": "dato",
-      "titulo": "Benito Juárez recolectó más de 108 mil toneladas de residuos en el primer semestre de 2026",
-      "resumen": "La alcaldía reportó 108 mil 289 toneladas de residuos sólidos recolectadas entre enero y junio de 2026 como parte de labores de limpia que buscan, además, disminuir el riesgo de inundaciones.",
-      "fuente": "Crónica",
-      "url": "https://www.cronica.com.mx/metropoli/2026/07/08/bj-retiro-mas-de-108-mil-toneladas-de-basura-en-seis-meses-para-reducir-riesgos-de-inundacion/",
-      "fecha": "2026-07-08",
-      "consultado": "2026-10-22"
-    },
-    {
-      "id": "unotv-operativo-lluvias-2026",
-      "tipo": "noticia",
-      "categoria": "Riesgo en temporada de lluvias",
-      "nivel": "riesgo",
-      "titulo": "Valle de México enfrentará más lluvias este año; la basura agrava el riesgo de inundaciones",
-      "resumen": "Autoridades federales y municipales iniciaron el operativo de lluvias 2026 en la Zona Metropolitana del Valle de México y advirtieron precipitaciones más intensas y un riesgo elevado de inundaciones.",
-      "fuente": "Uno TV",
-      "url": "https://www.unotv.com/estados/ciudad-de-mexico/temporada-de-lluvias-2026-alertan-mas-precipitaciones-e-inundaciones-en-valle-de-mexico/",
-      "fecha": null,
-      "consultado": "2026-10-22"
+      "consultado": "2026-10-22",
+      "imagen": "assets/impacto-2.webp",
+      "alt": "Sistema de extracción retirando residuos flotantes, botellas y plantas acuáticas, de un cuerpo de agua.",
+      "credito": "Archivo Enjambre (ilustrativa)",
+      "visible": true
     },
     {
       "id": "interceptor-referencia",
@@ -74,7 +46,50 @@
       "fuente": "Recycling International",
       "url": "https://recyclinginternational.com/?p=28491",
       "fecha": null,
-      "consultado": "2026-10-22"
+      "consultado": "2026-10-22",
+      "imagen": "assets/impacto-3.webp",
+      "alt": "Botellas y otros residuos plásticos flotando y acumulados en la superficie del agua.",
+      "credito": "Archivo Enjambre (ilustrativa)",
+      "visible": true
+    },
+    {
+      "id": "expansion-tiraderos",
+      "tipo": "noticia",
+      "categoria": "Residuos y drenaje",
+      "nivel": "atribucion",
+      "titulo": "Tiraderos clandestinos se concentran en tres alcaldías de la CDMX",
+      "resumen": "La nota ubica la mayor concentración de tiraderos clandestinos en Cuauhtémoc, Iztapalapa y Miguel Hidalgo, y recoge que el Gobierno capitalino atribuye 50 % de las inundaciones y encharcamientos a taponamientos en la red de drenaje.",
+      "fuente": "Expansión Política",
+      "url": "https://politica.expansion.mx/cdmx/2025/07/01/cuauhtemoc-iztapalapa-y-mh-concentran-tiraderos-clandestinos-en-la-cdmx",
+      "fecha": "2025-07-01",
+      "consultado": "2026-10-22",
+      "visible": false
+    },
+    {
+      "id": "bj-108-mil",
+      "tipo": "noticia",
+      "categoria": "Limpieza urbana",
+      "nivel": "dato",
+      "titulo": "Benito Juárez recolectó más de 108 mil toneladas de residuos en el primer semestre de 2026",
+      "resumen": "La alcaldía reportó 108 mil 289 toneladas de residuos sólidos recolectadas entre enero y junio de 2026 como parte de labores de limpia que buscan, además, disminuir el riesgo de inundaciones.",
+      "fuente": "Crónica",
+      "url": "https://www.cronica.com.mx/metropoli/2026/07/08/bj-retiro-mas-de-108-mil-toneladas-de-basura-en-seis-meses-para-reducir-riesgos-de-inundacion/",
+      "fecha": "2026-07-08",
+      "consultado": "2026-10-22",
+      "visible": false
+    },
+    {
+      "id": "unotv-operativo-lluvias-2026",
+      "tipo": "noticia",
+      "categoria": "Riesgo en temporada de lluvias",
+      "nivel": "riesgo",
+      "titulo": "Valle de México enfrentará más lluvias este año; la basura agrava el riesgo de inundaciones",
+      "resumen": "Autoridades federales y municipales iniciaron el operativo de lluvias 2026 en la Zona Metropolitana del Valle de México y advirtieron precipitaciones más intensas y un riesgo elevado de inundaciones.",
+      "fuente": "Uno TV",
+      "url": "https://www.unotv.com/estados/ciudad-de-mexico/temporada-de-lluvias-2026-alertan-mas-precipitaciones-e-inundaciones-en-valle-de-mexico/",
+      "fecha": null,
+      "consultado": "2026-10-22",
+      "visible": false
     },
     {
       "id": "registro-equipo-residuos",
@@ -89,7 +104,9 @@
       "alt": "Botellas y otros residuos acumulados sobre la superficie del agua.",
       "credito": "Equipo Enjambre",
       "fecha": null,
-      "consultado": null
+      "consultado": null,
+      "visible": false
     }
-  ]
+  ],
+  "nota_imagenes": "Imagen del archivo de Enjambre. Es ilustrativa: no pertenece a la publicación citada. Para usar una fotografía de la nota original o de terceros, verifica su licencia y completa credito/alt en el elemento."
 }

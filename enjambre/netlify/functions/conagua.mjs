@@ -1,7 +1,48 @@
 // Proxy de solo lectura hacia la capa "Cuerpos de agua" de CONAGUA (ArcGIS REST MapServer/3).
 // - Pide f=json (lo soportan TODOS los ArcGIS Server; f=geojson solo desde 10.4) y lo convierte aquí a GeoJSON.
 // - Carga por área visible (bbox) y zoom; host fijo (sin SSRF); respuesta cacheable.
-export const LAYER = 'https://sigagis.conagua.gob.mx/ArcGIS/rest/services/Contexto_hidrol%C3%B3gico/MapServer/3';
+ export const LAYER = process.env.CONAGUA_LAYER_URL || 'https://geomaticasig1.semarnat.gob.mx/arcgis/rest/services/esdig/Agua/MapServer';
+
+// Muchos servidores gubernamentales no envían su certificado intermedio y Node (a diferencia de los navegadores) no lo completa:
+// el fallo es UNABLE_TO_VERIFY_LEAF_SIGNATURE. NO se desactiva la verificación TLS. Si ocurre, se pega el certificado
+// intermedio/raíz PÚBLICO (PEM) en la variable CONAGUA_CA_PEM y solo este proxy lo añade a las autoridades de confianza.
+
+export async function fetchCon(url, opts = {}) {
+  const pem = process.env.CONAGUA_CA_PEM;
+  const { fetch: f, Agent } = await import('undici');
+
+  const dispatcher = pem
+    ? new Agent({
+        connect: {
+          ca: [
+            ...(await import('node:tls')).rootCertificates,
+            pem,
+          ],
+        },
+      })
+    : undefined;
+
+  const response = await f(url, {
+    ...opts,
+    redirect: 'manual',
+    ...(dispatcher ? { dispatcher } : {}),
+  });
+
+  if (dispatcher) {
+    // Mantener el agente mientras se consume la respuesta.
+    // No se cierra aquí porque el cuerpo lo procesa quien llama.
+  }
+
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get('location');
+    throw new Error(
+      `CONAGUA redirect ${response.status}: ${location || 'sin Location'}`
+    );
+  }
+
+  return response;
+}
+
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
 const area = (r) => { let s = 0; for (let i = 0, j = r.length - 1; i < r.length; j = i++) s += r[j][0] * r[i][1] - r[i][0] * r[j][1]; return s / 2; };
 const dentro = (p, r) => { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, yi] = r[i], [xj, yj] = r[j]; if ((yi > p[1]) !== (yj > p[1]) && p[0] < ((xj - xi) * (p[1] - yi)) / (yj - yi) + xi) c = !c; } return c; };
@@ -36,14 +77,61 @@ export default async (req) => {
     maxAllowableOffset: String((360 / (256 * 2 ** z)) * 2), geometryPrecision: '5', resultRecordCount: '400',
   });
   try {
-    const r = await fetch(`${LAYER}/query?${q}`, { signal: AbortSignal.timeout(15000), headers: { accept: 'application/json' } });
-    if (!r.ok) return J(502, { error: 'upstream', status: r.status });
-    const d = await r.json();
-    if (d.error) return J(502, { error: 'upstream', detail: String(d.error.message || d.error.code || '').slice(0, 160) });
-    return J(200, esriToGeoJSON(d), { 'cache-control': 'public, max-age=600, s-maxage=3600' });
-  } catch (err) {
-    console.error('conagua', err.message, err.cause && (err.cause.code || err.cause.message));
-    return J(502, { error: 'upstream', cause: String((err.cause && err.cause.code) || err.name || 'fetch').slice(0, 60) });
+    
+const consultar = async (id) => {
+  const r = await fetchCon(`${LAYER}/${id}/query?${q}`, {
+    signal: AbortSignal.timeout(15000),
+    headers: { accept: 'application/json' },
+  });
+
+  if (!r.ok) {
+    throw new Error(`SEMARNAT capa ${id}: HTTP ${r.status}`);
   }
+
+  const d = await r.json();
+
+  if (d.error) {
+    throw new Error(
+      `SEMARNAT capa ${id}: ${String(d.error.message || d.error.code || 'error').slice(0, 120)}`
+    );
+  }
+
+  return d;
+};
+
+const [lagos, lagunas] = await Promise.all([
+  consultar(6),
+  consultar(7),
+]);
+
+const combinado = {
+  features: [
+    ...(lagos.features || []),
+    ...(lagunas.features || []),
+  ],
+  exceededTransferLimit:
+    !!lagos.exceededTransferLimit || !!lagunas.exceededTransferLimit,
+};
+
+return J(200, esriToGeoJSON(combinado), {
+  'cache-control': 'public, max-age=600, s-maxage=3600',
+});
+
+  
+} catch (err) {
+  console.error('conagua', {
+    message: err.message,
+    cause: err.cause?.message,
+    code: err.cause?.code,
+    name: err.cause?.name,
+  });
+
+  return J(502, {
+    error: 'upstream',
+    cause: String(err.cause?.code || err.cause?.name || err.name || 'unknown'),
+    detail: String(err.cause?.message || err.message || '').slice(0, 180),
+  });
+}
+
 };
 export const config = { path: '/api/conagua' };
