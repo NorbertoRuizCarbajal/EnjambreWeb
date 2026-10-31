@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vive el sistema Enjambre · Enjambre</title>
+<meta name="description" content="Recorre de forma interactiva las etapas del sistema Enjambre: transporte, despliegue, navegación del barco, recolección, separación, trituración, almacenamiento y salida.">
+<meta name="theme-color" content="#0a2230">
+<link rel="preload" href="../assets/fonts/enjambre.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="experiencia.css">
+</head>
+<body>
+<a class="skip" href="#escena">Saltar a la experiencia</a>
+<header class="top"><a class="vuelta" href="../"><img src="../assets/logo-simbolo.png" alt="" width="40" height="39"><span>Volver al sitio de Enjambre</span></a>
+<a class="eq" href="../#equipo">Equipo de diseño</a></header>
+<main class="exp" id="exp">
+<h1>Vive el sistema Enjambre</h1>
+<p class="intro">Recorre las ocho etapas del sistema: traslada el equipo, despliégalo, dirige el barco a control remoto hacia los residuos flotantes, sepáralos, tritúralos y prepáralos para su salida. Es una representación <strong>ilustrativa y conceptual</strong>: no necesitas registrarte ni dar datos personales.</p>
+<div id="carga" class="estado" role="status">Cargando la experiencia…</div>
+<noscript><p class="estado err">Esta experiencia necesita JavaScript. Puedes ver el proceso real en el <a href="../#proceso">sitio principal</a>.</p></noscript>
+<div id="app" hidden>
+ <div class="bar" id="bar" role="progressbar" aria-label="Progreso del recorrido" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+ <ol class="chips" id="chips" aria-label="Etapas"></ol>
+ <section class="panel" aria-labelledby="et-t">
+  <div class="cab"><p class="num" id="et-n"></p><h2 id="et-t"></h2></div>
+  <p class="expl" id="et-p"></p>
+  <div class="escena" id="escena"></div>
+  <p class="instr" id="instr" role="status" aria-live="polite"></p>
+  <dl class="cont" aria-label="Contadores">
+   <div><dt>Recolectados</dt><dd id="c-rec">0</dd></div>
+   <div><dt>Clasificados</dt><dd id="c-cla">0</dd></div>
+   <div><dt>Triturados</dt><dd id="c-tri">0</dd></div>
+  </dl>
+  <div class="ctrl">
+   <button type="button" id="b-atras" class="btn s">← Etapa anterior</button>
+   <button type="button" id="b-pausa" class="btn s" aria-pressed="false">Pausar</button>
+   <button type="button" id="b-reinicio" class="btn s">Reiniciar recorrido</button>
+   <button type="button" id="b-sig" class="btn p">Continuar →</button>
+  </div>
+  <figure class="ref"><img id="ref-img" alt="" width="320" height="380" loading="lazy"><figcaption id="ref-cap"></figcaption></figure>
+ </section>
+</div>
+<p class="nota">Ilustración conceptual: los niveles, cantidades y tiempos son ejemplos y no corresponden a especificaciones técnicas del sistema. La separación inicial que se muestra es manual, como en el concepto del proyecto.</p>
+</main>
+<script src="experiencia.js" defer></script>
+</body></html>

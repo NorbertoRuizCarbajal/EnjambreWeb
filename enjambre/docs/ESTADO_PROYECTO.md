@@ -12,6 +12,14 @@ El repositorio contiene una landing pública, mapas, una sección editorial de i
 - [ ] Validar con ingeniería la descripción de cada etapa física del sistema.
 - [ ] No publicar métricas de rendimiento como hechos comprobados sin documentar metodología, fecha, condiciones, mediciones y evidencia. La nota de `LEEME.md` indica que la métrica preliminar de aproximadamente 12 m³ en 4 horas sigue pendiente de validación.
 
+### Sistema técnico (`#sistema`, ver `docs/SISTEMA_TECNICO.md`)
+
+- [ ] Confirmar permiso de publicación de las imágenes de la tesis y los créditos de los videos de 2023 y 2024.
+- [ ] Confirmar lugar y propósito de los videos `20231110_134817` y `Video de WhatsApp 2024-11-07`.
+- [ ] Unificar con el equipo el número de subsistemas (8 en la tesis, 7 en documentos previos) y la terminología «extractor de cangilones».
+- [ ] Entregar los archivos `.stp` para poder documentar el triturador y confirmar si está integrado y operativo.
+- [ ] Medir la capacidad real de extracción antes de publicar cualquier cifra (la meta de 300 kg/h es un valor prometido).
+
 ### Identidad y derechos
 
 - [ ] Confirmar la licencia de uso web de `public/assets/fonts/enjambre.ttf`.

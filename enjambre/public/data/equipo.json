@@ -1,0 +1,32 @@
+{
+  "intro": "Enjambre nace del trabajo conjunto de personas con perfiles distintos: quienes diseñan y construyen el sistema físico y quienes lo explican, lo comunican y lo hacen accesible. Esta sección presenta al equipo de diseño y cómo se conecta su trabajo con las etapas del sistema.",
+  "miembros": [
+    {
+      "id": "norberto-ruiz-carbajal",
+      "name": "Norberto Ruiz Carbajal",
+      "role": "Integrante del equipo de diseño",
+      "roles_extra": [],
+      "afiliacion": "Estudiante de Informática, UNAM",
+      "bio": null,
+      "image": null
+    }
+  ],
+  "colaboracion": [
+    {
+      "titulo": "Sistema físico",
+      "detalle": "El equipo de ingeniería diseñó desde cero los subsistemas del equipo: barco, extractor de cangilones y demás subsistemas del sistema «Todo en uno».",
+      "etapas": "Etapas 1 a 8 del sistema"
+    },
+    {
+      "titulo": "Propuesta digital y experiencia",
+      "detalle": "Sitio web, experiencia interactiva y materiales que explican el sistema de forma clara y visual.",
+      "etapas": "Cómo se conoce el sistema"
+    },
+    {
+      "titulo": "Presentación a aliados",
+      "detalle": "El sitio busca abrir conversaciones con inversores, gobierno local, empresas con enfoque sostenible y aliados técnicos.",
+      "etapas": "Alianzas y contacto"
+    }
+  ],
+  "_ayuda": "Para agregar o editar integrantes, modifica 'miembros'. Campos: name (obligatorio), role, roles_extra (lista de roles adicionales), afiliacion, bio (texto breve de responsabilidades reales; null si no hay), image (ruta de una foto en assets/, o null para usar las iniciales). No agregues datos que no estén confirmados."
+}
