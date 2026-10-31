@@ -131,6 +131,45 @@ details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;b
 @media(hover:hover){.ia-c:hover{border-color:rgba(39,184,220,.7);transform:translateY(-3px)}.js .ia-c.vis:hover{transform:translateY(-3px)}}
 @media(max-width:860px){.ia-dest{grid-template-columns:minmax(0,1fr)}.ia-dest .ia-ph{min-height:0;aspect-ratio:16/10}.ia-grid{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.js .ia-c{opacity:1;transform:none}}
+/* Experiencia interactiva (teaser) y equipo de diseño. Datos: data/equipo.json · render: js/equipo.js */
+#experiencia{display:block;min-height:0;padding:clamp(4rem,8vw,6.5rem) clamp(1.2rem,6vw,5rem);background:var(--agua2)}
+.xp{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(1.5rem,5vw,4rem);align-items:center}
+.xp-t p{margin-top:1rem;color:#cfe1e7}.xp img{width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:4px;border:1px solid rgba(255,255,255,.18)}
+#equipo{display:block;min-height:0;padding:clamp(4rem,8vw,6.5rem) clamp(1.2rem,6vw,5rem)}.eq{max-width:1100px;margin:0 auto}
+.eq-intro{margin-top:1rem;color:#43565e;max-width:52rem}.eq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),360px));gap:1.2rem;margin-top:2rem}
+.eq-c{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #c9d6da;border-radius:4px;padding:1.2rem;transition:border-color .3s,transform .3s}
+@media(hover:hover){.eq-c:hover{border-color:#27b8dc;transform:translateY(-2px)}}
+.eq-av{flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0a2230,#12566e);color:#8fe3f7;display:grid;place-items:center;font:400 1.6rem/1 Enjambre,var(--f);overflow:hidden;position:relative}
+.eq-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.eq-b{min-width:0}.eq-b h3{font:600 1.2rem/1.25 var(--f)}
+.eq-rol{color:#0f6a86;font-weight:600;margin-top:.2rem}.eq-af{color:#43565e;font-size:.95rem;margin-top:.3rem}.eq-bio{margin-top:.6rem;font-size:.95rem}
+.eq-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}.eq-tag{font-size:.78rem;padding:.1rem .6rem;border:1px solid #0f6a86;color:#0f6a86;border-radius:10px}
+.eq-h{margin-top:3rem;font:600 1.15rem var(--f)}.eq-colab{list-style:none;padding:0;margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem;counter-reset:n}
+.eq-n{position:relative;display:grid;gap:.4rem;background:#fff;border:1px solid #c9d6da;border-top:4px solid #27b8dc;border-radius:4px;padding:1rem 1.1rem}.eq-n b{font-size:1.05rem}.eq-n span{font-size:.95rem;color:#43565e}.eq-n small{color:#0f6a86;font-weight:600}
+@media(max-width:860px){.xp{grid-template-columns:minmax(0,1fr)}.xp img{order:-1;max-height:300px}}
+@media(max-width:1400px){.menu{gap:.9rem}.menu a{font-size:.85rem}}
+@media(max-width:1230px){#bm{display:block}.menu{display:none;position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:0;background:rgba(10,34,48,.97);padding:.5rem 1.2rem 1rem}.menu.o{display:flex}.menu a{display:block;padding:.9rem 0;font-size:1.05rem}}
+/* Sistema real (documentación técnica) */
+#sistema{display:block;min-height:0;padding:clamp(4.5rem,8vw,7rem) clamp(1.2rem,6vw,5rem);background:linear-gradient(180deg,#0d2b3b,#0a2230)}
+.sis{max-width:1200px;margin:0 auto}.sis-lead{margin-top:1rem;color:#cfe1e7;max-width:52rem}.sis-sec{margin-top:3.2rem}.sis-sec>h3{font:400 clamp(1.25rem,2.6vw,1.7rem)/1.2 Enjambre,var(--f);margin-bottom:1.2rem;overflow-wrap:anywhere}
+.sis-dia{width:100%;height:auto;max-height:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:4px}.sis-cad{animation:sis-cad 1.6s linear infinite}@keyframes sis-cad{to{stroke-dashoffset:-25}}
+.sis-pasos{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;counter-reset:p}
+.sis-pasos li{counter-increment:p;position:relative;padding-left:0;border-top:3px solid var(--boya);padding-top:.8rem}.sis-pasos li:before{content:counter(p);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--boya);color:#1a1400;font-weight:700;margin-bottom:.5rem}
+.sis-pasos h4{font:600 1.1rem/1.3 var(--f)}.sis-pasos p{margin:.5rem 0 0;font-size:.97rem;color:#d3e0e5}
+.sis-b{display:inline-block;font:600 .78rem/1.4 var(--f);padding:.1rem .6rem;border-radius:4px;border:1.5px solid;margin:.4rem .3rem .2rem 0;white-space:normal}
+.sis-b-c{border-color:#8fe3f7;color:#8fe3f7;border-style:dashed}.sis-b-p{border-color:#f2b705;color:#ffd96a}.sis-b-t{border-color:#7ee08f;color:#9cf0a9;border-style:double;border-width:3px}.sis-b-d{border-color:#c9a0ff;color:#d9b8ff;border-style:dotted}
+.sis-fuente{margin-top:1rem;font-size:.85rem;color:#9db2ba}
+.sis-comp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem 2.4rem;margin:0}.sis-comp div{border-left:3px solid #27b8dc;padding-left:1rem}.sis-comp dt{font:600 1.08rem/1.3 var(--f)}.sis-comp dd{margin:.4rem 0 0;color:#d3e0e5;font-size:.97rem}
+.sis-leyenda{list-style:none;padding:0;margin:0 0 1.2rem;display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-size:.9rem;color:#cfe1e7}.sis-leyenda .sis-b{margin:0 .4rem 0 0}
+.sis-ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;align-items:start}.sis-w2{grid-column:span 2}
+.sis-f{margin:0;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);border-radius:4px;overflow:hidden;min-width:0}
+.sis-f img,.sis-f video{width:100%;height:auto;background:#06151d}.sis-v video{max-height:520px;object-fit:contain}.sis-f figcaption{padding:.7rem .9rem .9rem;font-size:.92rem;color:#d3e0e5}.sis-f figcaption b{display:block;font-size:1rem;color:#fff;margin-top:.2rem}.sis-f figcaption small{display:block;margin-top:.4rem;color:#9db2ba;font-size:.78rem}
+.sis-dev{margin-top:1.4rem;padding:1rem 1.2rem;border:1px dashed #c9a0ff;border-radius:4px;background:rgba(201,160,255,.06)}.sis-dev h4{margin-bottom:.6rem}.sis-dev ul{margin:0;padding-left:1.2rem;display:grid;gap:.5rem;color:#d3e0e5;font-size:.96rem}.sis-dev .sis-b{margin:0}
+.sis-ctx{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:1.6rem 3rem;align-items:start}.sis-ctx p{margin:0 0 .8rem;color:#d3e0e5}
+.sis-cifra{border-left:4px solid var(--boya);padding-left:1rem}.sis-cifra strong{display:block;font:400 clamp(2rem,5vw,3.2rem)/1.1 Enjambre,var(--f);color:#fff}.sis-cifra span{font-size:.95rem;color:#cfe1e7}
+.sis-fuentes{margin-top:2.4rem;font-size:.9rem;color:#9db2ba}.sis-fuentes summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#cfe1e7}.sis-fuentes ul{margin:.4rem 0 0;padding-left:1.2rem;display:grid;gap:.4rem}
+@media(max-width:980px){.sis-pasos,.sis-ev{grid-template-columns:minmax(0,1fr)}.sis-comp,.sis-ctx{grid-template-columns:minmax(0,1fr)}.sis-w2{grid-column:auto}.sis-ev{grid-template-columns:repeat(2,minmax(0,1fr))}.sis-w2{grid-column:1/-1}}
+@media(max-width:640px){.sis-ev{grid-template-columns:minmax(0,1fr)}.sis-v video{max-height:440px}}
+@media(prefers-reduced-motion:reduce){.sis-cad{animation:none}}
 .leaflet-container{font:inherit}
 .btn.load{position:relative;pointer-events:none;opacity:.85}.btn.load::after{content:"";width:16px;height:16px;margin-left:.6rem;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .8s linear infinite}
 @keyframes giro{to{transform:rotate(360deg)}}
@@ -183,7 +222,7 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <a href="#inicio" aria-label="Enjambre, inicio"><img src="assets/logo-simbolo.png" alt="" width="900" height="879"></a>
 <button id="bm" aria-expanded="false" aria-controls="mn" aria-label="Abrir menú">☰</button>
 <ul class="menu" id="mn">
-<li><a href="#conocer">Conocer Enjambre</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="#contacto">Contacto</a></li>
+<li><a href="#conocer">Conocer Enjambre</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#sistema">Sistema real</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="experiencia/">Experiencia interactiva</a></li><li><a href="#equipo">Equipo de diseño</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="#contacto">Contacto</a></li>
 </ul></nav></header>
 
 <nav id="flujo" aria-label="Etapas del proceso">
@@ -193,7 +232,7 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 
 <main id="main">
 <section class="sec dark" id="inicio" aria-label="Enjambre">
-<img src="assets/01-hero.webp" alt="Sistema Enjambre desplegado a la orilla de un cuerpo de agua, con la banda extractora y la embarcación." fetchpriority="high">
+<img src="assets/01-hero.webp" alt="Sistema Enjambre desplegado a la orilla de un cuerpo de agua, con el extractor y la embarcación." fetchpriority="high">
 <div class="in"><h1>La innovación toma forma. El cambio, también.</h1>
 <p>Un sistema físico en desarrollo para recolectar residuos flotantes y transformar una acción ambiental en tecnología visible.</p>
 <div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div></div>
@@ -235,8 +274,8 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 </section>
 
 <section class="sec dark etapa r" id="captura">
-<figure class="media v" style="--bg:url(assets/06-captura-poster.webp)"><video muted loop playsinline preload="none" poster="assets/06-captura-poster.webp" data-src="assets/06-captura.mp4" aria-label="Banda extractora elevando residuos fuera del agua"></video></figure>
-<div class="txt"><small>Etapa 2 · Captura</small><h2>El residuo sale del agua.</h2><p>Una banda extractora inclinada eleva el material flotante y lo lleva al siguiente punto del proceso.</p></div>
+<figure class="media v" style="--bg:url(assets/06-captura-poster.webp)"><video muted loop playsinline preload="none" poster="assets/06-captura-poster.webp" data-src="assets/06-captura.mp4" aria-label="Extractor elevando residuos fuera del agua"></video></figure>
+<div class="txt"><small>Etapa 2 · Captura</small><h2>El residuo sale del agua.</h2><p>Un extractor inclinado, de cangilones, eleva el material flotante y lo lleva al siguiente punto del proceso.</p></div>
 </section>
 
 <section class="sec dark etapa" id="guia">
@@ -254,15 +293,93 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <div class="txt"><small>Etapa 5 · Contención</small><h2>El resultado queda contenido.</h2><p>Después de la trituración, el material se deposita en una zona de almacenamiento. Su gestión posterior depende de los acuerdos con cada entidad.</p></div>
 </section>
 
+<section class="sec dark" id="sistema" aria-labelledby="sis-t"><div class="sis">
+<h2 id="sis-t">Así funciona el sistema real</h2>
+<p class="sis-lead">Enjambre combina un barco a control remoto con un extractor de cangilones para sacar del agua los residuos flotantes. Aquí se resume lo que documenta el proyecto y se distingue qué es diseño, qué es prototipo y qué ya se probó.</p>
+
+<div class="sis-sec">
+<h3>Secuencia de operación</h3>
+<svg class="sis-dia" viewBox="0 0 900 340" role="img" aria-label="Esquema: un barco con dos hélices dirige residuos flotantes hacia un extractor inclinado de cangilones, que los eleva fuera del agua hacia la plataforma del sistema.">
+<rect x="0" y="228" width="900" height="112" fill="#0f5373" opacity=".55"/><path d="M0 228q30-8 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0" fill="none" stroke="#8fe3f7" stroke-opacity=".5" stroke-width="2"/>
+<g transform="translate(70 196)"><path d="M0 22h170l-20 28H22z" fill="#cfd8dc" stroke="#fff" stroke-width="2"/><g fill="none" stroke="#d63a3a" stroke-width="6"><circle cx="50" cy="-8" r="32"/><circle cx="120" cy="-8" r="32"/></g><g stroke="#d63a3a" stroke-width="3"><path d="M50-40v64M18-8h64M120-40v64M88-8h64"/></g><rect x="70" y="10" width="26" height="12" fill="#37505b"/></g>
+<g fill="#e8e8e8" stroke="#fff" stroke-width="1.5"><circle cx="290" cy="244" r="9"/><rect x="312" y="238" width="22" height="12" rx="2"/><circle cx="352" cy="249" r="8" fill="#8fd3f0"/><rect x="372" y="240" width="9" height="20" rx="3" fill="#8fd3f0"/></g>
+<g><path d="M430 300 650 110" stroke="#37505b" stroke-width="46" stroke-linecap="round"/><path class="sis-cad" d="M430 300 650 110" stroke="#f2b705" stroke-width="12" stroke-dasharray="3 22" fill="none"/><path d="M430 300 650 110" stroke="#9db2ba" stroke-width="2" fill="none"/></g>
+<g><rect x="640" y="60" width="230" height="200" fill="#16242b" stroke="#9db2ba" stroke-width="3"/><path d="M630 60h250" stroke="#9db2ba" stroke-width="8"/><rect x="665" y="150" width="80" height="80" fill="none" stroke="#9db2ba" stroke-width="2" stroke-dasharray="6 4"/><rect x="765" y="150" width="80" height="80" fill="none" stroke="#9db2ba" stroke-width="2" stroke-dasharray="6 4"/></g>
+<path d="M410 262q-70-10-120-6" fill="none" stroke="#8fe3f7" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#fl)"/><path d="M652 108q10-10 20 0" fill="none" stroke="#8fe3f7" stroke-width="3"/>
+<defs><marker id="fl" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#8fe3f7"/></marker></defs>
+<g font-family="system-ui,sans-serif" font-weight="700" text-anchor="middle"><circle cx="300" cy="196" r="22" fill="#f2b705"/><text x="300" y="204" font-size="24" fill="#1a1400">1</text><circle cx="545" cy="214" r="22" fill="#f2b705"/><text x="545" y="222" font-size="24" fill="#1a1400">2</text><circle cx="755" cy="108" r="22" fill="#f2b705"/><text x="755" y="116" font-size="24" fill="#1a1400">3</text></g>
+</svg>
+<ol class="sis-pasos">
+<li><h4>El barco dirige los residuos</h4><span class="sis-b sis-b-t">▲ Prueba documentada</span><p>Un barco con las hélices fuera del agua, operado a control remoto, recorre el cuerpo de agua y usa su costado para arrastrar los residuos hacia el extractor.</p></li>
+<li><h4>El extractor los eleva</h4><span class="sis-b sis-b-p">■ Prototipo fabricado y probado</span><p>Una cadena con cangilones recoge los residuos y los sube por una rampa inclinada, fuera del agua, hasta la plataforma.</p></li>
+<li><h4>Siguen hacia la plataforma</h4><span class="sis-b sis-b-d">◌ Diseño en desarrollo</span><p>En el concepto «Todo en uno», una banda los lleva a una zona de selección manual y a un triturador que reduciría su volumen. Esta etapa aún no está confirmada como integrada y operativa.</p></li>
+</ol>
+<p class="sis-fuente">Esquema ilustrativo, no a escala. Fuente: tesis de maestría en Ingeniería Mecánica (UNAM, 2023), capítulos 3 y 4.</p>
+</div>
+
+<div class="sis-sec">
+<h3>Componentes</h3>
+<dl class="sis-comp">
+<div><dt>Barco con propulsión aérea</dt><dd>Sus motores eléctricos y hélices van fuera del agua. Así se evita que hierba, ramas o hilos enreden unas aspas sumergidas, algo crítico cuando nadie va a bordo para liberarlas. Se opera a control remoto.</dd></div>
+<div><dt>Hélices que giran y se pliegan</dt><dd>Las hélices se orientan en dos posiciones de dirección, separadas 90°: navegación y recolección. Su estructura de tubos se pliega para guardar el barco dentro del sistema, porque desplegada puede medir hasta 1.5 m de alto y debe reducirse a menos de la mitad. En las pruebas documentadas, dos personas la pliegan y despliegan a mano.</dd></div>
+<div><dt>Extractor de cangilones</dt><dd>Cangilones sujetos a una cadena suben los residuos por una rampa inclinada. En el diseño mide entre 4 y 8 m de largo, según el sitio. Se fabricó un prototipo y se probó, incluso en el embarcadero Cuemanco, en Xochimilco.</dd></div>
+<div><dt>Estructura, rampas y posiciones</dt><dd>El sistema se traslada en un camión modificado. El extractor tiene una posición de trabajo, con la rampa hacia el agua, y una de guardado; el barco se ancla al extractor para desplegarse y para volver a guardarse (en una prueba documentada, el extractor lo «jaló» con eslingas hasta la posición de guardado).</dd></div>
+</dl>
+</div>
+
+<div class="sis-sec">
+<h3>Evidencia del desarrollo</h3>
+<ul class="sis-leyenda" aria-label="Tipos de evidencia"><li><span class="sis-b sis-b-c">◇ Modelo CAD</span> diseño en computadora; no es una fotografía</li><li><span class="sis-b sis-b-p">■ Prototipo fabricado</span> equipo construido</li><li><span class="sis-b sis-b-t">▲ Prueba documentada</span> con fotos o video</li><li><span class="sis-b sis-b-d">◌ En desarrollo</span> sin confirmar</li></ul>
+<div class="sis-ev">
+<figure class="sis-f sis-w2"><img src="assets/sistema/concepto-realidad.webp" alt="Cuatro imágenes: a la izquierda, modelos CAD del barco con el extractor y del camión; a la derecha, los prototipos construidos equivalentes." width="1139" height="803" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span> <span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Del modelo a la realidad</b>Izquierda: modelos CAD. Derecha: los equipos construidos.<small>Tesis UNAM 2023, Imagen 70. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/cad-sistema.webp" alt="Vista lateral del modelo CAD: un barco a la izquierda y, a la derecha, el extractor inclinado con cangilones sobre la estructura del sistema." width="1155" height="578" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Vista general del modelo</b>Barco y extractor sobre la estructura. El equipo del extremo derecho del modelo no implica que esté operativo.<small>Captura del modelo CAD, 27 oct 2026.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/todo-en-uno-cad.webp" alt="Modelo CAD del sistema Todo en uno con sus subsistemas numerados y una lista de nombres." width="1067" height="441" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Configuración «Todo en uno»</b>Ocho subsistemas numerados en el concepto.<small>Tesis UNAM 2023, Imagen 16. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-posiciones-cad.webp" alt="Tres modelos CAD del barco con las hélices en posición de guardado, de recolección y de navegación." width="1200" height="353" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Tres posiciones del barco</b>Guardado, recolección y navegación.<small>Tesis UNAM 2023, Imagen 61. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/extractor-prototipo.webp" alt="Prototipo del extractor ensamblado en un taller, con la cadena, los cangilones y el motorreductor." width="652" height="443" loading="lazy"><figcaption><span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Extractor ensamblado</b>Cadena, cangilones y motorreductor, ya construidos.<small>Tesis UNAM 2023, Imagen 40. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/extractor-pruebas.webp" alt="Dos fotografías del extractor probado en el embarcadero Cuemanco, con vegetación y residuos sobre los cangilones." width="1002" height="707" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Extractor en pruebas de campo</b>Embarcadero Cuemanco, Xochimilco.<small>Tesis UNAM 2023, Imagen 47. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-flotabilidad.webp" alt="Tres personas sobre el casco del barco, que flota en una alberca." width="768" height="566" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Flotabilidad del casco</b>Prueba en una alberca con tres personas a bordo.<small>Tesis UNAM 2023, Imagen 62. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-pruebas-alberca.webp" alt="Dos fotografías del barco con sus hélices en una alberca, en posición de navegación y de recolección." width="1190" height="596" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Navegación y empuje</b>Pruebas en alberca en dos posiciones de las hélices.<small>Tesis UNAM 2023, Imagen 63. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-pruebas-campo.webp" alt="Dos fotografías del barco: sobre la rampa del extractor y flotando en el agua con las hélices desplegadas." width="939" height="467" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Barco en el embarcadero Cuemanco</b>Despliegue desde la rampa y navegación en el agua.<small>Tesis UNAM 2023, Imagen 69. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><video controls muted playsinline preload="none" poster="assets/sistema/prueba-barco-2023-poster.webp" width="960" height="540" aria-label="Video sin audio: el barco con dos hélices rojas navega por un canal mientras varias personas observan."><source src="assets/sistema/prueba-barco-2023.mp4" type="video/mp4"></video><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Barco en el agua</b>Video sin audio de una prueba en campo. Archivo del 10 de noviembre de 2023.<small>Archivo del proyecto Enjambre.</small></figcaption></figure>
+<figure class="sis-f sis-v"><video controls muted playsinline preload="none" poster="assets/sistema/prototipo-barco-2024-poster.webp" width="480" height="848" aria-label="Video sin audio: el prototipo del barco con hélices rojas sobre una acumulación de botellas y otros residuos flotantes."><source src="assets/sistema/prototipo-barco-2024.mp4" type="video/mp4"></video><figcaption><span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Prototipo entre residuos</b>Video sin audio. Archivo del 7 de noviembre de 2024.<small>Archivo del proyecto Enjambre.</small></figcaption></figure>
+</div>
+<div class="sis-dev"><h4><span class="sis-b sis-b-d">◌ En desarrollo o por confirmar</span></h4><ul>
+<li><b>Capacidad de extracción.</b> La meta de diseño es del orden de 300 kg/h; es un valor prometido, no una capacidad demostrada. Falta medirla en pruebas.</li>
+<li><b>Triturador.</b> Existe como modelo CAD y su objetivo es reducir el volumen de los residuos hasta en un 70 %; falta confirmar su integración y su operación.</li>
+<li><b>Separación y destino final.</b> En el concepto la separación inicial es manual. El destino final de los residuos depende de cada material y de la gestión disponible.</li>
+<li><b>Sistema completo.</b> La documentación revisada detalla a fondo el barco y el extractor; el resto de los subsistemas del «Todo en uno» sigue en desarrollo.</li></ul></div>
+</div>
+
+<div class="sis-sec">
+<h3>Contexto: residuos en los cuerpos de agua de la Ciudad de México</h3>
+<div class="sis-ctx"><p class="sis-cifra"><strong>≈158 000 m³</strong><span>de residuos sólidos removidos y desazolvados en 2022 en ríos y cuerpos de agua de la Ciudad de México, según el Gobierno de la CDMX (cifra de 2022, citada en la tesis).</span></p>
+<div><p>Para diseñar el sistema, el equipo visitó las 17 presas que opera el Sacmex. En promedio tienen 5 m de profundidad y casi todas una sola compuerta de drenaje, y acumulan basura mezclada con mucho material orgánico.</p>
+<p>Por eso el proyecto busca un sistema adaptable a esas condiciones: transportable en camión, con hélices fuera del agua y un extractor cuya longitud se ajusta a cada sitio.</p></div></div>
+</div>
+
+<details class="sis-fuentes"><summary>Fuentes y notas de validación</summary><ul>
+<li>Tesis de maestría en Ingeniería Mecánica (Diseño Mecánico), UNAM, 2023, proyecto SACMEX–UNAM. Capítulo 3 (contexto) y capítulo 4 (sistema «Todo en uno», extractor y barco). Imágenes: elaboración propia de la tesis.</li>
+<li>Cifra de 2022: Gobierno de la Ciudad de México, «Rescate de ríos y cuerpos de agua» (2022), citada en la tesis. Es un dato histórico, no una estadística actual.</li>
+<li>La hoja de cálculo del transportador (cangilones) contiene cálculos teóricos; no son mediciones y no se publican como capacidad.</li>
+<li>Los esquemas de esta sección son ilustrativos. Los modelos CAD no son fotografías de pruebas.</li></ul></details>
+</div></section>
+
+<section class="sec dark" id="experiencia" aria-labelledby="xp-t"><div class="xp">
+<div class="xp-t"><h2 id="xp-t">Vive el sistema Enjambre</h2>
+<p>Recorre las ocho etapas del sistema de forma interactiva: traslada el equipo, dirige el barco a control remoto hacia los residuos flotantes, sepáralos, tritúralos y prepáralos para su salida. Es una representación ilustrativa, sin registros ni datos personales.</p>
+<div class="cta"><a class="btn p" href="experiencia/">Iniciar la experiencia</a></div></div>
+<img src="assets/exp/etapa-2.webp" alt="Ilustración conceptual del barco recolector de Enjambre, con dos hélices rojas, dirigiendo residuos flotantes hacia el extractor." width="402" height="455" loading="lazy">
+</div></section>
+
 <!-- REVISAR antes de publicar: validación técnica final de estos textos con ingeniería -->
 <section class="sec light" id="tecnologia"><h2>Tecnología ambiental en evolución.</h2>
-<p>Enjambre integra siete subsistemas diseñados desde cero por su equipo de ingeniería. Cada etapa abre espacio para validar desempeño, mejorar la operación y preparar futuras versiones.</p>
+<p>Enjambre se concibe como un sistema «Todo en uno» de ocho subsistemas; hasta ahora el barco y el extractor son los más desarrollados y probados. Cada etapa abre espacio para validar desempeño, mejorar la operación y preparar futuras versiones.</p>
 <ul class="mods">
 <li><img src="assets/05-direccion-poster.webp" alt="Detalle del barco" loading="lazy"><b>Dirección</b><span>Barco controlado a distancia.</span></li>
-<li><img src="assets/06-captura-foto.webp" alt="Detalle de la banda extractora" loading="lazy"><b>Captura</b><span>Banda extractora sobre el agua.</span></li>
+<li><img src="assets/06-captura-foto.webp" alt="Detalle del extractor" loading="lazy"><b>Captura</b><span>Extractor de cangilones sobre el agua.</span></li>
 <li><img src="assets/08-trituradora-poster.webp" alt="Detalle de la trituradora" loading="lazy"><b>Procesamiento</b><span>Trituradora de diseño propio.</span></li>
 <li><img src="assets/09-contencion-poster.webp" alt="Detalle del material triturado" loading="lazy"><b>Contención</b><span>Zona de almacenamiento.</span></li></ul>
-<div class="est"><div><h3>Hoy</h3><p>Barco, banda extractora, banda transportadora, trituradora, almacenamiento, estructura de integración y transporte, y estructura de supervisión visual.</p></div>
+<div class="est"><div><h3>El diseño completo</h3><p>Barco, extractor, rampas, elevadores, estructura principal, plataforma de supervisión, separador y triturador. El triturador existe como diseño CAD; su integración y operación aún se están confirmando.</p></div>
 <div><h3>En desarrollo</h3><p>Mejoras en movilidad y maniobrabilidad del barco, y en su despliegue y plegado para facilitar el transporte.</p></div>
 <div><h3>Posible a futuro</h3><p>Automatizar parcialmente la banda transportadora para reducir la intervención manual. No forma parte de la versión actual.</p></div></div>
 <p class="val">Datos técnicos en validación.</p>
@@ -279,6 +396,12 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <p>Enjambre busca colaboración para fortalecer su desarrollo técnico, ampliar pruebas, validar impacto y construir nuevas oportunidades de implementación.</p>
 <div class="cta"><a class="btn p" href="#contacto">Explorar alianzas</a></div></div>
 <ul><li>Inversores</li><li>Gobierno local</li><li>Empresas con enfoque sostenible</li><li>Aliados técnicos</li></ul>
+</div></section>
+
+<section class="sec light" id="equipo" aria-labelledby="eq-t"><div class="eq">
+<h2 id="eq-t">Equipo de diseño</h2><p id="eq-intro" class="eq-intro"></p>
+<div id="eq-perfiles" class="eq-grid"></div>
+<h3 class="eq-h">Cómo se conectan las áreas de trabajo</h3><ol id="eq-colab" class="eq-colab"></ol>
 </div></section>
 
 <section class="sec dark" id="mapa" aria-labelledby="mapa-t"><div class="mp">
@@ -327,6 +450,7 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 
 <script src="js/mapa.js" defer></script>
 <script src="js/impacto.js" defer></script>
+<script src="js/equipo.js" defer></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const rm=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
