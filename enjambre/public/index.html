@@ -80,15 +80,6 @@ p{max-width:58ch}
 #flujo a{position:relative;z-index:1;display:flex;align-items:center;gap:.7rem;justify-content:flex-end;color:#cfdde2;text-decoration:none;font-size:.82rem;text-shadow:0 1px 4px #000}
 #flujo a:after{content:"";width:14px;height:14px;border-radius:50%;background:var(--agua);border:2px solid #cfdde2}
 #flujo a.on{color:#fff}#flujo a.on:after{background:var(--boya);border-color:var(--boya)}
-/* tecnologia */
-#tecnologia{display:block;padding:clamp(5rem,9vw,8rem) clamp(1.2rem,6vw,5rem)}
-#tecnologia>h2,#tecnologia>p{max-width:46rem}#tecnologia>p{margin-top:1rem}
-.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:3rem 0 2rem;padding:0;list-style:none}
-.mods img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
-.mods b{display:block;margin-top:.6rem}.mods span{font-size:.95rem;color:#43565e}
-.est{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid #b9c7cc;padding-top:1.6rem}
-.est h3{font-size:1rem;margin-bottom:.4rem}.est p{font-size:.95rem;color:#43565e}
-.val{margin-top:2rem;padding:1rem 1.2rem;border:1px dashed #8aa0a8;color:#43565e;font-size:.95rem}
 /* impacto */
 #impacto .dos{grid-template-columns:9fr 11fr}
 #impacto figure{display:grid;justify-items:center}#impacto video{width:auto;height:min(78vh,720px);max-width:100%;aspect-ratio:9/16;object-fit:cover}
@@ -210,7 +201,7 @@ form[data-estado=error] #st{color:#9b1c1c;font-weight:500}form[data-estado=succe
 #flujo{top:calc(3.9rem + env(safe-area-inset-top));right:50%;transform:translateX(50%);flex-direction:row;gap:1.1rem;background:rgba(10,34,48,.88);padding:.7rem 1rem;border-radius:3px}
 #flujo:before,#flujo:after{display:none}#flujo a{font-size:0;gap:0}#flujo a:after{width:16px;height:16px}
 .etapa:not(.r) .txt{padding-right:1.2rem}#pz{right:.6rem;bottom:calc(.6rem + env(safe-area-inset-bottom));font-size:.78rem;min-height:40px;opacity:.92}
-.mods{grid-template-columns:1fr 1fr}.est{grid-template-columns:1fr}
+
 form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 }
 </style>
@@ -222,7 +213,7 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <a href="#inicio" aria-label="Enjambre, inicio"><img src="assets/logo-simbolo.png" alt="" width="900" height="879"></a>
 <button id="bm" aria-expanded="false" aria-controls="mn" aria-label="Abrir menú">☰</button>
 <ul class="menu" id="mn">
-<li><a href="#conocer">Conocer Enjambre</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#sistema">Sistema real</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="experiencia/">Experiencia interactiva</a></li><li><a href="#equipo">Equipo de diseño</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="#contacto">Contacto</a></li>
+<li><a href="#conocer">Conocer Enjambre</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#sistema">Sistema real</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="experiencia/">Experiencia interactiva</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="#contacto">Contacto</a></li><li><a href="#equipo">Equipo de diseño</a></li>
 </ul></nav></header>
 
 <nav id="flujo" aria-label="Etapas del proceso">
@@ -293,6 +284,7 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <div class="txt"><small>Etapa 5 · Contención</small><h2>El resultado queda contenido.</h2><p>Después de la trituración, el material se deposita en una zona de almacenamiento. Su gestión posterior depende de los acuerdos con cada entidad.</p></div>
 </section>
 
+<!-- REVISAR antes de publicar: validación técnica final de estos textos con ingeniería -->
 <section class="sec dark" id="sistema" aria-labelledby="sis-t"><div class="sis">
 <h2 id="sis-t">Así funciona el sistema real</h2>
 <p class="sis-lead">Enjambre combina un barco a control remoto con un extractor de cangilones para sacar del agua los residuos flotantes. Aquí se resume lo que documenta el proyecto y se distingue qué es diseño, qué es prototipo y qué ya se probó.</p>
@@ -371,20 +363,6 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <img src="assets/exp/etapa-2.webp" alt="Ilustración conceptual del barco recolector de Enjambre, con dos hélices rojas, dirigiendo residuos flotantes hacia el extractor." width="402" height="455" loading="lazy">
 </div></section>
 
-<!-- REVISAR antes de publicar: validación técnica final de estos textos con ingeniería -->
-<section class="sec light" id="tecnologia"><h2>Tecnología ambiental en evolución.</h2>
-<p>Enjambre se concibe como un sistema «Todo en uno» de ocho subsistemas; hasta ahora el barco y el extractor son los más desarrollados y probados. Cada etapa abre espacio para validar desempeño, mejorar la operación y preparar futuras versiones.</p>
-<ul class="mods">
-<li><img src="assets/05-direccion-poster.webp" alt="Detalle del barco" loading="lazy"><b>Dirección</b><span>Barco controlado a distancia.</span></li>
-<li><img src="assets/06-captura-foto.webp" alt="Detalle del extractor" loading="lazy"><b>Captura</b><span>Extractor de cangilones sobre el agua.</span></li>
-<li><img src="assets/08-trituradora-poster.webp" alt="Detalle de la trituradora" loading="lazy"><b>Procesamiento</b><span>Trituradora de diseño propio.</span></li>
-<li><img src="assets/09-contencion-poster.webp" alt="Detalle del material triturado" loading="lazy"><b>Contención</b><span>Zona de almacenamiento.</span></li></ul>
-<div class="est"><div><h3>El diseño completo</h3><p>Barco, extractor, rampas, elevadores, estructura principal, plataforma de supervisión, separador y triturador. El triturador existe como diseño CAD; su integración y operación aún se están confirmando.</p></div>
-<div><h3>En desarrollo</h3><p>Mejoras en movilidad y maniobrabilidad del barco, y en su despliegue y plegado para facilitar el transporte.</p></div>
-<div><h3>Posible a futuro</h3><p>Automatizar parcialmente la banda transportadora para reducir la intervención manual. No forma parte de la versión actual.</p></div></div>
-<p class="val">Datos técnicos en validación.</p>
-</section>
-
 <section class="sec light" id="impacto"><div class="dos">
 <div><h2>Hacer visible el cambio.</h2>
 <p>El potencial de Enjambre está en transformar un problema disperso en un proceso observable, medible y escalable conforme avance su desarrollo. El cambio comienza cuando el residuo deja de estar perdido en el agua y entra en un sistema que puede ser visto, medido y mejorado.</p></div>
@@ -396,12 +374,6 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <p>Enjambre busca colaboración para fortalecer su desarrollo técnico, ampliar pruebas, validar impacto y construir nuevas oportunidades de implementación.</p>
 <div class="cta"><a class="btn p" href="#contacto">Explorar alianzas</a></div></div>
 <ul><li>Inversores</li><li>Gobierno local</li><li>Empresas con enfoque sostenible</li><li>Aliados técnicos</li></ul>
-</div></section>
-
-<section class="sec light" id="equipo" aria-labelledby="eq-t"><div class="eq">
-<h2 id="eq-t">Equipo de diseño</h2><p id="eq-intro" class="eq-intro"></p>
-<div id="eq-perfiles" class="eq-grid"></div>
-<h3 class="eq-h">Cómo se conectan las áreas de trabajo</h3><ol id="eq-colab" class="eq-colab"></ol>
 </div></section>
 
 <section class="sec dark" id="mapa" aria-labelledby="mapa-t"><div class="mp">
@@ -439,6 +411,12 @@ form{grid-template-columns:minmax(0,1fr)}.bus .btn{width:100%}
 <div id="vuelo" aria-hidden="true"><span class="glow"></span><img class="hex" src="assets/logo-simbolo.png" alt="" width="900" height="879"><img class="avi" src="assets/avispa.png" alt="" width="200" height="188" onerror="this.hidden=true"></div></div>
 <p id="st" class="w" role="status" aria-live="polite"></p>
 </form></div></section>
+
+<section class="sec light" id="equipo" aria-labelledby="eq-t"><div class="eq">
+<h2 id="eq-t">Equipo de diseño</h2><p id="eq-intro" class="eq-intro"></p>
+<div id="eq-perfiles" class="eq-grid"></div>
+<h3 class="eq-h">Cómo se conectan las áreas de trabajo</h3><ol id="eq-colab" class="eq-colab"></ol>
+</div></section>
 
 <section class="sec dark" id="cierre"><img class="fondo" src="assets/01-hero.webp" alt="" loading="lazy">
 <div class="in"><h2>Del agua al sistema.<br>Del sistema al cambio.</h2>
