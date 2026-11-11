@@ -8,7 +8,97 @@
       "roles_extra": [],
       "afiliacion": "Estudiante de Informática, UNAM",
       "bio": null,
-      "image": null
+      "image": "assets/equipo/norberto-ruiz-carbajal.webp"
+    },
+    {
+      "id": "jennifer-rodriguez-perez",
+      "name": "Jennifer Rodríguez Pérez",
+      "role": "Diseñadora",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/jennifer-rodriguez-perez.webp"
+    },
+    {
+      "id": "javier-noe-avila-cedillo",
+      "name": "Javier Noé Ávila Cedillo",
+      "role": "Integrador de proyectos de innovación",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/javier-noe-avila-cedillo.webp"
+    },
+    {
+      "id": "vicente-borja-ramirez",
+      "name": "Dr. Vicente Borja Ramírez",
+      "role": "Líder del centro",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/vicente-borja-ramirez.webp"
+    },
+    {
+      "id": "alejandro-cuauhtemoc-ramirez-reivich",
+      "name": "Dr. Alejandro Cuauhtémoc Ramírez Reivich",
+      "role": "Líder del centro",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/alejandro-cuauhtemoc-ramirez-reivich.webp"
+    },
+    {
+      "id": "maria-pilar-corona-lira",
+      "name": "Dra. María Pilar Corona Lira",
+      "role": "Líder del centro",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/maria-pilar-corona-lira.webp"
+    },
+    {
+      "id": "mariana-abigail-sanchez-rosas",
+      "name": "Mariana Abigail Sánchez Rosas",
+      "role": "Especialista en gestión y consolidación de proyectos",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/mariana-abigail-sanchez-rosas.webp"
+    },
+    {
+      "id": "manuel-herrera-lopez",
+      "name": "Manuel Herrera López",
+      "role": "Generador de conocimiento en ingeniería mecánica",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/manuel-herrera-lopez.webp"
+    },
+    {
+      "id": "ivan-daniel-arizmendi-maya",
+      "name": "Iván Daniel Arizmendi Maya",
+      "role": "Especialista en mecánica",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/ivan-daniel-arizmendi-maya.webp"
+    },
+    {
+      "id": "sara-santana-fonseca",
+      "name": "Sara Santana Fonseca",
+      "role": "Especialista en diseño industrial",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/sara-santana-fonseca.webp"
+    },
+    {
+      "id": "yesica-daniela-alvarez-romero",
+      "name": "Yesica Daniela Álvarez Romero",
+      "role": "Especialista en gestión y consolidación de proyectos",
+      "roles_extra": [],
+      "afiliacion": null,
+      "bio": null,
+      "image": "assets/equipo/yesica-daniela-alvarez-romero.webp"
     }
   ],
   "colaboracion": [

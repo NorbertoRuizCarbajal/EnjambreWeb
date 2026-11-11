@@ -17,7 +17,7 @@ Ruta dedicada (el sitio es HTML estático, sin framework): `public/experiencia/i
 Datos en **un solo archivo: `public/data/equipo.json`**; `public/js/equipo.js` solo los pinta.
 - `miembros[]`: `name` (obligatorio), `role`, `roles_extra` (lista), `afiliacion`, `bio` (responsabilidades reales; `null` si no hay), `image` (ruta en `assets/` o `null` → iniciales).
 - `colaboracion[]`: tres áreas de trabajo basadas en lo documentado (ingeniería del sistema físico, propuesta digital y experiencia, presentación a aliados). No se asignan personas ni resultados a cada área.
-- Estado actual: 1 perfil (Norberto Ruiz Carbajal · Integrante del equipo de diseño · Estudiante de Informática, UNAM). No se encontraron otros nombres ni créditos en la documentación; no se inventaron.
+- Estado actual: 11 perfiles (Norberto Ruiz Carbajal más 10 integrantes con foto en `assets/equipo/`, nombre y área; sin biografías). Cuadrícula de 3 columnas en escritorio, 2 en tablet y 1 en móvil angosto.
 
 ## Información pendiente
 Responsabilidades concretas de Norberto (`bio`/`roles_extra`) y, si quieres, foto; nombres, roles y responsabilidades de los demás integrantes (incluido el equipo de ingeniería, si debe aparecer).
