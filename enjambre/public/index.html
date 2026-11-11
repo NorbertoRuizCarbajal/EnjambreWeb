@@ -127,11 +127,11 @@ details#pinbox{border:1.5px solid #8aa0a8;border-radius:3px;padding:.8rem 1rem;b
 .xp{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(1.5rem,5vw,4rem);align-items:center}
 .xp-t p{margin-top:1rem;color:#cfe1e7}.xp img{width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:4px;border:1px solid rgba(255,255,255,.18)}
 #equipo{display:block;min-height:0;padding:clamp(4rem,8vw,6.5rem) clamp(1.2rem,6vw,5rem)}.eq{max-width:1100px;margin:0 auto}
-.eq-intro{margin-top:1rem;color:#43565e;max-width:52rem}.eq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),360px));gap:1.2rem;margin-top:2rem}
+.eq-intro{margin-top:1rem;color:#43565e;max-width:52rem}.eq-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:2rem}@media(max-width:900px){.eq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.eq-grid{grid-template-columns:minmax(0,1fr)}}
 .eq-c{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #c9d6da;border-radius:4px;padding:1.2rem;transition:border-color .3s,transform .3s}
 @media(hover:hover){.eq-c:hover{border-color:#27b8dc;transform:translateY(-2px)}}
 .eq-av{flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0a2230,#12566e);color:#8fe3f7;display:grid;place-items:center;font:400 1.6rem/1 Enjambre,var(--f);overflow:hidden;position:relative}
-.eq-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.eq-b{min-width:0}.eq-b h3{font:600 1.2rem/1.25 var(--f)}
+.eq-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.eq-b{min-width:0;overflow-wrap:break-word}.eq-b h3{font:600 1.2rem/1.25 var(--f)}
 .eq-rol{color:#0f6a86;font-weight:600;margin-top:.2rem}.eq-af{color:#43565e;font-size:.95rem;margin-top:.3rem}.eq-bio{margin-top:.6rem;font-size:.95rem}
 .eq-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}.eq-tag{font-size:.78rem;padding:.1rem .6rem;border:1px solid #0f6a86;color:#0f6a86;border-radius:10px}
 .eq-h{margin-top:3rem;font:600 1.15rem var(--f)}.eq-colab{list-style:none;padding:0;margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem;counter-reset:n}
