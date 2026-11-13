@@ -29,6 +29,14 @@ Ese mensaje significa que `/api/contact` **sí existe** pero respondió `error: 
 6. Vuelve a abrir `/api/health?token=…`: `variables_definidas` en `true` y `supabase.ok: true`. Si `funcion_alta` es `false`, ejecuta la migración del paso 0b.1 (o `schema.sql` si tu base es nueva). Si dice `clave rechazada`, copia de nuevo la Secret key desde Supabase → Project Settings → API Keys.
 7. Prueba un envío real. Debe aparecer una fila nueva en Supabase → Table Editor → `contacts` con su país.
 
+## 0f. Ahorro de créditos de Netlify: qué commits se publican
+El plan gratuito tiene un número limitado de créditos al mes y **cada deploy de producción gasta créditos**. Si se acaban, Netlify pausa las publicaciones hasta el siguiente periodo (el sitio sigue en línea, pero congelado).
+- `netlify.toml` tiene una regla `ignore`: **Netlify no construye** si, desde el último deploy, solo cambiaron `docs/`, archivos `.md`, `tests/`, `supabase/` o `assets-originales/`. Cualquier cambio en `public/`, `netlify/functions/`, `scripts/`, `package.json` o `netlify.toml` sí se publica.
+- Publica en tandas: junta varios cambios en un solo `git push` en lugar de subir archivo por archivo (cada subida en GitHub es un commit y puede disparar un deploy).
+- Para saltarte un deploy a propósito, incluye `[skip netlify]` en el mensaje del commit.
+- **Forzar un deploy** aunque solo haya cambios de documentación: Netlify → Site configuration → Build & deploy → **Build hooks → Add build hook** (rama `main`). Copia la URL y ejecútala con `curl -X POST -d {} URL_DEL_HOOK`. Los deploys disparados por build hook ignoran la regla. La URL del hook es privada: no la publiques.
+- Consumo y fecha de renovación: Team → **Usage & billing** (flecha de «Credits available»).
+
 ## 0d. Si la capa de cuerpos de agua no carga (`/api/health` → `capa_agua.ok: false`)
 **Fuente actual:** SEMARNAT, servicio ArcGIS REST `https://geomaticasig1.semarnat.gob.mx/arcgis/rest/services/esdig/Agua/MapServer`, subcapas **6 y 7** (lagos y lagunas). El mapa muestra como atribución el nombre que devuelve el servidor (`fuente`), deducido del dominio consultado; la ruta `/api/conagua` y las variables `CONAGUA_*` conservan ese nombre solo por compatibilidad.
 - **"certificado… no pudo verificarse" (`UNABLE_TO_VERIFY_LEAF_SIGNATURE`)**: el servidor no envía su certificado intermedio (los navegadores lo completan solos; Node no). No se desactiva la seguridad TLS. Solución:

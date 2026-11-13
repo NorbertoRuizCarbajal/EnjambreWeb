@@ -2,6 +2,12 @@
   command = "node scripts/check-catalogos.mjs && node scripts/build-config.mjs"
   publish = "public"
   functions = "netlify/functions"
+  # Ahorro de créditos: Netlify NO construye (exit 0) si, desde el último deploy, solo cambiaron archivos que no afectan
+  # al sitio publicado: documentación (.md y docs/), pruebas, SQL de Supabase y originales de imágenes.
+  # Si cambió cualquier otra cosa, o no hay deploy previo con el que comparar, git devuelve ≠ 0 y Netlify construye.
+  # Se ejecuta desde la carpeta base (enjambre/). Para forzar un deploy aunque solo haya cambios de documentación,
+  # usa un build hook (Netlify ignora esta regla en deploys disparados por build hook): ver DEPLOY.md §0f.
+  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)docs' ':(exclude)*.md' ':(exclude)tests' ':(exclude)supabase' ':(exclude)assets-originales'"
 
 [functions]
   node_bundler = "esbuild"
