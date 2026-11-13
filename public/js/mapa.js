@@ -3,8 +3,10 @@
 (function () {
   const MX = [[14, -119], [33.5, -86]], CENTRO = [23.6, -102.5];
   let promesa;
+  // Raíz del sitio deducida de la ubicación de este archivo (js/mapa.js): así funciona igual en /, /colabora/ y /admin/.
+  const RAIZ = document.currentScript ? new URL('../', document.currentScript.src).href : '';
   function cargar(base) {
-    base = base || '';
+    base = base == null ? RAIZ : base;
     return promesa || (promesa = new Promise((ok, ko) => {
       const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = base + 'vendor/leaflet/leaflet.css'; document.head.appendChild(l);
       const s = document.createElement('script'); s.src = base + 'vendor/leaflet/leaflet.js';
@@ -116,7 +118,7 @@
   function iniciarPublico() {
     const cont = document.getElementById('mapa-pub'); if (!cont || cont.dataset.ok) return; cont.dataset.ok = 1;
     const av = document.getElementById('mapa-aviso'), f = document.getElementById('mapa-bus'), q = document.getElementById('mapa-q');
-    cargar('').then(() => {
+    cargar().then(() => {
       const m = mapa(cont); capaAgua(m, mkAviso(av), (fuente) => { const l = document.getElementById('ley-of'), n = document.getElementById('ley-fuente'); if (n && fuente) n.textContent = fuente; if (l) l.hidden = false; });
       f.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!q.value.trim()) return; av.textContent = 'Buscando…';
@@ -149,7 +151,7 @@
     box.addEventListener('toggle', () => {
       if (!box.open) return;
       if (m) { m.invalidateSize(); return; }
-      cargar('').then(() => {
+      cargar().then(() => {
         m = mapa(document.getElementById('pmap'), { mundo: true }); m.on('click', (e) => poner(e.latlng.lat, e.latlng.lng));
         const s = sel(); irAPais(m, s.cc, s.nombre);
         const q = document.getElementById('pbq'), go = async () => {

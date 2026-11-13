@@ -38,7 +38,7 @@ iguales('Países (ISO 3166-1)',
 iguales('Tipos de interés',
   extraer('netlify/functions/submit-contact.mjs', /const INTERESES = \[([^\]]+)\]/, comillas, 'INTERESES'),
   extraer('public/admin/admin.js', /const INTERESES = \[([^\]]+)\]/, comillas, 'INTERESES'),
-  extraer('public/index.html', /<select name="interes"[^>]*>([\s\S]*?)<\/select>/, opciones, 'el selector de interés'));
+  extraer('public/colabora/index.html', /<select name="interes"[^>]*>([\s\S]*?)<\/select>/, opciones, 'el selector de interés'));
 
 iguales('Estados comerciales',
   extraer('supabase/schema.sql', /status text not null default 'nuevo' check \(status in([\s\S]*?)\)\)/, comillas, 'el check de contacts.status'),

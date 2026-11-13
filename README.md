@@ -20,7 +20,7 @@ La aplicación está dentro de [`enjambre/`](./enjambre/). Los documentos técni
 ## Funcionalidades principales
 
 - Landing pública con identidad visual, descripción del sistema y recursos audiovisuales.
-- Mapa público con cartografía base y consulta de una capa geográfica de referencia de CONAGUA.
+- Mapa público con cartografía base y consulta de una capa oficial de cuerpos de agua (SEMARNAT, configurable).
 - Formulario de contacto validado en servidor, con país y ubicación aproximada opcional.
 - Panel privado en `/admin/` para gestionar contactos, estados, responsables y seguimiento.
 - Persistencia en Supabase y notificación opcional por correo mediante Resend.
@@ -32,7 +32,7 @@ La aplicación está dentro de [`enjambre/`](./enjambre/). Los documentos técni
 - Netlify para hosting estático y funciones de servidor.
 - Supabase (PostgreSQL, autenticación y políticas de acceso) para persistencia y panel.
 - Leaflet y OpenStreetMap para el mapa.
-- Servicio ArcGIS REST de CONAGUA como fuente de una capa temática.
+- Servicio ArcGIS REST de SEMARNAT como fuente de una capa temática.
 - Resend como integración opcional para avisos por correo.
 - Node.js y `undici` en la función de consulta geográfica cuando se configura un certificado CA adicional.
 
@@ -63,7 +63,7 @@ El archivo `enjambre/netlify.toml` define `public/` como directorio publicado y 
 
 ## Limitaciones
 
-- La capa de CONAGUA depende de la disponibilidad y accesibilidad del servicio externo.
+- La capa de cuerpos de agua depende de la disponibilidad y accesibilidad del servicio externo.
 - La sección de impacto debe conservar fuentes, fechas, atribuciones y derechos de uso de imágenes.
-- El proyecto contiene verificaciones explícitas marcadas como `REVISAR` en `enjambre/public/index.html`; deben resolverse antes de una publicación formal.
+- El proyecto contiene verificaciones explícitas marcadas como `REVISAR` en `enjambre/public/index.html` y `enjambre/public/css/sitio.css`; deben resolverse antes de una publicación formal.
 - El sistema físico de recolección y sus métricas requieren validación de ingeniería y pruebas en condiciones reales.
