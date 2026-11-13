@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Colabora con Enjambre</title>
+<meta name="theme-color" content="#0a2230">
+<link rel="preload" href="../assets/fonts/enjambre.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="description" content="Propón una alianza, apoyo técnico o inversión para el desarrollo de Enjambre, el sistema para recolectar residuos flotantes.">
+<link rel="stylesheet" href="../css/sitio.css">
+</head>
+<body class="pg-sola">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header id="top"><nav aria-label="Principal">
+<a href="../#inicio" aria-label="Enjambre, inicio"><img src="../assets/logo-simbolo.webp" alt="" width="192" height="188"></a>
+<button id="bm" aria-expanded="false" aria-controls="mn" aria-label="Abrir menú">☰</button>
+<ul class="menu" id="mn">
+<li><a href="../#proceso">Proceso</a></li><li><a href="../#sistema">Sistema real</a></li><li><a href="../#impacto">Impacto potencial</a></li><li><a href="../experiencia/">Experiencia interactiva</a></li><li><a href="../#mapa">Mapa</a></li><li><a href="../#alianzas">Alianzas</a></li><li><a href="./" aria-current="page">Colabora</a></li><li><a href="../#equipo">Equipo de diseño</a></li>
+</ul></nav></header>
+
+<main id="main">
+<section class="sec light" id="contacto"><div class="dos">
+<div><h2>Hablemos del siguiente avance.</h2>
+<p>Si quieres conocer el proceso, explorar una alianza o apoyar el desarrollo de Enjambre, deja tus datos y el equipo podrá contactarte.</p>
+<p>Buscamos inversores, gobiernos locales, empresas con enfoque sostenible, aliados técnicos e instituciones de investigación.</p>
+<a class="volver" href="../">← Volver al sitio de Enjambre</a></div>
+<form id="fm" novalidate>
+<label>Nombre completo<input name="nombre" autocomplete="name" required></label>
+<label>Organización o empresa<input name="organizacion" autocomplete="organization" required></label>
+<label>Correo electrónico<input name="correo" type="email" inputmode="email" spellcheck="false" autocomplete="email" required></label>
+<label>Teléfono (opcional)<input name="telefono" type="tel" autocomplete="tel"></label>
+<label class="w">Tipo de interés<select name="interes" required><option value="">Selecciona una opción</option><option>Inversión</option><option>Alianza estratégica</option><option>Gobierno o institución pública</option><option>Empresa con enfoque sostenible</option><option>Apoyo técnico</option><option>Investigación o universidad</option><option>Medios / prensa</option><option>Otro</option></select></label>
+<label class="w">País<select name="pais" id="pais" autocomplete="country"><option value="MX" selected>México</option></select></label>
+<label class="w">Mensaje breve<textarea name="mensaje" required></textarea></label>
+<details class="w" id="pinbox"><summary>Marcar ubicación aproximada en el mapa (opcional)</summary>
+<p class="nt">Busca un lugar o toca el mapa para colocar un pin; puedes arrastrarlo. Se guarda solo una ubicación aproximada, nunca exacta. El mapa se centra en el país elegido, pero puedes moverte a cualquier lugar.</p>
+<div class="bus"><label class="sr" for="pbq">Buscar un lugar en el mapa</label><input id="pbq" type="search" placeholder="Buscar un lugar" autocomplete="off" maxlength="100"><button class="btn s" type="button" id="pbb">Buscar</button></div>
+<div id="pmap" role="region" aria-label="Mapa para colocar un pin aproximado"></div>
+<p id="pst" role="status" aria-live="polite"></p>
+<div class="bus pacc"><button class="btn p" type="button" id="pok" hidden>Confirmar ubicación</button><button class="btn s" type="button" id="pquit" hidden>Quitar pin</button></div>
+<input type="hidden" name="lat"><input type="hidden" name="lng"></details>
+<p id="pres" class="nt w" role="status" aria-live="polite" hidden></p>
+<label class="w chk" id="cons" hidden><input type="checkbox" name="consentimiento_ubicacion"><span>Autorizo a Enjambre a usar esta ubicación para evaluar mi solicitud y dar seguimiento.</span></label>
+<p class="nt w">Al enviar, usaremos tus datos solo para responder y dar seguimiento a tu solicitud. Consulta el <a href="../privacidad/">aviso de privacidad</a>.</p>
+<input name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="envio w"><button class="btn p" type="submit">Enviar mensaje</button>
+<div id="vuelo" aria-hidden="true"><span class="glow"></span><img class="hex" src="../assets/logo-simbolo.webp" alt="" width="192" height="188"><img class="avi" src="../assets/avispa.png" alt="" width="200" height="188"></div></div>
+<p id="st" class="w" role="status" aria-live="polite"></p>
+</form></div></section>
+
+</main>
+
+<script src="../js/menu.js" defer></script>
+<script src="../js/mapa.js" defer></script>
+<script src="../js/contacto.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Enjambre — La innovación toma forma. El cambio, también.</title>
+<meta name="theme-color" content="#0a2230">
+<link rel="preload" href="assets/fonts/enjambre.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="description" content="Enjambre es un sistema físico en desarrollo para recolectar residuos flotantes. Conoce el proceso y explora alianzas.">
+<link rel="stylesheet" href="css/sitio.css">
+</head>
+<body>
+<script>document.documentElement.classList.add("js")</script>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header id="top"><nav aria-label="Principal">
+<a href="#inicio" aria-label="Enjambre, inicio"><img src="assets/logo-simbolo.webp" alt="" width="192" height="188"></a>
+<button id="bm" aria-expanded="false" aria-controls="mn" aria-label="Abrir menú">☰</button>
+<ul class="menu" id="mn">
+<li><a href="#proceso">Proceso</a></li><li><a href="#sistema">Sistema real</a></li><li><a href="#impacto">Impacto potencial</a></li><li><a href="experiencia/">Experiencia interactiva</a></li><li><a href="#mapa">Mapa</a></li><li><a href="#alianzas">Alianzas</a></li><li><a href="colabora/">Colabora</a></li><li><a href="#equipo">Equipo de diseño</a></li>
+</ul></nav></header>
+
+<nav id="flujo" aria-label="Etapas del proceso">
+<a href="#direccion" data-e="direccion">Dirección</a><a href="#captura" data-e="captura">Captura</a><a href="#guia" data-e="guia">Guía</a><a href="#procesamiento" data-e="procesamiento">Procesamiento</a><a href="#contencion" data-e="contencion">Contención</a>
+</nav>
+<button id="pz" aria-pressed="false">Pausar movimiento</button>
+
+<main id="main">
+<section class="sec dark" id="inicio" aria-label="Enjambre">
+<img src="assets/01-hero.webp" alt="Sistema Enjambre desplegado a la orilla de un cuerpo de agua, con el extractor y la embarcación." fetchpriority="high">
+<div class="in"><h1>La innovación toma forma. El cambio, también.</h1>
+<p>Un sistema físico en desarrollo para recolectar residuos flotantes y transformar una acción ambiental en tecnología visible.</p>
+<div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div></div>
+<span class="sc-ind" aria-hidden="true"></span>
+</section>
+
+<section class="sec dark" id="impacto-ambiental" aria-labelledby="ia-t"><div class="ia">
+<div class="ia-h"><h2 id="ia-t">El impacto que no podemos ignorar</h2>
+<p>Detrás de cada residuo flotante existe un riesgo para nuestros cuerpos de agua, nuestras comunidades y nuestros ecosistemas. Conoce las consecuencias de la contaminación y por qué es necesario actuar.</p></div>
+<div class="ia-car" id="ia-car" role="region" aria-roledescription="carrusel" aria-label="Noticias sobre el impacto de los residuos" hidden>
+<div class="ia-vp"><div class="ia-track" id="ia-track"></div></div>
+<button type="button" class="ia-nav ia-prev" id="ia-prev" aria-label="Noticia anterior" hidden>‹</button>
+<button type="button" class="ia-nav ia-next" id="ia-next" aria-label="Noticia siguiente" hidden>›</button>
+<div class="ia-pos"><span id="ia-cont" aria-live="polite"></span><div class="ia-dots" id="ia-dots"></div></div>
+</div>
+<p id="ia-estado" role="status" aria-live="polite" class="ia-nota"></p>
+<p class="ia-nota">Cada dato se atribuye a la fuente indicada; no son mediciones de Enjambre. Que una autoridad o un medio atribuya un efecto a la basura no equivale a demostrar una causa única: en las inundaciones intervienen también la lluvia y la infraestructura.</p>
+</div></section>
+
+<section class="sec dark" id="reto" aria-label="El reto">
+<picture><source media="(max-width:860px)" srcset="assets/03-reto-movil.webp"><img class="fondo" src="assets/03-reto.webp" alt="Botellas y otros residuos acumulados sobre la superficie del agua." loading="lazy"></picture>
+<div class="lat"><h2>El residuo se mueve con el agua.</h2>
+<p>Se dispersa, se acumula y cambia con el entorno. Por eso enfrentar este problema exige más que recolección: exige entender el flujo, dirigir el material y convertirlo en una oportunidad de acción.</p></div>
+</section>
+
+<section class="sec dark" id="proceso" aria-label="Del agua al sistema">
+<img class="fondo" data-zoom src="assets/04-entrada.webp" alt="Agua tranquila y vegetación a la orilla donde opera el sistema." loading="lazy">
+<div class="in"><h2>Del agua al sistema.</h2><p>Enjambre convierte la recolección en una historia visual de cinco etapas.</p></div>
+</section>
+
+<section class="sec dark etapa" id="direccion">
+<figure class="media"><video muted loop playsinline preload="none" poster="assets/05-direccion-poster.webp" data-src="assets/05-direccion.mp4" aria-label="Embarcación del sistema conduciendo residuos flotantes sobre el agua"></video></figure>
+<div class="txt"><small>Etapa 1 · Dirección</small><h2>Primero, el flujo se dirige.</h2><p>El barco, controlado a distancia y sin necesidad de una persona a bordo, conduce los residuos flotantes hacia el sistema de captura.</p></div>
+</section>
+
+<section class="sec dark etapa r" id="captura">
+<figure class="media v" style="--bg:url(/assets/06-captura-poster.webp)"><video muted loop playsinline preload="none" poster="assets/06-captura-poster.webp" data-src="assets/06-captura.mp4" aria-label="Extractor elevando residuos fuera del agua"></video></figure>
+<div class="txt"><small>Etapa 2 · Captura</small><h2>El residuo sale del agua.</h2><p>Un extractor inclinado, de cangilones, eleva el material flotante y lo lleva al siguiente punto del proceso.</p></div>
+</section>
+
+<section class="sec dark etapa" id="guia">
+<figure class="media"><video muted loop playsinline preload="none" poster="assets/07-guia-poster.webp" data-src="assets/07-guia.mp4" aria-label="Banda transportadora y equipo retirando manualmente elementos antes de la trituradora"></video></figure>
+<div class="txt"><small>Etapa 3 · Guía</small><h2>El material avanza hacia el procesamiento.</h2><p>Una banda transportadora lo lleva hacia la trituradora. Antes, el equipo retira manualmente metales y piedras que podrían dañarla.</p></div>
+</section>
+
+<section class="sec dark etapa r" id="procesamiento">
+<figure class="media v" style="--bg:url(/assets/08-trituradora-poster.webp)"><video muted loop playsinline preload="none" poster="assets/08-trituradora-poster.webp" data-src="assets/08-trituradora.mp4" aria-label="Residuos entrando a la trituradora"></video></figure>
+<div class="txt"><small>Etapa 4 · Procesamiento</small><h2>El residuo se transforma.</h2><p>El material pasa a una trituradora diseñada y fabricada por el equipo de ingeniería de Enjambre, que lo reduce antes de avanzar.</p></div>
+</section>
+
+<section class="sec dark etapa" id="contencion">
+<figure class="media v" style="--bg:url(/assets/09-contencion-poster.webp)"><video muted loop playsinline preload="none" poster="assets/09-contencion-poster.webp" data-src="assets/09-contencion.mp4" aria-label="Material triturado avanzando hacia el almacenamiento"></video></figure>
+<div class="txt"><small>Etapa 5 · Contención</small><h2>El resultado queda contenido.</h2><p>Después de la trituración, el material se deposita en una zona de almacenamiento. Su gestión posterior depende de los acuerdos con cada entidad.</p></div>
+</section>
+
+<!-- REVISAR antes de publicar: validación técnica final de estos textos con ingeniería -->
+<section class="sec dark" id="sistema" aria-labelledby="sis-t"><div class="sis">
+<h2 id="sis-t">Así funciona el sistema real</h2>
+<p class="sis-lead">Enjambre combina un barco a control remoto con un extractor de cangilones para sacar del agua los residuos flotantes. Aquí se resume lo que documenta el proyecto y se distingue qué es diseño, qué es prototipo y qué ya se probó.</p>
+
+<div class="sis-sec">
+<h3>Secuencia de operación</h3>
+<svg class="sis-dia" viewBox="0 0 900 340" role="img" aria-label="Esquema: un barco con dos hélices dirige residuos flotantes hacia un extractor inclinado de cangilones, que los eleva fuera del agua hacia la plataforma del sistema.">
+<rect x="0" y="228" width="900" height="112" fill="#0f5373" opacity=".55"/><path d="M0 228q30-8 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0" fill="none" stroke="#8fe3f7" stroke-opacity=".5" stroke-width="2"/>
+<g transform="translate(70 196)"><path d="M0 22h170l-20 28H22z" fill="#cfd8dc" stroke="#fff" stroke-width="2"/><g fill="none" stroke="#d63a3a" stroke-width="6"><circle cx="50" cy="-8" r="32"/><circle cx="120" cy="-8" r="32"/></g><g stroke="#d63a3a" stroke-width="3"><path d="M50-40v64M18-8h64M120-40v64M88-8h64"/></g><rect x="70" y="10" width="26" height="12" fill="#37505b"/></g>
+<g fill="#e8e8e8" stroke="#fff" stroke-width="1.5"><circle cx="290" cy="244" r="9"/><rect x="312" y="238" width="22" height="12" rx="2"/><circle cx="352" cy="249" r="8" fill="#8fd3f0"/><rect x="372" y="240" width="9" height="20" rx="3" fill="#8fd3f0"/></g>
+<g><path d="M430 300 650 110" stroke="#37505b" stroke-width="46" stroke-linecap="round"/><path class="sis-cad" d="M430 300 650 110" stroke="#f2b705" stroke-width="12" stroke-dasharray="3 22" fill="none"/><path d="M430 300 650 110" stroke="#9db2ba" stroke-width="2" fill="none"/></g>
+<g><rect x="640" y="60" width="230" height="200" fill="#16242b" stroke="#9db2ba" stroke-width="3"/><path d="M630 60h250" stroke="#9db2ba" stroke-width="8"/><rect x="665" y="150" width="80" height="80" fill="none" stroke="#9db2ba" stroke-width="2" stroke-dasharray="6 4"/><rect x="765" y="150" width="80" height="80" fill="none" stroke="#9db2ba" stroke-width="2" stroke-dasharray="6 4"/></g>
+<path d="M410 262q-70-10-120-6" fill="none" stroke="#8fe3f7" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#fl)"/><path d="M652 108q10-10 20 0" fill="none" stroke="#8fe3f7" stroke-width="3"/>
+<defs><marker id="fl" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#8fe3f7"/></marker></defs>
+<g font-family="system-ui,sans-serif" font-weight="700" text-anchor="middle"><circle cx="300" cy="196" r="22" fill="#f2b705"/><text x="300" y="204" font-size="24" fill="#1a1400">1</text><circle cx="545" cy="214" r="22" fill="#f2b705"/><text x="545" y="222" font-size="24" fill="#1a1400">2</text><circle cx="755" cy="108" r="22" fill="#f2b705"/><text x="755" y="116" font-size="24" fill="#1a1400">3</text></g>
+</svg>
+<ol class="sis-pasos">
+<li><h4>El barco dirige los residuos</h4><span class="sis-b sis-b-t">▲ Prueba documentada</span><p>Un barco con las hélices fuera del agua, operado a control remoto, recorre el cuerpo de agua y usa su costado para arrastrar los residuos hacia el extractor.</p></li>
+<li><h4>El extractor los eleva</h4><span class="sis-b sis-b-p">■ Prototipo fabricado y probado</span><p>Una cadena con cangilones recoge los residuos y los sube por una rampa inclinada, fuera del agua, hasta la plataforma.</p></li>
+<li><h4>Siguen hacia la plataforma</h4><span class="sis-b sis-b-d">◌ Diseño en desarrollo</span><p>En el concepto «Todo en uno», una banda los lleva a una zona de selección manual y a un triturador que reduciría su volumen. Esta etapa aún no está confirmada como integrada y operativa.</p></li>
+</ol>
+<p class="sis-fuente">Esquema ilustrativo, no a escala. Fuente: tesis de maestría en Ingeniería Mecánica (UNAM, 2023), capítulos 3 y 4.</p>
+</div>
+
+<div class="sis-sec">
+<h3>Componentes</h3>
+<dl class="sis-comp">
+<div><dt>Barco con propulsión aérea</dt><dd>Sus motores eléctricos y hélices van fuera del agua. Así se evita que hierba, ramas o hilos enreden unas aspas sumergidas, algo crítico cuando nadie va a bordo para liberarlas. Se opera a control remoto.</dd></div>
+<div><dt>Hélices que giran y se pliegan</dt><dd>Las hélices se orientan en dos posiciones de dirección, separadas 90°: navegación y recolección. Su estructura de tubos se pliega para guardar el barco dentro del sistema, porque desplegada puede medir hasta 1.5 m de alto y debe reducirse a menos de la mitad. En las pruebas documentadas, dos personas la pliegan y despliegan a mano.</dd></div>
+<div><dt>Extractor de cangilones</dt><dd>Cangilones sujetos a una cadena suben los residuos por una rampa inclinada. En el diseño mide entre 4 y 8 m de largo, según el sitio. Se fabricó un prototipo y se probó, incluso en el embarcadero Cuemanco, en Xochimilco.</dd></div>
+<div><dt>Estructura, rampas y posiciones</dt><dd>El sistema se traslada en un camión modificado. El extractor tiene una posición de trabajo, con la rampa hacia el agua, y una de guardado; el barco se ancla al extractor para desplegarse y para volver a guardarse (en una prueba documentada, el extractor lo «jaló» con eslingas hasta la posición de guardado).</dd></div>
+</dl>
+</div>
+
+<div class="sis-sec">
+<h3>Evidencia del desarrollo</h3>
+<ul class="sis-leyenda" aria-label="Tipos de evidencia"><li><span class="sis-b sis-b-c">◇ Modelo CAD</span> diseño en computadora; no es una fotografía</li><li><span class="sis-b sis-b-p">■ Prototipo fabricado</span> equipo construido</li><li><span class="sis-b sis-b-t">▲ Prueba documentada</span> con fotos o video</li><li><span class="sis-b sis-b-d">◌ En desarrollo</span> sin confirmar</li></ul>
+<div class="sis-ev">
+<figure class="sis-f sis-w2"><img src="assets/sistema/concepto-realidad.webp" alt="Cuatro imágenes: a la izquierda, modelos CAD del barco con el extractor y del camión; a la derecha, los prototipos construidos equivalentes." width="1139" height="803" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span> <span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Del modelo a la realidad</b>Izquierda: modelos CAD. Derecha: los equipos construidos.<small>Tesis UNAM 2023, Imagen 70. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/cad-sistema.webp" alt="Vista lateral del modelo CAD: un barco a la izquierda y, a la derecha, el extractor inclinado con cangilones sobre la estructura del sistema." width="1155" height="578" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Vista general del modelo</b>Barco y extractor sobre la estructura. El equipo del extremo derecho del modelo no implica que esté operativo.<small>Captura del modelo CAD, 27 oct 2026.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/todo-en-uno-cad.webp" alt="Modelo CAD del sistema Todo en uno con sus subsistemas numerados y una lista de nombres." width="1067" height="441" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Configuración «Todo en uno»</b>Ocho subsistemas numerados en el concepto.<small>Tesis UNAM 2023, Imagen 16. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-posiciones-cad.webp" alt="Tres modelos CAD del barco con las hélices en posición de guardado, de recolección y de navegación." width="1200" height="353" loading="lazy"><figcaption><span class="sis-b sis-b-c">◇ Modelo CAD</span><b>Tres posiciones del barco</b>Guardado, recolección y navegación.<small>Tesis UNAM 2023, Imagen 61. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/extractor-prototipo.webp" alt="Prototipo del extractor ensamblado en un taller, con la cadena, los cangilones y el motorreductor." width="652" height="443" loading="lazy"><figcaption><span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Extractor ensamblado</b>Cadena, cangilones y motorreductor, ya construidos.<small>Tesis UNAM 2023, Imagen 40. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/extractor-pruebas.webp" alt="Dos fotografías del extractor probado en el embarcadero Cuemanco, con vegetación y residuos sobre los cangilones." width="1002" height="707" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Extractor en pruebas de campo</b>Embarcadero Cuemanco, Xochimilco.<small>Tesis UNAM 2023, Imagen 47. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-flotabilidad.webp" alt="Tres personas sobre el casco del barco, que flota en una alberca." width="768" height="566" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Flotabilidad del casco</b>Prueba en una alberca con tres personas a bordo.<small>Tesis UNAM 2023, Imagen 62. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-pruebas-alberca.webp" alt="Dos fotografías del barco con sus hélices en una alberca, en posición de navegación y de recolección." width="1190" height="596" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Navegación y empuje</b>Pruebas en alberca en dos posiciones de las hélices.<small>Tesis UNAM 2023, Imagen 63. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><img src="assets/sistema/barco-pruebas-campo.webp" alt="Dos fotografías del barco: sobre la rampa del extractor y flotando en el agua con las hélices desplegadas." width="939" height="467" loading="lazy"><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Barco en el embarcadero Cuemanco</b>Despliegue desde la rampa y navegación en el agua.<small>Tesis UNAM 2023, Imagen 69. Elaboración propia.</small></figcaption></figure>
+<figure class="sis-f"><video controls muted playsinline preload="none" poster="assets/sistema/prueba-barco-2023-poster.webp" width="960" height="540" aria-label="Video sin audio: el barco con dos hélices rojas navega por un canal mientras varias personas observan."><source src="assets/sistema/prueba-barco-2023.mp4" type="video/mp4"></video><figcaption><span class="sis-b sis-b-t">▲ Prueba documentada</span><b>Barco en el agua</b>Video sin audio de una prueba en campo. Archivo del 10 de noviembre de 2023.<small>Archivo del proyecto Enjambre.</small></figcaption></figure>
+<figure class="sis-f sis-v"><video controls muted playsinline preload="none" poster="assets/sistema/prototipo-barco-2024-poster.webp" width="480" height="848" aria-label="Video sin audio: el prototipo del barco con hélices rojas sobre una acumulación de botellas y otros residuos flotantes."><source src="assets/sistema/prototipo-barco-2024.mp4" type="video/mp4"></video><figcaption><span class="sis-b sis-b-p">■ Prototipo fabricado</span><b>Prototipo entre residuos</b>Video sin audio. Archivo del 7 de noviembre de 2024.<small>Archivo del proyecto Enjambre.</small></figcaption></figure>
+</div>
+<div class="sis-dev"><h4><span class="sis-b sis-b-d">◌ En desarrollo o por confirmar</span></h4><ul>
+<li><b>Capacidad de extracción.</b> La meta de diseño es del orden de 300 kg/h; es un valor prometido, no una capacidad demostrada. Falta medirla en pruebas.</li>
+<li><b>Triturador.</b> Existe como modelo CAD y su objetivo es reducir el volumen de los residuos hasta en un 70 %; falta confirmar su integración y su operación.</li>
+<li><b>Separación y destino final.</b> En el concepto la separación inicial es manual. El destino final de los residuos depende de cada material y de la gestión disponible.</li>
+<li><b>Sistema completo.</b> La documentación revisada detalla a fondo el barco y el extractor; el resto de los subsistemas del «Todo en uno» sigue en desarrollo.</li></ul></div>
+</div>
+
+<div class="sis-sec">
+<h3>Contexto: residuos en los cuerpos de agua de la Ciudad de México</h3>
+<div class="sis-ctx"><p class="sis-cifra"><strong>≈158 000 m³</strong><span>de residuos sólidos removidos y desazolvados en 2022 en ríos y cuerpos de agua de la Ciudad de México, según el Gobierno de la CDMX (cifra de 2022, citada en la tesis).</span></p>
+<div><p>Para diseñar el sistema, el equipo visitó las 17 presas que opera el Sacmex. En promedio tienen 5 m de profundidad y casi todas una sola compuerta de drenaje, y acumulan basura mezclada con mucho material orgánico.</p>
+<p>Por eso el proyecto busca un sistema adaptable a esas condiciones: transportable en camión, con hélices fuera del agua y un extractor cuya longitud se ajusta a cada sitio.</p></div></div>
+</div>
+
+<details class="sis-fuentes"><summary>Fuentes y notas de validación</summary><ul>
+<li>Tesis de maestría en Ingeniería Mecánica (Diseño Mecánico), UNAM, 2023, proyecto SACMEX–UNAM. Capítulo 3 (contexto) y capítulo 4 (sistema «Todo en uno», extractor y barco). Imágenes: elaboración propia de la tesis.</li>
+<li>Cifra de 2022: Gobierno de la Ciudad de México, «Rescate de ríos y cuerpos de agua» (2022), citada en la tesis. Es un dato histórico, no una estadística actual.</li>
+<li>La hoja de cálculo del transportador (cangilones) contiene cálculos teóricos; no son mediciones y no se publican como capacidad.</li>
+<li>Los esquemas de esta sección son ilustrativos. Los modelos CAD no son fotografías de pruebas.</li></ul></details>
+</div></section>
+
+<section class="sec dark" id="experiencia" aria-labelledby="xp-t"><div class="xp">
+<div class="xp-t"><h2 id="xp-t">Vive el sistema Enjambre</h2>
+<p>Recorre las ocho etapas del sistema de forma interactiva: traslada el equipo, dirige el barco a control remoto hacia los residuos flotantes, sepáralos, tritúralos y prepáralos para su salida. Es una representación ilustrativa, sin registros ni datos personales.</p>
+<div class="cta"><a class="btn p" href="experiencia/">Iniciar la experiencia</a></div></div>
+<img src="assets/exp/etapa-2.webp" alt="Ilustración conceptual del barco recolector de Enjambre, con dos hélices rojas, dirigiendo residuos flotantes hacia el extractor." width="402" height="455" loading="lazy">
+</div></section>
+
+<section class="sec dark" id="mapa" aria-labelledby="mapa-t"><div class="mp">
+<h2 id="mapa-t">Cuerpos de agua de referencia en México</h2>
+<p><strong>Donde puede comenzar el cambio.</strong> Explora cuerpos de agua de referencia en México. La presencia en el mapa no garantiza una intervención: cada lugar se revisa por condiciones técnicas, acceso, seguridad, permisos y necesidades locales.</p>
+<div><label class="sr" for="mapa-q">Buscar un lugar, municipio o estado</label><form id="mapa-bus" class="bus"><input id="mapa-q" type="search" placeholder="Lugar, municipio o estado" autocomplete="off" maxlength="100"><button class="btn s" type="submit">Buscar</button></form></div>
+<div id="mapa-pub" role="region" aria-label="Mapa de cuerpos de agua de referencia en México"></div>
+<p id="mapa-aviso" role="status" aria-live="polite"></p>
+<p class="ley"><span id="ley-of" hidden><i></i> Referencia oficial: cuerpos de agua (lagos y lagunas) publicados por <span id="ley-fuente">SEMARNAT</span>. </span>Cada sitio requiere evaluación técnica, operativa y de permisos antes de una intervención.</p>
+</div></section>
+
+<section class="sec light" id="impacto"><div class="dos">
+<div><h2>Hacer visible el cambio.</h2>
+<p>El potencial de Enjambre está en transformar un problema disperso en un proceso observable, medible y escalable conforme avance su desarrollo. El cambio comienza cuando el residuo deja de estar perdido en el agua y entra en un sistema que puede ser visto, medido y mejorado.</p></div>
+<figure style="margin:0"><video muted loop playsinline preload="none" poster="assets/11-impacto-poster.webp" data-src="assets/11-impacto.mp4" aria-label="El sistema Enjambre en operación junto al agua"></video></figure>
+</div></section>
+
+<section class="sec dark" id="alianzas"><img class="fondo" src="assets/02-sistema-general.webp" alt="" loading="lazy"><div class="dos">
+<div><h2>El cambio también necesita aliados.</h2>
+<p>Enjambre busca colaboración para fortalecer su desarrollo técnico, ampliar pruebas, validar impacto y construir nuevas oportunidades de implementación.</p>
+<div class="cta"><a class="btn p" href="colabora/">Proponer una alianza</a></div></div>
+<ul><li>Inversores</li><li>Gobierno local</li><li>Empresas con enfoque sostenible</li><li>Aliados técnicos</li></ul>
+</div></section>
+
+<section class="sec light" id="equipo" aria-labelledby="eq-t"><div class="eq">
+<h2 id="eq-t">Equipo de diseño</h2><p id="eq-intro" class="eq-intro"></p>
+<div id="eq-perfiles" class="eq-grid"></div>
+<h3 class="eq-h">Cómo se conectan las áreas de trabajo</h3><ol id="eq-colab" class="eq-colab"></ol>
+</div></section>
+
+<section class="sec dark" id="cierre"><img class="fondo" src="assets/01-hero.webp" alt="" loading="lazy">
+<div class="in"><h2>Del agua al sistema.<br>Del sistema al cambio.</h2>
+<img class="logo" src="assets/logo-enjambre.webp" alt="Enjambre — Diseñamos soluciones tecnológicas que transforman entornos" width="1100" height="605" loading="lazy">
+<div class="cta"><a class="btn p" href="#proceso">Ver el proceso</a><a class="btn s" href="#alianzas">Explorar alianzas</a></div>
+<footer>Enjambre · <a href="colabora/">Colabora</a> · <a href="privacidad/">Aviso de privacidad</a></footer></div>
+</section>
+</main>
+
+<script src="js/mapa.js" defer></script>
+<script src="js/impacto.js" defer></script>
+<script src="js/equipo.js" defer></script>
+<script src="js/menu.js" defer></script>
+<script src="js/landing.js" defer></script>
+</body>
+</html>

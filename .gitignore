@@ -1,0 +1,12 @@
+# Dependencias y artefactos locales
+node_modules/
+.netlify/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secretos: nunca versionar valores reales (usar variables de entorno de Netlify)
+.env
+.env.*
+!.env.example
+*.pem
