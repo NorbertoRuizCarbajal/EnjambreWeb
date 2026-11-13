@@ -1,0 +1,27 @@
+[build]
+  command = "node scripts/check-catalogos.mjs && node scripts/build-config.mjs"
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Content-Security-Policy: solo scripts propios (sin código en línea, salvo el de una línea en index.html, autorizado por su hash).
+# Si cambias ese <script> de index.html, recalcula el hash (ver docs/SEGURIDAD_PRIVACIDAD.md).
+# Orígenes externos permitidos: teselas y búsqueda de OpenStreetMap, y la API de Supabase (panel).
+# Si Supabase usa un dominio propio, agrégalo a connect-src.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-qOhFsq0QMV2REqNwk5hGH5bZE9SkX6gt6yeyKdYPv+U='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tile.openstreetmap.org; font-src 'self'; media-src 'self'; connect-src 'self' https://nominatim.openstreetmap.org https://*.supabase.co wss://*.supabase.co; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "DENY"
+    Cache-Control = "no-store"
