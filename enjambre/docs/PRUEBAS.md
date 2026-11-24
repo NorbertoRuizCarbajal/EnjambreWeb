@@ -1,6 +1,18 @@
 # Plan de pruebas
 
-Este documento define pruebas manuales reproducibles. No implica que todas se hayan ejecutado ni que exista una suite automatizada. Registra fecha, entorno, resultado y evidencia al probar cada versión.
+Este documento define pruebas manuales reproducibles. No implica que todas se hayan ejecutado. Registra fecha, entorno, resultado y evidencia al probar cada versión.
+
+## 0. Pruebas automáticas
+
+Parte de esta lista ya se comprueba sola en cada push a GitHub (`.github/workflows/pruebas.yml`) y se puede ejecutar en local desde `enjambre/`:
+
+| Comando | Qué cubre |
+|---|---|
+| `npm run check` | Catálogos coherentes entre archivos y ningún secreto dentro de `public/`. |
+| `npm test` | Funciones de servidor sin red: validación del formulario, origen permitido, `/api/health` protegido, conversión de la capa de agua. |
+| `npm run test:e2e` | Navegador (Playwright, Chromium) en escritorio y móvil: carga sin errores de JavaScript; videos de etapas con carga diferida y videos de evidencia sin fuente alterada (regresión del `src="undefined"`); carrusel de impacto; menú móvil y ausencia de desplazamiento horizontal; mapa con datos, sin datos y con el servicio caído, y atribución de la fuente que informa el servidor; formulario de `/colabora/` (validación, éxito, errores 500/429, sin conexión, pin con consentimiento obligatorio y coordenadas con 2 decimales); panel sin configuración y con credenciales rechazadas. |
+
+Las pruebas de navegador **simulan** `/api/*`, Supabase y OpenStreetMap: verifican el comportamiento de la interfaz, no el despliegue. Los puntos de las secciones 2 (persistencia real), 4 (RLS con cuentas reales) y 5 (Netlify) siguen siendo manuales. Las pruebas no reproducen video: el Chromium de Playwright no incluye el códec H.264; la reproducción se revisa a mano en Chrome.
 
 ## 1. Landing y navegación
 
@@ -8,6 +20,7 @@ Este documento define pruebas manuales reproducibles. No implica que todas se ha
 - [ ] Navegación, enlaces, botones y secciones llevan al destino correcto.
 - [ ] La página es legible en móvil, tableta y escritorio.
 - [ ] Los videos muestran sus posters si el archivo multimedia no ha cargado.
+- [ ] Los dos videos de «Evidencia del desarrollo» (2023 y 2024) se reproducen con sus controles después de desplazarse hasta ellos y después de usar «Pausar/Reanudar movimiento».
 - [ ] Las imágenes tienen texto alternativo significativo cuando corresponde.
 - [ ] La sección de impacto muestra un carrusel de máximo tres noticias: debajo hay una fila «‹ Noticia n de N ›»; en la primera la flecha izquierda está deshabilitada y en la última la derecha (no desaparecen); también funcionan las flechas del teclado y deslizar en móvil. Las ligas de fuente funcionan.
 - [ ] «Proponer una alianza» (sección Alianzas), «Colabora» del menú y del pie de página llevan a `/colabora/`, donde el formulario funciona igual que antes.
@@ -52,7 +65,7 @@ Este documento define pruebas manuales reproducibles. No implica que todas se ha
 - [ ] Las rutas `/api/contact` y `/api/conagua` están desplegadas como Netlify Functions.
 - [ ] La compilación no publica secretos dentro de `public/`.
 - [ ] Los encabezados configurados en `netlify.toml` están presentes (incluida la Content-Security-Policy) y la consola del navegador no muestra violaciones de CSP en la landing, el formulario con pin, `/admin/`, `/experiencia/` y `/privacidad/`.
-- [ ] `npm run check` y `npm test` terminan sin errores.
+- [ ] `npm run check`, `npm test` y `npm run test:e2e` terminan sin errores (la revisión de GitHub Actions del commit está en verde).
 - [ ] Al mover el mapa público a zoom ≥ 8 las peticiones `conagua?bbox=…` usan coordenadas redondeadas (vistas cercanas repiten la misma URL y se sirven desde caché); en pantallas muy grandes a zoom 8 aparece «Acerca un poco más el mapa» en lugar de un error.
 - [ ] En el panel, la lista de contactos muestra 100 por página con «Anteriores/Siguientes», el total correcto con filtros, y el filtro «Mis contactos».
 - [ ] Un POST a `/api/contact` sin encabezado `Origin` o desde otro dominio responde 403; sin `RATE_LIMIT_SALT` responde 500 `config` sin guardar nada.

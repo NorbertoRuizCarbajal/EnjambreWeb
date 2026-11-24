@@ -3,15 +3,16 @@
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const rm=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
 let pausado=rm;
-/* video: carga diferida, reproduce solo en pantalla */
+/* video: carga diferida, reproduce solo en pantalla. Solo aplica a los videos con data-src (etapas, en bucle y sin controles).
+   Los videos de evidencia del sistema usan <source> y controles propios: no se tocan (antes se les asignaba src="undefined"). */
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;
  if(e.isIntersecting){if(!v.src&&!rm)v.src=v.dataset.src;if(!pausado&&v.src)v.play().catch(()=>{})}else v.pause()}),{rootMargin:"200px"});
-$$("video").forEach(v=>vio.observe(v));
+$$("video[data-src]").forEach(v=>vio.observe(v));
 /* pausa global */
 const pz=$("#pz");if(rm){pz.textContent="Reanudar movimiento";pz.setAttribute("aria-pressed","true");document.documentElement.classList.add("pz")}
 pz.onclick=()=>{pausado=!pausado;pz.setAttribute("aria-pressed",pausado);pz.textContent=pausado?"Reanudar movimiento":"Pausar movimiento";
  document.documentElement.classList.toggle("pz",pausado);
- $$("video").forEach(v=>{if(pausado)v.pause();else{if(!v.src)v.src=v.dataset.src;const r=v.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)v.play().catch(()=>{})}})};
+ $$("video").forEach(v=>{if(pausado)v.pause();else if(v.dataset.src){if(!v.src)v.src=v.dataset.src;const r=v.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)v.play().catch(()=>{})}})};
 /* hilo conductor */
 const fl=$("#flujo"),dots=$$("#flujo a"),etapas=dots.map(a=>$("#"+a.dataset.e)),pr=$("#proceso"),ct=$("#contencion"),zm=$("[data-zoom]");
 const eio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=etapas.indexOf(e.target);dots.forEach((d,k)=>d.classList.toggle("on",k<=i))}}),{rootMargin:"-45% 0px -45% 0px"});

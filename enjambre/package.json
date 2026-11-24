@@ -4,7 +4,13 @@
   "description": "Landing y CRM de Enjambre. undici solo se carga si se define CONAGUA_CA_PEM.",
   "scripts": {
     "check": "node scripts/check-catalogos.mjs && node scripts/build-config.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test -c tests/e2e/playwright.config.mjs"
   },
-  "dependencies": { "undici": "^6.19.0" }
+  "dependencies": {
+    "undici": "^6.19.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
+  }
 }

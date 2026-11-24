@@ -1,6 +1,13 @@
 # Dependencias y artefactos locales
 node_modules/
 .netlify/
+
+# Resultados de las pruebas de navegador (Playwright)
+enjambre/tests/e2e/resultados/
+enjambre/tests/e2e/reporte/
+
+# Capturas de comparación que entrega Claude (no forman parte del sitio)
+Claude outputs/
 .DS_Store
 Thumbs.db
 desktop.ini
