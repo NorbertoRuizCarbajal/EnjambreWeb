@@ -12,7 +12,7 @@ La sección está justo después del hero (`#impacto-ambiental`). **No se edita 
   "video": "assets/clip.mp4 (video local; se abre en un diálogo, sin audio automático)",
   "cifra": "6 de cada 10", "cifra_texto": "qué mide y quién lo afirma" }
 ```
-- `destacado` (raíz del JSON) = `id` de la noticia que aparece primero en el carrusel (las demás siguen el orden del JSON; máximo `MAX_NOTICIAS` = 3 en `public/js/impacto.js`). Todas las noticias usan el mismo diseño: imagen a la izquierda y texto a la derecha; si tienen `cifra`, se muestra grande. Sin `imagen` se usa un icono neutro.
+- `destacado` (raíz del JSON) = `id` de la noticia que aparece primero en el carrusel (las demás siguen el orden del JSON; máximo `MAX_NOTICIAS` = 3 en `public/js/impacto.js`). Todas las noticias usan el mismo diseño: imagen a la izquierda y texto a la derecha; si tienen `cifra`, se muestra destacada solo cuando el título no la incluye ya (así no se repite). Encima del título va un antetítulo de una línea: tipo · categoría · nivel. Sin `imagen` se usa un icono neutro.
 - `nivel` distingue **dato reportado**, **atribución de la autoridad**, **riesgo señalado**, **caso de referencia** y **registro propio**. No uses "dato" para una afirmación que solo es atribución. 
 - Videos de terceros: enlaza (`url`) en vez de alojar. Videos propios o con licencia: `video`.
 
