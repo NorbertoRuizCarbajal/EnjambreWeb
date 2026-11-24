@@ -9,7 +9,7 @@ Este documento define pruebas manuales reproducibles. No implica que todas se ha
 - [ ] La página es legible en móvil, tableta y escritorio.
 - [ ] Los videos muestran sus posters si el archivo multimedia no ha cargado.
 - [ ] Las imágenes tienen texto alternativo significativo cuando corresponde.
-- [ ] La sección de impacto muestra un carrusel de máximo tres noticias: en la primera solo hay flecha derecha, en las intermedias ambas y en la última solo la izquierda; también funcionan los puntos, las flechas del teclado y deslizar en móvil. Las ligas de fuente funcionan.
+- [ ] La sección de impacto muestra un carrusel de máximo tres noticias: debajo hay una fila «‹ Noticia n de N ›»; en la primera la flecha izquierda está deshabilitada y en la última la derecha (no desaparecen); también funcionan las flechas del teclado y deslizar en móvil. Las ligas de fuente funcionan.
 - [ ] «Proponer una alianza» (sección Alianzas), «Colabora» del menú y del pie de página llevan a `/colabora/`, donde el formulario funciona igual que antes.
 
 ## 2. Formulario de contacto
