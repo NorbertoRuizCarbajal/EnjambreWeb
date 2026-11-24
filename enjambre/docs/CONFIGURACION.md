@@ -41,6 +41,8 @@ netlify dev
 
 - `npm run check`: verifica que países, tipos de interés, estados y roles coincidan entre el formulario, las funciones, el panel y `schema.sql` (también se ejecuta en cada build de Netlify), y que no haya secretos en `public/`.
 - `npm test`: pruebas automáticas de las funciones (formulario, `/api/health`, capa de agua) sin red ni base de datos.
+- `npm run test:e2e`: pruebas de navegador con Playwright (escritorio y móvil). La primera vez instala el navegador con `npx playwright install chromium`. Levanta un servidor local propio (`tests/e2e/servidor.mjs`, puerto 4173) y simula `/api/*`, Supabase y OpenStreetMap, así que no necesita `netlify dev`, variables ni red. Si falla, `npx playwright show-trace tests/e2e/resultados/<prueba>/trace.zip` muestra paso a paso qué ocurrió.
+- GitHub Actions (`.github/workflows/pruebas.yml`) ejecuta las tres en cada push y pull request; si algo falla, el reporte de Playwright queda como artefacto del run durante 7 días.
 
 ## Endpoints de diagnóstico
 

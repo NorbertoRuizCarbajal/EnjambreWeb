@@ -1,0 +1,58 @@
+# Revisión automática en cada push y pull request.
+# Ejecuta: comprobación de catálogos y secretos (npm run check), pruebas de las funciones (npm test)
+# y pruebas de navegador con Playwright en escritorio y móvil (npm run test:e2e).
+# No despliega nada, no usa secretos y no se conecta a Supabase ni a servicios externos (todo se simula).
+name: Pruebas
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pruebas-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: enjambre
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: enjambre/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Catálogos y ausencia de secretos en public/
+        run: npm run check
+
+      - name: Pruebas de las funciones
+        run: npm test
+
+      - name: Instalar Chromium para Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Pruebas de navegador (escritorio y móvil)
+        run: npm run test:e2e
+
+      - name: Guardar reporte si algo falló
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-playwright
+          path: |
+            enjambre/tests/e2e/reporte/
+            enjambre/tests/e2e/resultados/
+          retention-days: 7
